@@ -10,12 +10,12 @@ import UIKit
 
 class BeerCaptureOverviewController: UIViewController {
 
-  private let beers: [BeerJson]
+  private let matches: [MatchesJson]
 
   @IBOutlet weak private var tableView: UITableView!
 
-  init(beers: [BeerJson]) {
-    self.beers = beers
+  init(matches: [MatchesJson]) {
+    self.matches = matches
     super.init(nibName: "BeerCaptureOverviewView", bundle: nil)
     title = "BEERS...?"
   }
@@ -37,6 +37,11 @@ class BeerCaptureOverviewController: UIViewController {
     tableView.allowsSelection = true
     tableView.allowsMultipleSelection = true
   }
+
+  @IBAction func nextPressed(_ sender: Any) {
+    let controller = BeerResultOverviewController(matches: matches)
+    navigationController?.pushViewController(controller, animated: true)
+  }
 }
 
 extension BeerCaptureOverviewController: UITableViewDataSource {
@@ -45,7 +50,7 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return beers.count
+    return matches.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +58,7 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    cell.beer = beers[indexPath.row]
+    cell.beer = matches[indexPath.row].beer
 
     return cell
   }

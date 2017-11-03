@@ -12,6 +12,17 @@ struct AuthenticateJson: Decodable {
   let url: URL
 }
 
+struct UploadJson: Decodable {
+  let matches: [MatchesJson]
+  let possibles: [String]
+}
+
+struct MatchesJson: Decodable {
+  let user_rating: Float?
+  let wish_list: Bool?
+  let beer: BeerJson
+}
+
 struct BeerJson: Decodable {
   let id: Int
   let bid: Int

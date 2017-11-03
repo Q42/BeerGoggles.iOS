@@ -33,8 +33,9 @@ class PhotoUploadController: UIViewController {
       print(result)
 
       var controllers = navigationController?.viewControllers ?? []
-      controllers[1] = BeerCaptureOverviewController(beers: result)
+      controllers[1] = BeerCaptureOverviewController(matches: result.matches)
       navigationController?.setViewControllers(controllers, animated: true)
+
     }.trap {
       print($0)
     }

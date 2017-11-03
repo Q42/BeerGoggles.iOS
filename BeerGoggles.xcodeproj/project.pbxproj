@@ -83,6 +83,11 @@
 		FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392421FACE480001D432A /* Moving Talking Head_00022.png */; };
 		FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392431FACE480001D432A /* Moving Talking Head_00036.png */; };
 		FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */; };
+		FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */; };
+		FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */; };
+		FFB7A2871FACFCE4003B2FBE /* BeerResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */; };
+		FFB7A28A1FAD002F003B2FBE /* BeerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2891FAD002F003B2FBE /* BeerDetailView.xib */; };
+		FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A28B1FAD0041003B2FBE /* BeerDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +171,11 @@
 		FF2392421FACE480001D432A /* Moving Talking Head_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00022.png"; sourceTree = "<group>"; };
 		FF2392431FACE480001D432A /* Moving Talking Head_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00036.png"; sourceTree = "<group>"; };
 		FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAnimationView.swift; sourceTree = "<group>"; };
+		FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultOverviewController.swift; sourceTree = "<group>"; };
+		FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultCell.swift; sourceTree = "<group>"; };
+		FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerResultCell.xib; sourceTree = "<group>"; };
+		FFB7A2891FAD002F003B2FBE /* BeerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerDetailView.xib; sourceTree = "<group>"; };
+		FFB7A28B1FAD0041003B2FBE /* BeerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,11 +294,15 @@
 		FF2391E61FAC8D66001D432A /* BeerCapture */ = {
 			isa = PBXGroup;
 			children = (
+				FFB7A2881FAD000F003B2FBE /* BeerDetail */,
 				FF2391FF1FACA3A2001D432A /* Upload */,
 				FF2391FB1FACA371001D432A /* BeerCaptureOverviewController.swift */,
 				FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */,
 				FF2392171FACD264001D432A /* BeerSelectCell.swift */,
 				FF2392191FACD270001D432A /* BeerSelectCell.xib */,
+				FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */,
+				FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */,
+				FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */,
 			);
 			path = BeerCapture;
 			sourceTree = "<group>";
@@ -410,6 +424,15 @@
 			path = "Moving Talking Head";
 			sourceTree = "<group>";
 		};
+		FFB7A2881FAD000F003B2FBE /* BeerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FFB7A2891FAD002F003B2FBE /* BeerDetailView.xib */,
+				FFB7A28B1FAD0041003B2FBE /* BeerDetailController.swift */,
+			);
+			path = BeerDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,10 +497,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF23924C1FACE481001D432A /* Moving Talking Head_00005.png in Resources */,
+				FFB7A2871FACFCE4003B2FBE /* BeerResultCell.xib in Resources */,
 				FF2392511FACE481001D432A /* Moving Talking Head_00028.png in Resources */,
 				FF23925D1FACE481001D432A /* Moving Talking Head_00025.png in Resources */,
 				FF23925A1FACE481001D432A /* Moving Talking Head_00027.png in Resources */,
 				FF2392631FACE481001D432A /* Moving Talking Head_00034.png in Resources */,
+				FFB7A28A1FAD002F003B2FBE /* BeerDetailView.xib in Resources */,
 				FF2392471FACE481001D432A /* Moving Talking Head_00012.png in Resources */,
 				FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */,
 				FF2392581FACE481001D432A /* Moving Talking Head_00032.png in Resources */,
@@ -609,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */,
+				FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */,
 				FF2391EB1FAC9617001D432A /* UserController.swift in Sources */,
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
@@ -617,6 +643,7 @@
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
 				FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */,
+				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
@@ -627,6 +654,7 @@
 				FF2391D71FAC7026001D432A /* TabController.swift in Sources */,
 				FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */,
 				FF2391D31FAC60D8001D432A /* ApiService.swift in Sources */,
+				FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */,
 				FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */,
 				FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */,
 			);

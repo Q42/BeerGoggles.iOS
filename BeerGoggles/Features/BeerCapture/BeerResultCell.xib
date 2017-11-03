@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BeerResultCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeerResultCell" rowHeight="210" id="QL8-xg-A5D" customClass="BeerResultCell" customModule="BeerGoggles" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QL8-xg-A5D" id="dZU-FP-eIN">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="148.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="by Handlanger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eED-zs-cXR">
+                        <rect key="frame" x="118.5" y="26" width="232.5" height="24"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                        <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kompaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMw-n4-yC6">
+                        <rect key="frame" x="16" y="26" width="94.5" height="24"/>
+                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qMw-n4-yC6" firstAttribute="top" secondItem="dZU-FP-eIN" secondAttribute="topMargin" constant="15" id="LzS-yS-aPB"/>
+                    <constraint firstItem="qMw-n4-yC6" firstAttribute="leading" secondItem="dZU-FP-eIN" secondAttribute="leadingMargin" id="Rga-nA-7qf"/>
+                    <constraint firstItem="eED-zs-cXR" firstAttribute="leading" secondItem="qMw-n4-yC6" secondAttribute="trailing" constant="8" id="TTw-Im-xsC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eED-zs-cXR" secondAttribute="trailing" constant="8" id="VNf-Qe-ehF"/>
+                    <constraint firstItem="eED-zs-cXR" firstAttribute="baseline" secondItem="qMw-n4-yC6" secondAttribute="baseline" id="bMm-PI-uLr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="beerNameLabel" destination="qMw-n4-yC6" id="gGK-jm-lG7"/>
+                <outlet property="breweryLabel" destination="eED-zs-cXR" id="YjS-fA-cpf"/>
+            </connections>
+            <point key="canvasLocation" x="118.5" y="211.5"/>
+        </tableViewCell>
+    </objects>
+</document>

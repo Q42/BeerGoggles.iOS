@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeerDetailController" customModule="BeerGoggles" customModuleProvider="target">
+            <connections>
+                <outlet property="beerNameLabel" destination="cmv-Yn-fbB" id="5OH-2s-hIx"/>
+                <outlet property="breweryLabel" destination="nfj-LB-P7M" id="8p8-uD-GWA"/>
+                <outlet property="labelImageView" destination="TIn-oj-2Wr" id="xP9-kQ-L9s"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Rba-Rv-8Yn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zn-vc-O6W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-r6-sEX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="270.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIn-oj-2Wr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="TIn-oj-2Wr" secondAttribute="height" multiplier="2:1" id="B9h-IO-1e5"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ubc-4Z-5GT">
+                                    <rect key="frame" x="30" y="217.5" width="315" height="23"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of5-Zn-d53">
+                                            <rect key="frame" x="0.0" y="0.0" width="315" height="23"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="by Handlanger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfj-LB-P7M">
+                                                    <rect key="frame" x="102.5" y="0.0" width="204.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kompaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmv-Yn-fbB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="94.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nfj-LB-P7M" firstAttribute="baseline" secondItem="cmv-Yn-fbB" secondAttribute="baseline" id="7Lo-se-4f6"/>
+                                                <constraint firstItem="nfj-LB-P7M" firstAttribute="leading" secondItem="cmv-Yn-fbB" secondAttribute="trailing" constant="8" id="8wA-wn-jF5"/>
+                                                <constraint firstAttribute="bottom" secondItem="cmv-Yn-fbB" secondAttribute="bottom" id="MAl-1k-hCg"/>
+                                                <constraint firstAttribute="trailing" secondItem="nfj-LB-P7M" secondAttribute="trailing" constant="8" id="XId-vP-ZLk"/>
+                                                <constraint firstItem="cmv-Yn-fbB" firstAttribute="top" secondItem="of5-Zn-d53" secondAttribute="top" id="es0-5x-pxV"/>
+                                                <constraint firstItem="cmv-Yn-fbB" firstAttribute="leading" secondItem="of5-Zn-d53" secondAttribute="leading" id="j3c-KX-sfB"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="TIn-oj-2Wr" secondAttribute="trailing" id="M9z-hF-lzK"/>
+                                <constraint firstAttribute="trailing" secondItem="Ubc-4Z-5GT" secondAttribute="trailing" constant="30" id="RkE-Qd-1tf"/>
+                                <constraint firstItem="Ubc-4Z-5GT" firstAttribute="top" secondItem="TIn-oj-2Wr" secondAttribute="bottom" constant="30" id="fdH-5m-YB5"/>
+                                <constraint firstItem="TIn-oj-2Wr" firstAttribute="top" secondItem="bvu-r6-sEX" secondAttribute="top" id="lk6-1d-MXS"/>
+                                <constraint firstItem="TIn-oj-2Wr" firstAttribute="leading" secondItem="bvu-r6-sEX" secondAttribute="leading" id="mcL-vD-tqp"/>
+                                <constraint firstAttribute="bottom" secondItem="Ubc-4Z-5GT" secondAttribute="bottom" constant="30" id="naf-0I-nYg"/>
+                                <constraint firstItem="Ubc-4Z-5GT" firstAttribute="leading" secondItem="bvu-r6-sEX" secondAttribute="leading" constant="30" id="oMB-2D-Cv7"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bvu-r6-sEX" secondAttribute="trailing" id="9W0-RL-gkw"/>
+                        <constraint firstItem="bvu-r6-sEX" firstAttribute="leading" secondItem="9zn-vc-O6W" secondAttribute="leading" id="FW6-ph-S2m"/>
+                        <constraint firstAttribute="bottom" secondItem="bvu-r6-sEX" secondAttribute="bottom" id="V08-Lz-QfV"/>
+                        <constraint firstItem="bvu-r6-sEX" firstAttribute="top" secondItem="9zn-vc-O6W" secondAttribute="top" id="lfx-78-Dss"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9zn-vc-O6W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2TV-x9-00Q"/>
+                <constraint firstItem="bvu-r6-sEX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FL1-f3-Jrg"/>
+                <constraint firstItem="9zn-vc-O6W" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="LIh-dq-9Kq"/>
+                <constraint firstItem="9zn-vc-O6W" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="b5E-QT-xWR"/>
+                <constraint firstItem="9zn-vc-O6W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mL5-Yp-gSH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="91.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

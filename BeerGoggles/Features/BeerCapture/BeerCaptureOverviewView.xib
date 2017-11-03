@@ -30,6 +30,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxe-b9-ZwW" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
                     <rect key="frame" x="20" y="617" width="335" height="30"/>
                     <state key="normal" title="These are definitely beers… I think"/>
+                    <connections>
+                        <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="6d2-76-TQi"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WkY-RG-Z7o" customClass="TalkingAnimationView" customModule="BeerGoggles" customModuleProvider="target">
                     <rect key="frame" x="16" y="111" width="80" height="80"/>
