@@ -11,3 +11,7 @@ import Foundation
 struct AuthenticateJson: Decodable {
   let url: URL
 }
+
+struct UploadJson: Decodable {
+  let magic: String
+}

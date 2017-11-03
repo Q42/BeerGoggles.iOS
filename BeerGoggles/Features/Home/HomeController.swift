@@ -8,12 +8,14 @@
 
 import UIKit
 
-class HomeController: UIViewController {
-  init() {
-    super.init(nibName: "HomeView", bundle: nil)
+class HomeController: UITabBarController {
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    viewControllers = [
+      CameraController()
+    ]
   }
 
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
 }

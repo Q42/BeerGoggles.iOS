@@ -17,7 +17,10 @@
 		FF2391D51FAC6278001D432A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391D41FAC6278001D432A /* Model.swift */; };
 		FF2391D71FAC7026001D432A /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391D61FAC7026001D432A /* HomeController.swift */; };
 		FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391DA1FAC7093001D432A /* LoginView.xib */; };
-		FF2391DE1FAC7164001D432A /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391DD1FAC7164001D432A /* HomeView.xib */; };
+		FF2391E11FAC774C001D432A /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E01FAC774C001D432A /* CameraController.swift */; };
+		FF2391E31FAC7794001D432A /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E21FAC7794001D432A /* CameraView.xib */; };
+		FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E41FAC8134001D432A /* PhotoUploadController.swift */; };
+		FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +38,10 @@
 		FF2391D41FAC6278001D432A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FF2391D61FAC7026001D432A /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FF2391DA1FAC7093001D432A /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
-		FF2391DD1FAC7164001D432A /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
+		FF2391E01FAC774C001D432A /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		FF2391E21FAC7794001D432A /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
+		FF2391E41FAC8134001D432A /* PhotoUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadController.swift; sourceTree = "<group>"; };
+		FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoUploadView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,8 @@
 		FF2391D81FAC7059001D432A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FF2391E61FAC8D66001D432A /* Upload */,
+				FF2391DF1FAC773D001D432A /* Camera */,
 				FF2391DC1FAC7100001D432A /* Home */,
 				FF2391D91FAC7060001D432A /* Login */,
 			);
@@ -130,9 +138,26 @@
 			isa = PBXGroup;
 			children = (
 				FF2391D61FAC7026001D432A /* HomeController.swift */,
-				FF2391DD1FAC7164001D432A /* HomeView.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		FF2391DF1FAC773D001D432A /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				FF2391E01FAC774C001D432A /* CameraController.swift */,
+				FF2391E21FAC7794001D432A /* CameraView.xib */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		FF2391E61FAC8D66001D432A /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				FF2391E41FAC8134001D432A /* PhotoUploadController.swift */,
+				FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */,
+			);
+			path = Upload;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,9 +223,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2391CA1FAC5F45001D432A /* LaunchScreen.storyboard in Resources */,
-				FF2391DE1FAC7164001D432A /* HomeView.xib in Resources */,
+				FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */,
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
+				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
+				FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
+				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
 				FF2391D71FAC7026001D432A /* HomeController.swift in Sources */,
 				FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */,
 				FF2391D31FAC60D8001D432A /* ApiService.swift in Sources */,
