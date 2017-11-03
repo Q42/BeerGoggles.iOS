@@ -102,7 +102,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
     }
 
     FileManager.default.createFile(atPath: file.absoluteString, contents: photoData, attributes: nil)
-    present(PhotoUploadController(file: file), animated: true, completion: nil)
+    navigationController?.pushViewController(PhotoUploadController(file: file), animated: true)
   }
 
 }

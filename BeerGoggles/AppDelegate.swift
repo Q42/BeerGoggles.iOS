@@ -15,15 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
+  static var instance: AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
 
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = ApiService.shared.isLoggedIn() ? HomeController() : LoginController()
+    backToRoot()
     window?.makeKeyAndVisible()
 
     return true
+  }
+
+  func backToRoot() {
+    window?.rootViewController = ApiService.shared.isLoggedIn() ? TabController() : LoginController()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
@@ -69,13 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return
       }
 
-    ApiService.shared.loginToken(token: accessToken)
+    ApiService.shared.login(with: accessToken)
     guard let safariViewController = topMostViewController() as? SFSafariViewController else {
       return
     }
 
     safariViewController.dismiss(animated: true, completion: nil)
-    window?.rootViewController = HomeController()
+    AppDelegate.instance.backToRoot()
   }
 
   private func topMostViewController() -> UIViewController? {

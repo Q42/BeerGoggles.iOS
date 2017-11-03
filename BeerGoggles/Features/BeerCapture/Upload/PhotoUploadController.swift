@@ -23,8 +23,12 @@ class PhotoUploadController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    ApiService.shared.upload(photo: file).then {
-      print($0)
+    ApiService.shared.upload(photo: file).then { [navigationController] result in
+      print(result)
+
+      var controllers = navigationController?.viewControllers ?? []
+      controllers[1] = BeerCaptureOverviewController()
+      navigationController?.setViewControllers(controllers, animated: true)
     }.trap {
       print($0)
     }

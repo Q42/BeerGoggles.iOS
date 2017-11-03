@@ -33,6 +33,14 @@ class ApiService {
     return loginToken() != nil
   }
 
+  func login(with token: String) {
+    UserDefaults.standard.set(token, forKey: loginTokenKey)
+  }
+
+  func logout() {
+    UserDefaults.standard.removeObject(forKey: loginTokenKey)
+  }
+
   func auth() -> Promise<AuthenticateJson, ApiError> {
     return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")))
   }
@@ -48,10 +56,6 @@ class ApiService {
     request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
 
     return session.codableUploadPromise(type: UploadJson.self, request: request, fromFile: photo)
-  }
-
-  func loginToken(token: String) {
-    UserDefaults.standard.set(token, forKey: loginTokenKey)
   }
 
 }
@@ -94,6 +98,7 @@ extension URLSession {
     let task = dataTask(with: request) { (data, response, error) in
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
+        print(data.flatMap({ String(data: $0, encoding: .utf8) }))
         promiseSource.resolve(value)
       case .error(let error):
         promiseSource.reject(error)
@@ -110,6 +115,7 @@ extension URLSession {
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
+        print(data.flatMap({ String(data: $0, encoding: .utf8) }))
         promiseSource.resolve(value)
       case .error(let error):
         promiseSource.reject(error)
