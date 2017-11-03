@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = ApiService.shared.isLoggedIn() ? HomeController() : LoginController()
+    window?.makeKeyAndVisible()
+
     return true
   }
 
@@ -42,6 +48,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     self.saveContext()
+  }
+
+  // MARK: - Handle URL
+
+  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    switch url.host {
+    case "login"?:
+      handleLogin(url: url)
+      return true
+    default:
+      return false
+    }
+  }
+
+  private func handleLogin(url: URL) {
+    guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+      let accessToken = components.queryItems?.first(where: { item -> Bool in item.name == "access_token" })?.value
+      else {
+        return
+      }
+
+    ApiService.shared.loginToken(token: accessToken)
+    guard let safariViewController = topMostViewController() as? SFSafariViewController else {
+      return
+    }
+
+    safariViewController.dismiss(animated: true, completion: nil)
+    window?.rootViewController = HomeController()
+  }
+
+  private func topMostViewController() -> UIViewController? {
+    guard let root = window?.rootViewController else {
+      return nil
+    }
+
+    var topViewController = root.presentedViewController
+    while (topViewController?.presentedViewController != nil) {
+      topViewController = topViewController?.presentedViewController
+    }
+
+    return topViewController
   }
 
   // MARK: - Core Data stack
