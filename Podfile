@@ -6,6 +6,7 @@ target 'BeerGoggles' do
   use_frameworks!
 
   pod 'Promissum'
+  pod 'R.swift'
 
 end
 

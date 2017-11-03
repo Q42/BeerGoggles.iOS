@@ -96,9 +96,9 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = dataTask(with: request) { (data, response, error) in
+      print(data.flatMap({ String(data: $0, encoding: .utf8) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
-        print(data.flatMap({ String(data: $0, encoding: .utf8) }))
         promiseSource.resolve(value)
       case .error(let error):
         promiseSource.reject(error)
@@ -113,9 +113,9 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
+      print(data.flatMap({ String(data: $0, encoding: .utf8) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
-        print(data.flatMap({ String(data: $0, encoding: .utf8) }))
         promiseSource.resolve(value)
       case .error(let error):
         promiseSource.reject(error)

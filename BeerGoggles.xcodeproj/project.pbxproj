@@ -32,6 +32,11 @@
 		FF2391FE1FACA38B001D432A /* BeerCaptureOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */; };
 		FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392001FACA4D5001D432A /* ScanningController.swift */; };
 		FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392021FACA4DF001D432A /* ScanningView.xib */; };
+		FF2392061FACACC0001D432A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392051FACACC0001D432A /* Colors.swift */; };
+		FF2392081FACAF8F001D432A /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FF2392071FACAF8F001D432A /* Futura.ttc */; };
+		FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392091FACAF9C001D432A /* Fonts.swift */; };
+		FF23920D1FACB185001D432A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920C1FACB185001D432A /* R.generated.swift */; };
+		FF23920F1FACB821001D432A /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920E1FACB821001D432A /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,11 @@
 		FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerCaptureOverviewView.xib; sourceTree = "<group>"; };
 		FF2392001FACA4D5001D432A /* ScanningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningController.swift; sourceTree = "<group>"; };
 		FF2392021FACA4DF001D432A /* ScanningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanningView.xib; sourceTree = "<group>"; };
+		FF2392051FACACC0001D432A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FF2392071FACAF8F001D432A /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
+		FF2392091FACAF9C001D432A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		FF23920C1FACB185001D432A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		FF23920E1FACB821001D432A /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +126,11 @@
 		FF2391BB1FAC5F45001D432A /* BeerGoggles */ = {
 			isa = PBXGroup;
 			children = (
+				FF2392041FACACB4001D432A /* Resources */,
 				FF2391D81FAC7059001D432A /* Features */,
 				FF2391D11FAC60CB001D432A /* Services */,
 				FF2391BC1FAC5F45001D432A /* AppDelegate.swift */,
+				FF23920C1FACB185001D432A /* R.generated.swift */,
 				FF2391C61FAC5F45001D432A /* Assets.xcassets */,
 				FF2391C81FAC5F45001D432A /* LaunchScreen.storyboard */,
 				FF2391CB1FAC5F45001D432A /* Info.plist */,
@@ -233,6 +245,17 @@
 			path = Upload;
 			sourceTree = "<group>";
 		};
+		FF2392041FACACB4001D432A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF2392071FACAF8F001D432A /* Futura.ttc */,
+				FF2392051FACACC0001D432A /* Colors.swift */,
+				FF2392091FACAF9C001D432A /* Fonts.swift */,
+				FF23920E1FACB821001D432A /* ActionButton.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,6 +264,7 @@
 			buildConfigurationList = FF2391CE1FAC5F45001D432A /* Build configuration list for PBXNativeTarget "BeerGoggles" */;
 			buildPhases = (
 				A84FA98D8FC0184172B3B5BD /* [CP] Check Pods Manifest.lock */,
+				FF23920B1FACB12B001D432A /* ShellScript */,
 				FF2391B51FAC5F45001D432A /* Sources */,
 				FF2391B61FAC5F45001D432A /* Frameworks */,
 				FF2391B71FAC5F45001D432A /* Resources */,
@@ -303,6 +327,7 @@
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
 				FF2391ED1FAC9633001D432A /* UserView.xib in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
+				FF2392081FACAF8F001D432A /* Futura.ttc in Resources */,
 				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
 				FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */,
 			);
@@ -352,15 +377,30 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FF23920B1FACB12B001D432A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/BeerGoggles\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -369,12 +409,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */,
 				FF2391EB1FAC9617001D432A /* UserController.swift in Sources */,
+				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
+				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
 				FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
+				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
 				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
 				FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */,
 				FF2391F81FACA187001D432A /* SessionDetailController.swift in Sources */,

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2Y-YU-af6">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3C-hn-iO1">
@@ -35,7 +34,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="A2Y-YU-af6" firstAttribute="top" secondItem="ubK-Wr-dsh" secondAttribute="top" id="3ID-nU-mZd"/>
+                <constraint firstItem="A2Y-YU-af6" firstAttribute="top" secondItem="9Wh-v9-PvQ" secondAttribute="top" id="84y-7l-GLl"/>
                 <constraint firstItem="m3C-hn-iO1" firstAttribute="centerX" secondItem="9Wh-v9-PvQ" secondAttribute="centerX" id="SoE-uS-eQA"/>
                 <constraint firstItem="ubK-Wr-dsh" firstAttribute="trailing" secondItem="A2Y-YU-af6" secondAttribute="trailing" id="jYf-M3-J50"/>
                 <constraint firstItem="ubK-Wr-dsh" firstAttribute="bottom" secondItem="A2Y-YU-af6" secondAttribute="bottom" id="nkr-5k-Ut3"/>
@@ -43,7 +42,7 @@
                 <constraint firstItem="A2Y-YU-af6" firstAttribute="leading" secondItem="ubK-Wr-dsh" secondAttribute="leading" id="y4q-vW-alX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ubK-Wr-dsh"/>
-            <point key="canvasLocation" x="-82" y="25"/>
+            <point key="canvasLocation" x="-82.5" y="24.5"/>
         </view>
     </objects>
 </document>

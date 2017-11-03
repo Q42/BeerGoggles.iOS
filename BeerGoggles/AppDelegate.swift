@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
 
+    applyAppearance()
+
     window = UIWindow(frame: UIScreen.main.bounds)
     backToRoot()
     window?.makeKeyAndVisible()
@@ -31,6 +33,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func backToRoot() {
     window?.rootViewController = ApiService.shared.isLoggedIn() ? TabController() : LoginController()
+  }
+
+  private func applyAppearance() {
+    UINavigationBar.appearance().tintColor = Colors.textColor
+    UINavigationBar.appearance().barTintColor = Colors.tintColor
+    UINavigationBar.appearance().shadowImage = UIImage()
+    UINavigationBar.appearance().titleTextAttributes = [
+      .foregroundColor: Colors.textColor,
+      .font: Fonts.futuraBold(with: 20)
+    ]
+
+    UITabBar.appearance().barTintColor = Colors.backgroundColor
+    UITabBar.appearance().tintColor = Colors.tintColor
+    UITabBarItem.appearance().setTitleTextAttributes([
+      .font: Fonts.futuraMedium(with: 8)
+    ], for: .normal)
   }
 
   func applicationWillResignActive(_ application: UIApplication) {

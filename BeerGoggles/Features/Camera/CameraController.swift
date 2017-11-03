@@ -72,15 +72,21 @@ class CameraController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     session?.startRunning()
+    navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     session?.stopRunning()
+    navigationController?.setNavigationBarHidden(false, animated: animated)
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
   @IBAction func didPressCapture(_ sender: Any) {
-    let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])
+    let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])
     settings.flashMode = .on
     settings.isAutoStillImageStabilizationEnabled = true
     settings.isHighResolutionPhotoEnabled = true
