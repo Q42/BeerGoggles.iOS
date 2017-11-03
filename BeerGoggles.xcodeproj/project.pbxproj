@@ -42,6 +42,47 @@
 		FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392151FACC11A001D432A /* AuthorizationView.xib */; };
 		FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392171FACD264001D432A /* BeerSelectCell.swift */; };
 		FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392191FACD270001D432A /* BeerSelectCell.xib */; };
+		FF2392441FACE481001D432A /* Moving Talking Head_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23921C1FACE480001D432A /* Moving Talking Head_00013.png */; };
+		FF2392451FACE481001D432A /* Moving Talking Head_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23921D1FACE480001D432A /* Moving Talking Head_00007.png */; };
+		FF2392461FACE481001D432A /* Moving Talking Head_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23921E1FACE480001D432A /* Moving Talking Head_00006.png */; };
+		FF2392471FACE481001D432A /* Moving Talking Head_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23921F1FACE480001D432A /* Moving Talking Head_00012.png */; };
+		FF2392481FACE481001D432A /* Moving Talking Head_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392201FACE480001D432A /* Moving Talking Head_00038.png */; };
+		FF2392491FACE481001D432A /* Moving Talking Head_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392211FACE480001D432A /* Moving Talking Head_00004.png */; };
+		FF23924A1FACE481001D432A /* Moving Talking Head_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392221FACE480001D432A /* Moving Talking Head_00010.png */; };
+		FF23924B1FACE481001D432A /* Moving Talking Head_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392231FACE480001D432A /* Moving Talking Head_00011.png */; };
+		FF23924C1FACE481001D432A /* Moving Talking Head_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392241FACE480001D432A /* Moving Talking Head_00005.png */; };
+		FF23924D1FACE481001D432A /* Moving Talking Head_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392251FACE480001D432A /* Moving Talking Head_00039.png */; };
+		FF23924E1FACE481001D432A /* Moving Talking Head_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392261FACE480001D432A /* Moving Talking Head_00001.png */; };
+		FF23924F1FACE481001D432A /* Moving Talking Head_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392271FACE480001D432A /* Moving Talking Head_00015.png */; };
+		FF2392501FACE481001D432A /* Moving Talking Head_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392281FACE480001D432A /* Moving Talking Head_00029.png */; };
+		FF2392511FACE481001D432A /* Moving Talking Head_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392291FACE480001D432A /* Moving Talking Head_00028.png */; };
+		FF2392521FACE481001D432A /* Moving Talking Head_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922A1FACE480001D432A /* Moving Talking Head_00014.png */; };
+		FF2392531FACE481001D432A /* Moving Talking Head_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922B1FACE480001D432A /* Moving Talking Head_00000.png */; };
+		FF2392541FACE481001D432A /* Moving Talking Head_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922C1FACE480001D432A /* Moving Talking Head_00016.png */; };
+		FF2392551FACE481001D432A /* Moving Talking Head_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922D1FACE480001D432A /* Moving Talking Head_00002.png */; };
+		FF2392561FACE481001D432A /* Moving Talking Head_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922E1FACE480001D432A /* Moving Talking Head_00003.png */; };
+		FF2392571FACE481001D432A /* Moving Talking Head_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23922F1FACE480001D432A /* Moving Talking Head_00017.png */; };
+		FF2392581FACE481001D432A /* Moving Talking Head_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392301FACE480001D432A /* Moving Talking Head_00032.png */; };
+		FF2392591FACE481001D432A /* Moving Talking Head_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392311FACE480001D432A /* Moving Talking Head_00026.png */; };
+		FF23925A1FACE481001D432A /* Moving Talking Head_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392321FACE480001D432A /* Moving Talking Head_00027.png */; };
+		FF23925B1FACE481001D432A /* Moving Talking Head_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392331FACE480001D432A /* Moving Talking Head_00033.png */; };
+		FF23925C1FACE481001D432A /* Moving Talking Head_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392341FACE480001D432A /* Moving Talking Head_00019.png */; };
+		FF23925D1FACE481001D432A /* Moving Talking Head_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392351FACE480001D432A /* Moving Talking Head_00025.png */; };
+		FF23925E1FACE481001D432A /* Moving Talking Head_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392361FACE480001D432A /* Moving Talking Head_00031.png */; };
+		FF23925F1FACE481001D432A /* Moving Talking Head_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392371FACE480001D432A /* Moving Talking Head_00030.png */; };
+		FF2392601FACE481001D432A /* Moving Talking Head_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392381FACE480001D432A /* Moving Talking Head_00024.png */; };
+		FF2392611FACE481001D432A /* Moving Talking Head_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392391FACE480001D432A /* Moving Talking Head_00018.png */; };
+		FF2392621FACE481001D432A /* Moving Talking Head_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923A1FACE480001D432A /* Moving Talking Head_00020.png */; };
+		FF2392631FACE481001D432A /* Moving Talking Head_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923B1FACE480001D432A /* Moving Talking Head_00034.png */; };
+		FF2392641FACE481001D432A /* Moving Talking Head_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923C1FACE480001D432A /* Moving Talking Head_00008.png */; };
+		FF2392651FACE481001D432A /* Moving Talking Head_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923D1FACE480001D432A /* Moving Talking Head_00009.png */; };
+		FF2392661FACE481001D432A /* Moving Talking Head_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923E1FACE480001D432A /* Moving Talking Head_00035.png */; };
+		FF2392671FACE481001D432A /* Moving Talking Head_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23923F1FACE480001D432A /* Moving Talking Head_00021.png */; };
+		FF2392681FACE481001D432A /* Moving Talking Head_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392401FACE480001D432A /* Moving Talking Head_00037.png */; };
+		FF2392691FACE481001D432A /* Moving Talking Head_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392411FACE480001D432A /* Moving Talking Head_00023.png */; };
+		FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392421FACE480001D432A /* Moving Talking Head_00022.png */; };
+		FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392431FACE480001D432A /* Moving Talking Head_00036.png */; };
+		FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +125,47 @@
 		FF2392151FACC11A001D432A /* AuthorizationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationView.xib; sourceTree = "<group>"; };
 		FF2392171FACD264001D432A /* BeerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSelectCell.swift; sourceTree = "<group>"; };
 		FF2392191FACD270001D432A /* BeerSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerSelectCell.xib; sourceTree = "<group>"; };
+		FF23921C1FACE480001D432A /* Moving Talking Head_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00013.png"; sourceTree = "<group>"; };
+		FF23921D1FACE480001D432A /* Moving Talking Head_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00007.png"; sourceTree = "<group>"; };
+		FF23921E1FACE480001D432A /* Moving Talking Head_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00006.png"; sourceTree = "<group>"; };
+		FF23921F1FACE480001D432A /* Moving Talking Head_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00012.png"; sourceTree = "<group>"; };
+		FF2392201FACE480001D432A /* Moving Talking Head_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00038.png"; sourceTree = "<group>"; };
+		FF2392211FACE480001D432A /* Moving Talking Head_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00004.png"; sourceTree = "<group>"; };
+		FF2392221FACE480001D432A /* Moving Talking Head_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00010.png"; sourceTree = "<group>"; };
+		FF2392231FACE480001D432A /* Moving Talking Head_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00011.png"; sourceTree = "<group>"; };
+		FF2392241FACE480001D432A /* Moving Talking Head_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00005.png"; sourceTree = "<group>"; };
+		FF2392251FACE480001D432A /* Moving Talking Head_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00039.png"; sourceTree = "<group>"; };
+		FF2392261FACE480001D432A /* Moving Talking Head_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00001.png"; sourceTree = "<group>"; };
+		FF2392271FACE480001D432A /* Moving Talking Head_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00015.png"; sourceTree = "<group>"; };
+		FF2392281FACE480001D432A /* Moving Talking Head_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00029.png"; sourceTree = "<group>"; };
+		FF2392291FACE480001D432A /* Moving Talking Head_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00028.png"; sourceTree = "<group>"; };
+		FF23922A1FACE480001D432A /* Moving Talking Head_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00014.png"; sourceTree = "<group>"; };
+		FF23922B1FACE480001D432A /* Moving Talking Head_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00000.png"; sourceTree = "<group>"; };
+		FF23922C1FACE480001D432A /* Moving Talking Head_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00016.png"; sourceTree = "<group>"; };
+		FF23922D1FACE480001D432A /* Moving Talking Head_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00002.png"; sourceTree = "<group>"; };
+		FF23922E1FACE480001D432A /* Moving Talking Head_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00003.png"; sourceTree = "<group>"; };
+		FF23922F1FACE480001D432A /* Moving Talking Head_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00017.png"; sourceTree = "<group>"; };
+		FF2392301FACE480001D432A /* Moving Talking Head_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00032.png"; sourceTree = "<group>"; };
+		FF2392311FACE480001D432A /* Moving Talking Head_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00026.png"; sourceTree = "<group>"; };
+		FF2392321FACE480001D432A /* Moving Talking Head_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00027.png"; sourceTree = "<group>"; };
+		FF2392331FACE480001D432A /* Moving Talking Head_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00033.png"; sourceTree = "<group>"; };
+		FF2392341FACE480001D432A /* Moving Talking Head_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00019.png"; sourceTree = "<group>"; };
+		FF2392351FACE480001D432A /* Moving Talking Head_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00025.png"; sourceTree = "<group>"; };
+		FF2392361FACE480001D432A /* Moving Talking Head_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00031.png"; sourceTree = "<group>"; };
+		FF2392371FACE480001D432A /* Moving Talking Head_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00030.png"; sourceTree = "<group>"; };
+		FF2392381FACE480001D432A /* Moving Talking Head_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00024.png"; sourceTree = "<group>"; };
+		FF2392391FACE480001D432A /* Moving Talking Head_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00018.png"; sourceTree = "<group>"; };
+		FF23923A1FACE480001D432A /* Moving Talking Head_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00020.png"; sourceTree = "<group>"; };
+		FF23923B1FACE480001D432A /* Moving Talking Head_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00034.png"; sourceTree = "<group>"; };
+		FF23923C1FACE480001D432A /* Moving Talking Head_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00008.png"; sourceTree = "<group>"; };
+		FF23923D1FACE480001D432A /* Moving Talking Head_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00009.png"; sourceTree = "<group>"; };
+		FF23923E1FACE480001D432A /* Moving Talking Head_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00035.png"; sourceTree = "<group>"; };
+		FF23923F1FACE480001D432A /* Moving Talking Head_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00021.png"; sourceTree = "<group>"; };
+		FF2392401FACE480001D432A /* Moving Talking Head_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00037.png"; sourceTree = "<group>"; };
+		FF2392411FACE480001D432A /* Moving Talking Head_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00023.png"; sourceTree = "<group>"; };
+		FF2392421FACE480001D432A /* Moving Talking Head_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00022.png"; sourceTree = "<group>"; };
+		FF2392431FACE480001D432A /* Moving Talking Head_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00036.png"; sourceTree = "<group>"; };
+		FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,11 +343,13 @@
 		FF2392041FACACB4001D432A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF23921B1FACE480001D432A /* Moving Talking Head */,
 				FF2392071FACAF8F001D432A /* Futura.ttc */,
 				FF2392101FACC0AB001D432A /* talkinghead-test.json */,
 				FF2392051FACACC0001D432A /* Colors.swift */,
 				FF2392091FACAF9C001D432A /* Fonts.swift */,
 				FF23920E1FACB821001D432A /* ActionButton.swift */,
+				FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -277,6 +361,53 @@
 				FF2392151FACC11A001D432A /* AuthorizationView.xib */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		FF23921B1FACE480001D432A /* Moving Talking Head */ = {
+			isa = PBXGroup;
+			children = (
+				FF23921C1FACE480001D432A /* Moving Talking Head_00013.png */,
+				FF23921D1FACE480001D432A /* Moving Talking Head_00007.png */,
+				FF23921E1FACE480001D432A /* Moving Talking Head_00006.png */,
+				FF23921F1FACE480001D432A /* Moving Talking Head_00012.png */,
+				FF2392201FACE480001D432A /* Moving Talking Head_00038.png */,
+				FF2392211FACE480001D432A /* Moving Talking Head_00004.png */,
+				FF2392221FACE480001D432A /* Moving Talking Head_00010.png */,
+				FF2392231FACE480001D432A /* Moving Talking Head_00011.png */,
+				FF2392241FACE480001D432A /* Moving Talking Head_00005.png */,
+				FF2392251FACE480001D432A /* Moving Talking Head_00039.png */,
+				FF2392261FACE480001D432A /* Moving Talking Head_00001.png */,
+				FF2392271FACE480001D432A /* Moving Talking Head_00015.png */,
+				FF2392281FACE480001D432A /* Moving Talking Head_00029.png */,
+				FF2392291FACE480001D432A /* Moving Talking Head_00028.png */,
+				FF23922A1FACE480001D432A /* Moving Talking Head_00014.png */,
+				FF23922B1FACE480001D432A /* Moving Talking Head_00000.png */,
+				FF23922C1FACE480001D432A /* Moving Talking Head_00016.png */,
+				FF23922D1FACE480001D432A /* Moving Talking Head_00002.png */,
+				FF23922E1FACE480001D432A /* Moving Talking Head_00003.png */,
+				FF23922F1FACE480001D432A /* Moving Talking Head_00017.png */,
+				FF2392301FACE480001D432A /* Moving Talking Head_00032.png */,
+				FF2392311FACE480001D432A /* Moving Talking Head_00026.png */,
+				FF2392321FACE480001D432A /* Moving Talking Head_00027.png */,
+				FF2392331FACE480001D432A /* Moving Talking Head_00033.png */,
+				FF2392341FACE480001D432A /* Moving Talking Head_00019.png */,
+				FF2392351FACE480001D432A /* Moving Talking Head_00025.png */,
+				FF2392361FACE480001D432A /* Moving Talking Head_00031.png */,
+				FF2392371FACE480001D432A /* Moving Talking Head_00030.png */,
+				FF2392381FACE480001D432A /* Moving Talking Head_00024.png */,
+				FF2392391FACE480001D432A /* Moving Talking Head_00018.png */,
+				FF23923A1FACE480001D432A /* Moving Talking Head_00020.png */,
+				FF23923B1FACE480001D432A /* Moving Talking Head_00034.png */,
+				FF23923C1FACE480001D432A /* Moving Talking Head_00008.png */,
+				FF23923D1FACE480001D432A /* Moving Talking Head_00009.png */,
+				FF23923E1FACE480001D432A /* Moving Talking Head_00035.png */,
+				FF23923F1FACE480001D432A /* Moving Talking Head_00021.png */,
+				FF2392401FACE480001D432A /* Moving Talking Head_00037.png */,
+				FF2392411FACE480001D432A /* Moving Talking Head_00023.png */,
+				FF2392421FACE480001D432A /* Moving Talking Head_00022.png */,
+				FF2392431FACE480001D432A /* Moving Talking Head_00036.png */,
+			);
+			path = "Moving Talking Head";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,20 +473,60 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF23924C1FACE481001D432A /* Moving Talking Head_00005.png in Resources */,
+				FF2392511FACE481001D432A /* Moving Talking Head_00028.png in Resources */,
+				FF23925D1FACE481001D432A /* Moving Talking Head_00025.png in Resources */,
+				FF23925A1FACE481001D432A /* Moving Talking Head_00027.png in Resources */,
+				FF2392631FACE481001D432A /* Moving Talking Head_00034.png in Resources */,
+				FF2392471FACE481001D432A /* Moving Talking Head_00012.png in Resources */,
+				FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */,
+				FF2392581FACE481001D432A /* Moving Talking Head_00032.png in Resources */,
 				FF2391FE1FACA38B001D432A /* BeerCaptureOverviewView.xib in Resources */,
 				FF2391FA1FACA1FE001D432A /* SessionDetailView.xib in Resources */,
+				FF2392461FACE481001D432A /* Moving Talking Head_00006.png in Resources */,
+				FF2392671FACE481001D432A /* Moving Talking Head_00021.png in Resources */,
+				FF2392561FACE481001D432A /* Moving Talking Head_00003.png in Resources */,
+				FF2392451FACE481001D432A /* Moving Talking Head_00007.png in Resources */,
+				FF2392681FACE481001D432A /* Moving Talking Head_00037.png in Resources */,
 				FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */,
+				FF2392611FACE481001D432A /* Moving Talking Head_00018.png in Resources */,
+				FF23924D1FACE481001D432A /* Moving Talking Head_00039.png in Resources */,
+				FF2392521FACE481001D432A /* Moving Talking Head_00014.png in Resources */,
 				FF2392111FACC0AB001D432A /* talkinghead-test.json in Resources */,
 				FF2391CA1FAC5F45001D432A /* LaunchScreen.storyboard in Resources */,
+				FF2392541FACE481001D432A /* Moving Talking Head_00016.png in Resources */,
+				FF2392551FACE481001D432A /* Moving Talking Head_00002.png in Resources */,
+				FF2392651FACE481001D432A /* Moving Talking Head_00009.png in Resources */,
+				FF2392641FACE481001D432A /* Moving Talking Head_00008.png in Resources */,
 				FF2391F21FAC9979001D432A /* AboutView.xib in Resources */,
+				FF2392481FACE481001D432A /* Moving Talking Head_00038.png in Resources */,
 				FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */,
+				FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */,
+				FF23924F1FACE481001D432A /* Moving Talking Head_00015.png in Resources */,
+				FF23925B1FACE481001D432A /* Moving Talking Head_00033.png in Resources */,
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
 				FF2391ED1FAC9633001D432A /* UserView.xib in Resources */,
+				FF23924B1FACE481001D432A /* Moving Talking Head_00011.png in Resources */,
+				FF2392691FACE481001D432A /* Moving Talking Head_00023.png in Resources */,
+				FF2392531FACE481001D432A /* Moving Talking Head_00000.png in Resources */,
+				FF2392571FACE481001D432A /* Moving Talking Head_00017.png in Resources */,
+				FF23924E1FACE481001D432A /* Moving Talking Head_00001.png in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
+				FF2392501FACE481001D432A /* Moving Talking Head_00029.png in Resources */,
+				FF2392601FACE481001D432A /* Moving Talking Head_00024.png in Resources */,
+				FF2392621FACE481001D432A /* Moving Talking Head_00020.png in Resources */,
 				FF2392081FACAF8F001D432A /* Futura.ttc in Resources */,
+				FF2392661FACE481001D432A /* Moving Talking Head_00035.png in Resources */,
+				FF23925F1FACE481001D432A /* Moving Talking Head_00030.png in Resources */,
+				FF23924A1FACE481001D432A /* Moving Talking Head_00010.png in Resources */,
+				FF23925E1FACE481001D432A /* Moving Talking Head_00031.png in Resources */,
+				FF23925C1FACE481001D432A /* Moving Talking Head_00019.png in Resources */,
+				FF2392491FACE481001D432A /* Moving Talking Head_00004.png in Resources */,
 				FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */,
+				FF2392441FACE481001D432A /* Moving Talking Head_00013.png in Resources */,
 				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
 				FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */,
+				FF2392591FACE481001D432A /* Moving Talking Head_00026.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +628,7 @@
 				FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */,
 				FF2391D31FAC60D8001D432A /* ApiService.swift in Sources */,
 				FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */,
+				FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
