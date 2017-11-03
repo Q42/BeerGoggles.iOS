@@ -45,7 +45,7 @@ class ApiService {
     return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")))
   }
 
-  func upload(photo: URL) -> Promise<UploadJson, ApiError> {
+  func upload(photo: URL) -> Promise<[BeerJson], ApiError> {
     guard let loginToken = loginToken() else {
       return Promise(error: .notLoggedIn)
     }
@@ -55,7 +55,7 @@ class ApiService {
     request.httpMethod = "POST"
     request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
 
-    return session.codableUploadPromise(type: UploadJson.self, request: request, fromFile: photo)
+    return session.codableUploadPromise(type: [BeerJson].self, request: request, fromFile: photo)
   }
 
 }

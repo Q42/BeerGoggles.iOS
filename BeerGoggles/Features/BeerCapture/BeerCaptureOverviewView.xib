@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeerCaptureOverviewController" customModule="BeerGoggles" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="b9Q-QN-lMJ" id="hp4-py-g3H"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TyO-eM-3uE"/>
             </connections>
         </placeholder>
@@ -19,8 +20,36 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beers-check" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-XW-YqB">
+                    <rect key="frame" x="20" y="40" width="335" height="136"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b9Q-QN-lMJ">
+                    <rect key="frame" x="0.0" y="196" width="375" height="401"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxe-b9-ZwW" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                    <rect key="frame" x="20" y="617" width="335" height="30"/>
+                    <state key="normal" title="These are definitely beers… I think"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Lxe-b9-ZwW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9Jd-ms-dMW"/>
+                <constraint firstItem="Hp4-XW-YqB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="FV8-pY-3eh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b9Q-QN-lMJ" secondAttribute="trailing" id="HOX-Tx-ok6"/>
+                <constraint firstItem="b9Q-QN-lMJ" firstAttribute="top" secondItem="Hp4-XW-YqB" secondAttribute="bottom" constant="20" id="LaB-EQ-ans"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Lxe-b9-ZwW" secondAttribute="trailing" constant="20" id="SBW-5A-QpW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Hp4-XW-YqB" secondAttribute="trailing" constant="20" id="YaG-hH-kxJ"/>
+                <constraint firstItem="Hp4-XW-YqB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="jQt-rA-GIg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lxe-b9-ZwW" secondAttribute="bottom" constant="20" id="mp4-hr-yiP"/>
+                <constraint firstItem="Lxe-b9-ZwW" firstAttribute="top" secondItem="b9Q-QN-lMJ" secondAttribute="bottom" constant="20" id="yPh-j2-3uw"/>
+                <constraint firstItem="b9Q-QN-lMJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zFQ-MQ-oIW"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
+    <resources>
+        <image name="beers-check" width="338" height="136"/>
+    </resources>
 </document>

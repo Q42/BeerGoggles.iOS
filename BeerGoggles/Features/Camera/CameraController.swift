@@ -19,7 +19,9 @@ class CameraController: UIViewController {
 
   init() {
     super.init(nibName: "CameraView", bundle: nil)
-    title = "Camera"
+    
+    title = "START"
+    tabBarItem = UITabBarItem(title: "START", image: R.image.home(), tag: 0)
   }
 
   required init?(coder aDecoder: NSCoder) {

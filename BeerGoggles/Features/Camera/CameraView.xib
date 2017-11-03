@@ -24,9 +24,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3C-hn-iO1">
-                    <rect key="frame" x="160" y="619" width="55" height="30"/>
-                    <state key="normal" title="Capture"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3C-hn-iO1">
+                    <rect key="frame" x="142.5" y="559" width="90" height="90"/>
+                    <state key="normal" image="capture"/>
                     <connections>
                         <action selector="didPressCapture:" destination="-1" eventType="touchUpInside" id="1gk-sI-LYi"/>
                     </connections>
@@ -45,4 +45,7 @@
             <point key="canvasLocation" x="-82.5" y="24.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="capture" width="90" height="90"/>
+    </resources>
 </document>

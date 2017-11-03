@@ -1,4 +1,5 @@
 PODS:
+  - lottie-ios (2.1.3)
   - Promissum (1.0.0):
     - Promissum/Core (= 1.0.0)
   - Promissum/Core (1.0.0)
@@ -7,14 +8,16 @@ PODS:
   - R.swift.Library (4.0.0)
 
 DEPENDENCIES:
+  - lottie-ios
   - Promissum
   - R.swift
 
 SPEC CHECKSUMS:
+  lottie-ios: 8c150606598931621e927377f1426d2d3e99282d
   Promissum: d1ef42a34fa40f119f011ed89e26234a2f6164c1
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
 
-PODFILE CHECKSUM: fbeddaa6fc7a16c36e11c75a8979672971c986fd
+PODFILE CHECKSUM: 299a83bd80f9fd2eca83cc094ed341bf1d4c567f
 
 COCOAPODS: 1.3.1

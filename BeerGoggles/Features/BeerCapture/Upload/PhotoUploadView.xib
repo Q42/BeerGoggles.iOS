@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoUploadController" customModule="BeerGoggles" customModuleProvider="target">
             <connections>
+                <outlet property="loadingAnimationView" destination="A3A-47-g8f" id="3pT-Hu-RLx"/>
                 <outlet property="view" destination="iN0-l3-epB" id="755-LU-aED"/>
             </connections>
         </placeholder>
@@ -20,19 +21,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJi-of-un9">
-                    <rect key="frame" x="139" y="323" width="97" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading-animation" translatesAutoresizingMaskIntoConstraints="NO" id="A3A-47-g8f">
+                    <rect key="frame" x="-116" y="-9.5" width="606" height="685"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="Nnj-1S-0eI">
+                    <rect key="frame" x="52" y="40" width="271" height="411"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="eJi-of-un9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FCq-DG-pbx"/>
-                <constraint firstItem="eJi-of-un9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gSL-CY-bJd"/>
+                <constraint firstItem="Nnj-1S-0eI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="4OU-id-Ers"/>
+                <constraint firstItem="A3A-47-g8f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zvq-hj-wRi"/>
+                <constraint firstItem="Nnj-1S-0eI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bPY-KZ-jDE"/>
+                <constraint firstItem="A3A-47-g8f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="heV-VS-fnV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
+    <resources>
+        <image name="loading" width="271" height="411"/>
+        <image name="loading-animation" width="606" height="685"/>
+    </resources>
 </document>

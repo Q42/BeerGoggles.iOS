@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SafariServices
+import AVKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,7 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func backToRoot() {
-    window?.rootViewController = ApiService.shared.isLoggedIn() ? TabController() : LoginController()
+
+    let controller: UIViewController
+    if !ApiService.shared.isLoggedIn() {
+      controller = LoginController()
+    } else if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
+      controller = AuthorizationController()
+    } else {
+      controller = TabController()
+    }
+
+    window?.rootViewController = controller
   }
 
   private func applyAppearance() {

@@ -12,7 +12,9 @@ class UserController: UIViewController {
 
   init() {
     super.init(nibName: "UserView", bundle: nil)
-    title = "User"
+
+    title = "SETTINGS"
+    tabBarItem = UITabBarItem(title: "SETTINGS", image: R.image.settings(), tag: 4)
   }
   
   required init?(coder aDecoder: NSCoder) {

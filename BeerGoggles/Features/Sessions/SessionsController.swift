@@ -14,7 +14,9 @@ class SessionsController: UITableViewController {
 
   init() {
     super.init(style: .plain)
-    title = "Sessions"
+
+    title = "Previous"
+    tabBarItem = UITabBarItem(title: "PREVIOUS", image: R.image.previous(), tag: 1)
   }
   
   required init?(coder aDecoder: NSCoder) {

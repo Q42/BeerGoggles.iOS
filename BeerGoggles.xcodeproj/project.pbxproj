@@ -37,6 +37,11 @@
 		FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392091FACAF9C001D432A /* Fonts.swift */; };
 		FF23920D1FACB185001D432A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920C1FACB185001D432A /* R.generated.swift */; };
 		FF23920F1FACB821001D432A /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920E1FACB821001D432A /* ActionButton.swift */; };
+		FF2392111FACC0AB001D432A /* talkinghead-test.json in Resources */ = {isa = PBXBuildFile; fileRef = FF2392101FACC0AB001D432A /* talkinghead-test.json */; };
+		FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392121FACC0F2001D432A /* AuthorizationController.swift */; };
+		FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392151FACC11A001D432A /* AuthorizationView.xib */; };
+		FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392171FACD264001D432A /* BeerSelectCell.swift */; };
+		FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392191FACD270001D432A /* BeerSelectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +79,11 @@
 		FF2392091FACAF9C001D432A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		FF23920C1FACB185001D432A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FF23920E1FACB821001D432A /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		FF2392101FACC0AB001D432A /* talkinghead-test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "talkinghead-test.json"; sourceTree = "<group>"; };
+		FF2392121FACC0F2001D432A /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
+		FF2392151FACC11A001D432A /* AuthorizationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationView.xib; sourceTree = "<group>"; };
+		FF2392171FACD264001D432A /* BeerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSelectCell.swift; sourceTree = "<group>"; };
+		FF2392191FACD270001D432A /* BeerSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerSelectCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FF2391D61FAC7026001D432A /* TabController.swift */,
+				FF2392141FACC106001D432A /* Authorization */,
 				FF2391F31FAC9FA8001D432A /* Sessions */,
 				FF2391EE1FAC9965001D432A /* About */,
 				FF2391E91FAC9608001D432A /* User */,
@@ -194,6 +205,8 @@
 				FF2391FF1FACA3A2001D432A /* Upload */,
 				FF2391FB1FACA371001D432A /* BeerCaptureOverviewController.swift */,
 				FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */,
+				FF2392171FACD264001D432A /* BeerSelectCell.swift */,
+				FF2392191FACD270001D432A /* BeerSelectCell.xib */,
 			);
 			path = BeerCapture;
 			sourceTree = "<group>";
@@ -249,11 +262,21 @@
 			isa = PBXGroup;
 			children = (
 				FF2392071FACAF8F001D432A /* Futura.ttc */,
+				FF2392101FACC0AB001D432A /* talkinghead-test.json */,
 				FF2392051FACACC0001D432A /* Colors.swift */,
 				FF2392091FACAF9C001D432A /* Fonts.swift */,
 				FF23920E1FACB821001D432A /* ActionButton.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FF2392141FACC106001D432A /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				FF2392121FACC0F2001D432A /* AuthorizationController.swift */,
+				FF2392151FACC11A001D432A /* AuthorizationView.xib */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +344,8 @@
 			files = (
 				FF2391FE1FACA38B001D432A /* BeerCaptureOverviewView.xib in Resources */,
 				FF2391FA1FACA1FE001D432A /* SessionDetailView.xib in Resources */,
+				FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */,
+				FF2392111FACC0AB001D432A /* talkinghead-test.json in Resources */,
 				FF2391CA1FAC5F45001D432A /* LaunchScreen.storyboard in Resources */,
 				FF2391F21FAC9979001D432A /* AboutView.xib in Resources */,
 				FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */,
@@ -328,6 +353,7 @@
 				FF2391ED1FAC9633001D432A /* UserView.xib in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
 				FF2392081FACAF8F001D432A /* Futura.ttc in Resources */,
+				FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */,
 				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
 				FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */,
 			);
@@ -378,11 +404,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -414,8 +442,10 @@
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
+				FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */,
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
+				FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,

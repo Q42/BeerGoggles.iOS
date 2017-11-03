@@ -11,7 +11,9 @@ import UIKit
 class AboutController: UIViewController {
   init() {
     super.init(nibName: "AboutView", bundle: nil)
-    title = "About"
+
+    title = "ABOUT"
+    tabBarItem = UITabBarItem(title: "ABOUT", image: R.image.about(), tag: 3)
   }
   
   required init?(coder aDecoder: NSCoder) {
