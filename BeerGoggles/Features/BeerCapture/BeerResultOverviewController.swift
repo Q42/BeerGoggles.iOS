@@ -94,9 +94,9 @@ class BeerResultOverviewController: UITableViewController {
       return nil
     case .matches:
       if section == 1 {
-        return "tapped"
+        return "already checked in"
       } else {
-        return "untapped"
+        return "new beers for your"
       }
     }
   }

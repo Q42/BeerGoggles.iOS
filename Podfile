@@ -7,7 +7,6 @@ target 'BeerGoggles' do
 
   pod 'Promissum'
   pod 'R.swift'
-  pod 'lottie-ios'
 
 end
 

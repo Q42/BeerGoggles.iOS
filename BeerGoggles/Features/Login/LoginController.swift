@@ -41,5 +41,11 @@ class LoginController: UIViewController {
     present(controller, animated: true, completion: nil)
   }
 
+  @IBAction func howToPressed(_ sender: Any) {
+    let controller = HowToController()
+    present(controller, animated: true, completion: nil)
+
+  }
+
 }
 
