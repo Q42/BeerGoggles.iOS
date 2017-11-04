@@ -10,15 +10,35 @@ import UIKit
 
 class SessionsController: UITableViewController {
 
-  private let sessions = ["Heineken"]
+  private var sessions: [Session] = [] {
+    didSet {
+      tableView?.reloadData()
+    }
+  }
 
   init() {
     super.init(style: .plain)
 
-    title = "Previous"
-    tabBarItem = UITabBarItem(title: "PREVIOUS", image: R.image.previous(), tag: 1)
+    title = "SESSIONS"
+    tabBarItem = UITabBarItem(title: "SESSIONS", image: R.image.previous(), tag: 1)
   }
-  
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.backgroundColor = Colors.backgroundColor
+    tableView.rowHeight = 65
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    DatabaseService.shared.sessions().then { [weak self] sessions in
+      self?.sessions = sessions
+    }.trap {
+      print($0)
+    }
+  }
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -34,12 +54,27 @@ class SessionsController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") ?? UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "DefaultCell")
 
-    cell.textLabel?.text = sessions[indexPath.row]
+    let session = sessions[indexPath.row]
+    cell.textLabel?.text = "\(session.captureDate)"
+    cell.textLabel?.textColor = .white
+    cell.textLabel?.font = Fonts.futuraMedium(with: 18)
+    cell.backgroundColor = Colors.backgroundColor
+
+    let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+      .first
+      .flatMap { URL(string: $0) }?
+      .appendingPathComponent("\(session.imageGuid).jpg")
+
+    if let file = fileOptional {
+      let data = FileManager.default.contents(atPath: file.absoluteString)
+      cell.imageView?.image = data.flatMap { UIImage(data: $0) }
+    }
 
     return cell
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    navigationController?.pushViewController(SessionDetailController(), animated: true)
+    let controller = BeerResultOverviewController(beers: sessions[indexPath.row].beers)
+    navigationController?.pushViewController(controller, animated: true)
   }
 }

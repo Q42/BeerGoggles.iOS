@@ -10,12 +10,14 @@ import UIKit
 
 class BeerCaptureOverviewController: UIViewController {
 
-  private let matches: [MatchesJson]
+  private let result: UploadJson
+  private let guid: UUID
 
   @IBOutlet weak private var tableView: UITableView!
 
-  init(matches: [MatchesJson]) {
-    self.matches = matches
+  init(result: UploadJson, guid: UUID) {
+    self.result = result
+    self.guid = guid
     super.init(nibName: "BeerCaptureOverviewView", bundle: nil)
     title = "BEERS...?"
   }
@@ -39,7 +41,12 @@ class BeerCaptureOverviewController: UIViewController {
   }
 
   @IBAction func nextPressed(_ sender: Any) {
-    let controller = BeerResultOverviewController(matches: matches)
+
+    let strings = (tableView.indexPathsForSelectedRows ?? []).map {
+      self.result.possibles[$0.row]
+    }
+
+    let controller = LoadingController(request: .matches(strings: strings, beers: result.matches.map({ $0.beer }), guid: guid))
     navigationController?.pushViewController(controller, animated: true)
   }
 }
@@ -50,7 +57,7 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return matches.count
+    return result.possibles.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +65,7 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    cell.beer = matches[indexPath.row].beer
+    cell.possibility = result.possibles[indexPath.row]
 
     return cell
   }

@@ -97,6 +97,20 @@ class CameraController: UIViewController {
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
+
+  private func compress(image: UIImage, maxFileSize: Int) -> Data {
+    var compression = 1.0
+    let maxCompression = 0.1
+    var imageData = UIImageJPEGRepresentation(image, 0.9)!
+
+    while (imageData.count > maxFileSize && compression > maxCompression) {
+      compression -= 0.1;
+      imageData = UIImageJPEGRepresentation(image, CGFloat(compression))!
+    }
+
+    return imageData
+  }
+
   func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
     let guid = UUID()
     
@@ -105,12 +119,24 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
       .flatMap { URL(string: $0) }?
       .appendingPathComponent("\(guid).jpg")
 
-    guard let file = fileOptional, let photoData = photo.fileDataRepresentation() else {
-      return
+    guard let file = fileOptional,
+      let photoData = photo.fileDataRepresentation(),
+      let image = UIImage(data: photoData)
+      else {
+        return
+      }
+
+    let maxSize = 8 * 1024
+
+    let finalImageData: Data
+    if photoData.count > maxSize {
+      finalImageData = compress(image: image, maxFileSize: maxSize)
+    } else {
+      finalImageData = photoData
     }
 
-    FileManager.default.createFile(atPath: file.absoluteString, contents: photoData, attributes: nil)
-    navigationController?.pushViewController(PhotoUploadController(file: file), animated: true)
+    FileManager.default.createFile(atPath: file.absoluteString, contents: finalImageData, attributes: nil)
+    navigationController?.pushViewController(LoadingController(request: .photo(file: file, guid: guid)), animated: true)
   }
 
 }

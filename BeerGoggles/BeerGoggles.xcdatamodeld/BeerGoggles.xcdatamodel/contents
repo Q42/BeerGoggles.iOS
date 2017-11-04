@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BeerModel" representedClassName="BeerModel" syncable="YES" codeGenerationType="class">
+        <attribute name="abv" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="beerDescription" attributeType="String" syncable="YES"/>
+        <attribute name="bid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="brewery" attributeType="String" syncable="YES"/>
+        <attribute name="full_name" attributeType="String" syncable="YES"/>
+        <attribute name="ibu" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="label" attributeType="URI" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rating_score" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="style" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SessionModel" representedClassName="SessionModel" syncable="YES" codeGenerationType="class">
+        <attribute name="captureDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="imageGuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="beers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeerModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BeerModel" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="SessionModel" positionX="-54" positionY="90" width="128" height="90"/>
+    </elements>
 </model>

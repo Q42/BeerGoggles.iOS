@@ -10,7 +10,6 @@
     <customFonts key="customFonts">
         <array key="Futura.ttc">
             <string>Futura-Bold</string>
-            <string>Futura-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -23,15 +22,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kompaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb4-1h-qc6">
-                        <rect key="frame" x="40" y="10" width="94.5" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Kompaan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb4-1h-qc6">
+                        <rect key="frame" x="40" y="10" width="327" height="24"/>
                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="by Handlanger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeb-e0-UPz">
-                        <rect key="frame" x="142.5" y="10" width="224.5" height="24"/>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,17 +33,14 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="eeb-e0-UPz" secondAttribute="trailing" constant="8" id="3XE-mX-mLq"/>
                     <constraint firstItem="xb4-1h-qc6" firstAttribute="centerY" secondItem="XE2-F7-cnd" secondAttribute="centerY" id="DdG-2H-fNo"/>
                     <constraint firstItem="37y-b0-g2E" firstAttribute="centerY" secondItem="XE2-F7-cnd" secondAttribute="centerY" id="Y91-rD-40B"/>
+                    <constraint firstAttribute="trailing" secondItem="xb4-1h-qc6" secondAttribute="trailing" constant="8" id="h7o-wa-Hsc"/>
                     <constraint firstItem="xb4-1h-qc6" firstAttribute="leading" secondItem="37y-b0-g2E" secondAttribute="trailing" constant="8" id="nOd-Fy-rDS"/>
                     <constraint firstItem="37y-b0-g2E" firstAttribute="leading" secondItem="XE2-F7-cnd" secondAttribute="leading" constant="16" id="vRu-1l-1MF"/>
-                    <constraint firstItem="eeb-e0-UPz" firstAttribute="leading" secondItem="xb4-1h-qc6" secondAttribute="trailing" constant="8" id="vtz-02-Sos"/>
-                    <constraint firstItem="eeb-e0-UPz" firstAttribute="baseline" secondItem="xb4-1h-qc6" secondAttribute="baseline" id="yCr-ff-Yb8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="breweryLabel" destination="eeb-e0-UPz" id="hm1-c0-EMd"/>
                 <outlet property="nameLabel" destination="xb4-1h-qc6" id="lI1-yO-V1g"/>
                 <outlet property="selectIcon" destination="37y-b0-g2E" id="Fsr-Do-oHg"/>
             </connections>

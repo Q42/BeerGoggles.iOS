@@ -19,8 +19,8 @@
 		FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391DA1FAC7093001D432A /* LoginView.xib */; };
 		FF2391E11FAC774C001D432A /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E01FAC774C001D432A /* CameraController.swift */; };
 		FF2391E31FAC7794001D432A /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E21FAC7794001D432A /* CameraView.xib */; };
-		FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E41FAC8134001D432A /* PhotoUploadController.swift */; };
-		FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */; };
+		FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E41FAC8134001D432A /* LoadingController.swift */; };
+		FF2391E81FAC8D77001D432A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E71FAC8D77001D432A /* LoadingView.xib */; };
 		FF2391EB1FAC9617001D432A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EA1FAC9617001D432A /* UserController.swift */; };
 		FF2391ED1FAC9633001D432A /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391EC1FAC9633001D432A /* UserView.xib */; };
 		FF2391F01FAC9970001D432A /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EF1FAC9970001D432A /* AboutController.swift */; };
@@ -82,12 +82,53 @@
 		FF2392691FACE481001D432A /* Moving Talking Head_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392411FACE480001D432A /* Moving Talking Head_00023.png */; };
 		FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392421FACE480001D432A /* Moving Talking Head_00022.png */; };
 		FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392431FACE480001D432A /* Moving Talking Head_00036.png */; };
-		FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */; };
+		FF23926D1FACE4A9001D432A /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* AnimationView.swift */; };
 		FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */; };
 		FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */; };
 		FFB7A2871FACFCE4003B2FBE /* BeerResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */; };
 		FFB7A28A1FAD002F003B2FBE /* BeerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2891FAD002F003B2FBE /* BeerDetailView.xib */; };
 		FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A28B1FAD0041003B2FBE /* BeerDetailController.swift */; };
+		FFB7A2B61FAD0ECF003B2FBE /* Loading Skull_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A28E1FAD0ECF003B2FBE /* Loading Skull_00009.png */; };
+		FFB7A2B71FAD0ECF003B2FBE /* Loading Skull_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A28F1FAD0ECF003B2FBE /* Loading Skull_00035.png */; };
+		FFB7A2B81FAD0ECF003B2FBE /* Loading Skull_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2901FAD0ECF003B2FBE /* Loading Skull_00021.png */; };
+		FFB7A2B91FAD0ECF003B2FBE /* Loading Skull_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2911FAD0ECF003B2FBE /* Loading Skull_00020.png */; };
+		FFB7A2BA1FAD0ECF003B2FBE /* Loading Skull_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2921FAD0ECF003B2FBE /* Loading Skull_00034.png */; };
+		FFB7A2BB1FAD0ECF003B2FBE /* Loading Skull_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2931FAD0ECF003B2FBE /* Loading Skull_00008.png */; };
+		FFB7A2BC1FAD0ECF003B2FBE /* Loading Skull_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2941FAD0ECF003B2FBE /* Loading Skull_00022.png */; };
+		FFB7A2BD1FAD0ECF003B2FBE /* Loading Skull_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2951FAD0ECF003B2FBE /* Loading Skull_00036.png */; };
+		FFB7A2BE1FAD0ECF003B2FBE /* Loading Skull_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2961FAD0ECF003B2FBE /* Loading Skull_00037.png */; };
+		FFB7A2BF1FAD0ECF003B2FBE /* Loading Skull_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2971FAD0ECF003B2FBE /* Loading Skull_00023.png */; };
+		FFB7A2C01FAD0ECF003B2FBE /* Loading Skull_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2981FAD0ECF003B2FBE /* Loading Skull_00027.png */; };
+		FFB7A2C11FAD0ECF003B2FBE /* Loading Skull_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2991FAD0ECF003B2FBE /* Loading Skull_00033.png */; };
+		FFB7A2C21FAD0ECF003B2FBE /* Loading Skull_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29A1FAD0ECF003B2FBE /* Loading Skull_00032.png */; };
+		FFB7A2C31FAD0ECF003B2FBE /* Loading Skull_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29B1FAD0ECF003B2FBE /* Loading Skull_00026.png */; };
+		FFB7A2C41FAD0ECF003B2FBE /* Loading Skull_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29C1FAD0ECF003B2FBE /* Loading Skull_00030.png */; };
+		FFB7A2C51FAD0ECF003B2FBE /* Loading Skull_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29D1FAD0ECF003B2FBE /* Loading Skull_00024.png */; };
+		FFB7A2C61FAD0ECF003B2FBE /* Loading Skull_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29E1FAD0ECF003B2FBE /* Loading Skull_00018.png */; };
+		FFB7A2C71FAD0ECF003B2FBE /* Loading Skull_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A29F1FAD0ECF003B2FBE /* Loading Skull_00019.png */; };
+		FFB7A2C81FAD0ECF003B2FBE /* Loading Skull_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A01FAD0ECF003B2FBE /* Loading Skull_00025.png */; };
+		FFB7A2C91FAD0ECF003B2FBE /* Loading Skull_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A11FAD0ECF003B2FBE /* Loading Skull_00031.png */; };
+		FFB7A2CA1FAD0ECF003B2FBE /* Loading Skull_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A21FAD0ECF003B2FBE /* Loading Skull_00028.png */; };
+		FFB7A2CB1FAD0ECF003B2FBE /* Loading Skull_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A31FAD0ECF003B2FBE /* Loading Skull_00014.png */; };
+		FFB7A2CC1FAD0ECF003B2FBE /* Loading Skull_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A41FAD0ECF003B2FBE /* Loading Skull_00000.png */; };
+		FFB7A2CD1FAD0ECF003B2FBE /* Loading Skull_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A51FAD0ECF003B2FBE /* Loading Skull_00001.png */; };
+		FFB7A2CE1FAD0ECF003B2FBE /* Loading Skull_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A61FAD0ECF003B2FBE /* Loading Skull_00015.png */; };
+		FFB7A2CF1FAD0ECF003B2FBE /* Loading Skull_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A71FAD0ECF003B2FBE /* Loading Skull_00029.png */; };
+		FFB7A2D01FAD0ECF003B2FBE /* Loading Skull_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A81FAD0ECF003B2FBE /* Loading Skull_00003.png */; };
+		FFB7A2D11FAD0ECF003B2FBE /* Loading Skull_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2A91FAD0ECF003B2FBE /* Loading Skull_00017.png */; };
+		FFB7A2D21FAD0ECF003B2FBE /* Loading Skull_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AA1FAD0ECF003B2FBE /* Loading Skull_00016.png */; };
+		FFB7A2D31FAD0ECF003B2FBE /* Loading Skull_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AB1FAD0ECF003B2FBE /* Loading Skull_00002.png */; };
+		FFB7A2D41FAD0ECF003B2FBE /* Loading Skull_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AC1FAD0ECF003B2FBE /* Loading Skull_00006.png */; };
+		FFB7A2D51FAD0ECF003B2FBE /* Loading Skull_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AD1FAD0ECF003B2FBE /* Loading Skull_00012.png */; };
+		FFB7A2D61FAD0ECF003B2FBE /* Loading Skull_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AE1FAD0ECF003B2FBE /* Loading Skull_00013.png */; };
+		FFB7A2D71FAD0ECF003B2FBE /* Loading Skull_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2AF1FAD0ECF003B2FBE /* Loading Skull_00007.png */; };
+		FFB7A2D81FAD0ECF003B2FBE /* Loading Skull_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B01FAD0ECF003B2FBE /* Loading Skull_00011.png */; };
+		FFB7A2D91FAD0ECF003B2FBE /* Loading Skull_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B11FAD0ECF003B2FBE /* Loading Skull_00005.png */; };
+		FFB7A2DA1FAD0ECF003B2FBE /* Loading Skull_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B21FAD0ECF003B2FBE /* Loading Skull_00039.png */; };
+		FFB7A2DB1FAD0ECF003B2FBE /* Loading Skull_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B31FAD0ECF003B2FBE /* Loading Skull_00038.png */; };
+		FFB7A2DC1FAD0ECF003B2FBE /* Loading Skull_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B41FAD0ECF003B2FBE /* Loading Skull_00004.png */; };
+		FFB7A2DD1FAD0ECF003B2FBE /* Loading Skull_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B51FAD0ECF003B2FBE /* Loading Skull_00010.png */; };
+		FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,8 +148,8 @@
 		FF2391DA1FAC7093001D432A /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		FF2391E01FAC774C001D432A /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		FF2391E21FAC7794001D432A /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
-		FF2391E41FAC8134001D432A /* PhotoUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadController.swift; sourceTree = "<group>"; };
-		FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoUploadView.xib; sourceTree = "<group>"; };
+		FF2391E41FAC8134001D432A /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
+		FF2391E71FAC8D77001D432A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		FF2391EA1FAC9617001D432A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FF2391EC1FAC9633001D432A /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		FF2391EF1FAC9970001D432A /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
@@ -170,12 +211,53 @@
 		FF2392411FACE480001D432A /* Moving Talking Head_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00023.png"; sourceTree = "<group>"; };
 		FF2392421FACE480001D432A /* Moving Talking Head_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00022.png"; sourceTree = "<group>"; };
 		FF2392431FACE480001D432A /* Moving Talking Head_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00036.png"; sourceTree = "<group>"; };
-		FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAnimationView.swift; sourceTree = "<group>"; };
+		FF23926C1FACE4A9001D432A /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultOverviewController.swift; sourceTree = "<group>"; };
 		FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultCell.swift; sourceTree = "<group>"; };
 		FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerResultCell.xib; sourceTree = "<group>"; };
 		FFB7A2891FAD002F003B2FBE /* BeerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerDetailView.xib; sourceTree = "<group>"; };
 		FFB7A28B1FAD0041003B2FBE /* BeerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailController.swift; sourceTree = "<group>"; };
+		FFB7A28E1FAD0ECF003B2FBE /* Loading Skull_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00009.png"; sourceTree = "<group>"; };
+		FFB7A28F1FAD0ECF003B2FBE /* Loading Skull_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00035.png"; sourceTree = "<group>"; };
+		FFB7A2901FAD0ECF003B2FBE /* Loading Skull_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00021.png"; sourceTree = "<group>"; };
+		FFB7A2911FAD0ECF003B2FBE /* Loading Skull_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00020.png"; sourceTree = "<group>"; };
+		FFB7A2921FAD0ECF003B2FBE /* Loading Skull_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00034.png"; sourceTree = "<group>"; };
+		FFB7A2931FAD0ECF003B2FBE /* Loading Skull_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00008.png"; sourceTree = "<group>"; };
+		FFB7A2941FAD0ECF003B2FBE /* Loading Skull_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00022.png"; sourceTree = "<group>"; };
+		FFB7A2951FAD0ECF003B2FBE /* Loading Skull_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00036.png"; sourceTree = "<group>"; };
+		FFB7A2961FAD0ECF003B2FBE /* Loading Skull_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00037.png"; sourceTree = "<group>"; };
+		FFB7A2971FAD0ECF003B2FBE /* Loading Skull_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00023.png"; sourceTree = "<group>"; };
+		FFB7A2981FAD0ECF003B2FBE /* Loading Skull_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00027.png"; sourceTree = "<group>"; };
+		FFB7A2991FAD0ECF003B2FBE /* Loading Skull_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00033.png"; sourceTree = "<group>"; };
+		FFB7A29A1FAD0ECF003B2FBE /* Loading Skull_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00032.png"; sourceTree = "<group>"; };
+		FFB7A29B1FAD0ECF003B2FBE /* Loading Skull_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00026.png"; sourceTree = "<group>"; };
+		FFB7A29C1FAD0ECF003B2FBE /* Loading Skull_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00030.png"; sourceTree = "<group>"; };
+		FFB7A29D1FAD0ECF003B2FBE /* Loading Skull_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00024.png"; sourceTree = "<group>"; };
+		FFB7A29E1FAD0ECF003B2FBE /* Loading Skull_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00018.png"; sourceTree = "<group>"; };
+		FFB7A29F1FAD0ECF003B2FBE /* Loading Skull_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00019.png"; sourceTree = "<group>"; };
+		FFB7A2A01FAD0ECF003B2FBE /* Loading Skull_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00025.png"; sourceTree = "<group>"; };
+		FFB7A2A11FAD0ECF003B2FBE /* Loading Skull_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00031.png"; sourceTree = "<group>"; };
+		FFB7A2A21FAD0ECF003B2FBE /* Loading Skull_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00028.png"; sourceTree = "<group>"; };
+		FFB7A2A31FAD0ECF003B2FBE /* Loading Skull_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00014.png"; sourceTree = "<group>"; };
+		FFB7A2A41FAD0ECF003B2FBE /* Loading Skull_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00000.png"; sourceTree = "<group>"; };
+		FFB7A2A51FAD0ECF003B2FBE /* Loading Skull_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00001.png"; sourceTree = "<group>"; };
+		FFB7A2A61FAD0ECF003B2FBE /* Loading Skull_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00015.png"; sourceTree = "<group>"; };
+		FFB7A2A71FAD0ECF003B2FBE /* Loading Skull_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00029.png"; sourceTree = "<group>"; };
+		FFB7A2A81FAD0ECF003B2FBE /* Loading Skull_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00003.png"; sourceTree = "<group>"; };
+		FFB7A2A91FAD0ECF003B2FBE /* Loading Skull_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00017.png"; sourceTree = "<group>"; };
+		FFB7A2AA1FAD0ECF003B2FBE /* Loading Skull_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00016.png"; sourceTree = "<group>"; };
+		FFB7A2AB1FAD0ECF003B2FBE /* Loading Skull_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00002.png"; sourceTree = "<group>"; };
+		FFB7A2AC1FAD0ECF003B2FBE /* Loading Skull_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00006.png"; sourceTree = "<group>"; };
+		FFB7A2AD1FAD0ECF003B2FBE /* Loading Skull_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00012.png"; sourceTree = "<group>"; };
+		FFB7A2AE1FAD0ECF003B2FBE /* Loading Skull_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00013.png"; sourceTree = "<group>"; };
+		FFB7A2AF1FAD0ECF003B2FBE /* Loading Skull_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00007.png"; sourceTree = "<group>"; };
+		FFB7A2B01FAD0ECF003B2FBE /* Loading Skull_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00011.png"; sourceTree = "<group>"; };
+		FFB7A2B11FAD0ECF003B2FBE /* Loading Skull_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00005.png"; sourceTree = "<group>"; };
+		FFB7A2B21FAD0ECF003B2FBE /* Loading Skull_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00039.png"; sourceTree = "<group>"; };
+		FFB7A2B31FAD0ECF003B2FBE /* Loading Skull_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00038.png"; sourceTree = "<group>"; };
+		FFB7A2B41FAD0ECF003B2FBE /* Loading Skull_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00004.png"; sourceTree = "<group>"; };
+		FFB7A2B51FAD0ECF003B2FBE /* Loading Skull_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00010.png"; sourceTree = "<group>"; };
+		FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +328,7 @@
 			children = (
 				FF2391D21FAC60D8001D432A /* ApiService.swift */,
 				FF2391D41FAC6278001D432A /* Model.swift */,
+				FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,8 +429,8 @@
 		FF2391FF1FACA3A2001D432A /* Upload */ = {
 			isa = PBXGroup;
 			children = (
-				FF2391E41FAC8134001D432A /* PhotoUploadController.swift */,
-				FF2391E71FAC8D77001D432A /* PhotoUploadView.xib */,
+				FF2391E41FAC8134001D432A /* LoadingController.swift */,
+				FF2391E71FAC8D77001D432A /* LoadingView.xib */,
 				FF2392001FACA4D5001D432A /* ScanningController.swift */,
 				FF2392021FACA4DF001D432A /* ScanningView.xib */,
 			);
@@ -357,13 +440,14 @@
 		FF2392041FACACB4001D432A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFB7A28D1FAD0ECF003B2FBE /* Loading Skull */,
 				FF23921B1FACE480001D432A /* Moving Talking Head */,
 				FF2392071FACAF8F001D432A /* Futura.ttc */,
 				FF2392101FACC0AB001D432A /* talkinghead-test.json */,
 				FF2392051FACACC0001D432A /* Colors.swift */,
 				FF2392091FACAF9C001D432A /* Fonts.swift */,
 				FF23920E1FACB821001D432A /* ActionButton.swift */,
-				FF23926C1FACE4A9001D432A /* TalkingAnimationView.swift */,
+				FF23926C1FACE4A9001D432A /* AnimationView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -433,6 +517,53 @@
 			path = BeerDetail;
 			sourceTree = "<group>";
 		};
+		FFB7A28D1FAD0ECF003B2FBE /* Loading Skull */ = {
+			isa = PBXGroup;
+			children = (
+				FFB7A28E1FAD0ECF003B2FBE /* Loading Skull_00009.png */,
+				FFB7A28F1FAD0ECF003B2FBE /* Loading Skull_00035.png */,
+				FFB7A2901FAD0ECF003B2FBE /* Loading Skull_00021.png */,
+				FFB7A2911FAD0ECF003B2FBE /* Loading Skull_00020.png */,
+				FFB7A2921FAD0ECF003B2FBE /* Loading Skull_00034.png */,
+				FFB7A2931FAD0ECF003B2FBE /* Loading Skull_00008.png */,
+				FFB7A2941FAD0ECF003B2FBE /* Loading Skull_00022.png */,
+				FFB7A2951FAD0ECF003B2FBE /* Loading Skull_00036.png */,
+				FFB7A2961FAD0ECF003B2FBE /* Loading Skull_00037.png */,
+				FFB7A2971FAD0ECF003B2FBE /* Loading Skull_00023.png */,
+				FFB7A2981FAD0ECF003B2FBE /* Loading Skull_00027.png */,
+				FFB7A2991FAD0ECF003B2FBE /* Loading Skull_00033.png */,
+				FFB7A29A1FAD0ECF003B2FBE /* Loading Skull_00032.png */,
+				FFB7A29B1FAD0ECF003B2FBE /* Loading Skull_00026.png */,
+				FFB7A29C1FAD0ECF003B2FBE /* Loading Skull_00030.png */,
+				FFB7A29D1FAD0ECF003B2FBE /* Loading Skull_00024.png */,
+				FFB7A29E1FAD0ECF003B2FBE /* Loading Skull_00018.png */,
+				FFB7A29F1FAD0ECF003B2FBE /* Loading Skull_00019.png */,
+				FFB7A2A01FAD0ECF003B2FBE /* Loading Skull_00025.png */,
+				FFB7A2A11FAD0ECF003B2FBE /* Loading Skull_00031.png */,
+				FFB7A2A21FAD0ECF003B2FBE /* Loading Skull_00028.png */,
+				FFB7A2A31FAD0ECF003B2FBE /* Loading Skull_00014.png */,
+				FFB7A2A41FAD0ECF003B2FBE /* Loading Skull_00000.png */,
+				FFB7A2A51FAD0ECF003B2FBE /* Loading Skull_00001.png */,
+				FFB7A2A61FAD0ECF003B2FBE /* Loading Skull_00015.png */,
+				FFB7A2A71FAD0ECF003B2FBE /* Loading Skull_00029.png */,
+				FFB7A2A81FAD0ECF003B2FBE /* Loading Skull_00003.png */,
+				FFB7A2A91FAD0ECF003B2FBE /* Loading Skull_00017.png */,
+				FFB7A2AA1FAD0ECF003B2FBE /* Loading Skull_00016.png */,
+				FFB7A2AB1FAD0ECF003B2FBE /* Loading Skull_00002.png */,
+				FFB7A2AC1FAD0ECF003B2FBE /* Loading Skull_00006.png */,
+				FFB7A2AD1FAD0ECF003B2FBE /* Loading Skull_00012.png */,
+				FFB7A2AE1FAD0ECF003B2FBE /* Loading Skull_00013.png */,
+				FFB7A2AF1FAD0ECF003B2FBE /* Loading Skull_00007.png */,
+				FFB7A2B01FAD0ECF003B2FBE /* Loading Skull_00011.png */,
+				FFB7A2B11FAD0ECF003B2FBE /* Loading Skull_00005.png */,
+				FFB7A2B21FAD0ECF003B2FBE /* Loading Skull_00039.png */,
+				FFB7A2B31FAD0ECF003B2FBE /* Loading Skull_00038.png */,
+				FFB7A2B41FAD0ECF003B2FBE /* Loading Skull_00004.png */,
+				FFB7A2B51FAD0ECF003B2FBE /* Loading Skull_00010.png */,
+			);
+			path = "Loading Skull";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -498,15 +629,26 @@
 			files = (
 				FF23924C1FACE481001D432A /* Moving Talking Head_00005.png in Resources */,
 				FFB7A2871FACFCE4003B2FBE /* BeerResultCell.xib in Resources */,
+				FFB7A2D11FAD0ECF003B2FBE /* Loading Skull_00017.png in Resources */,
+				FFB7A2D41FAD0ECF003B2FBE /* Loading Skull_00006.png in Resources */,
 				FF2392511FACE481001D432A /* Moving Talking Head_00028.png in Resources */,
+				FFB7A2D51FAD0ECF003B2FBE /* Loading Skull_00012.png in Resources */,
+				FFB7A2CD1FAD0ECF003B2FBE /* Loading Skull_00001.png in Resources */,
+				FFB7A2DA1FAD0ECF003B2FBE /* Loading Skull_00039.png in Resources */,
+				FFB7A2D61FAD0ECF003B2FBE /* Loading Skull_00013.png in Resources */,
 				FF23925D1FACE481001D432A /* Moving Talking Head_00025.png in Resources */,
 				FF23925A1FACE481001D432A /* Moving Talking Head_00027.png in Resources */,
 				FF2392631FACE481001D432A /* Moving Talking Head_00034.png in Resources */,
+				FFB7A2C71FAD0ECF003B2FBE /* Loading Skull_00019.png in Resources */,
 				FFB7A28A1FAD002F003B2FBE /* BeerDetailView.xib in Resources */,
 				FF2392471FACE481001D432A /* Moving Talking Head_00012.png in Resources */,
+				FFB7A2C51FAD0ECF003B2FBE /* Loading Skull_00024.png in Resources */,
+				FFB7A2C41FAD0ECF003B2FBE /* Loading Skull_00030.png in Resources */,
 				FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */,
 				FF2392581FACE481001D432A /* Moving Talking Head_00032.png in Resources */,
 				FF2391FE1FACA38B001D432A /* BeerCaptureOverviewView.xib in Resources */,
+				FFB7A2D81FAD0ECF003B2FBE /* Loading Skull_00011.png in Resources */,
+				FFB7A2BD1FAD0ECF003B2FBE /* Loading Skull_00036.png in Resources */,
 				FF2391FA1FACA1FE001D432A /* SessionDetailView.xib in Resources */,
 				FF2392461FACE481001D432A /* Moving Talking Head_00006.png in Resources */,
 				FF2392671FACE481001D432A /* Moving Talking Head_00021.png in Resources */,
@@ -514,44 +656,73 @@
 				FF2392451FACE481001D432A /* Moving Talking Head_00007.png in Resources */,
 				FF2392681FACE481001D432A /* Moving Talking Head_00037.png in Resources */,
 				FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */,
+				FFB7A2D71FAD0ECF003B2FBE /* Loading Skull_00007.png in Resources */,
 				FF2392611FACE481001D432A /* Moving Talking Head_00018.png in Resources */,
 				FF23924D1FACE481001D432A /* Moving Talking Head_00039.png in Resources */,
+				FFB7A2C61FAD0ECF003B2FBE /* Loading Skull_00018.png in Resources */,
 				FF2392521FACE481001D432A /* Moving Talking Head_00014.png in Resources */,
 				FF2392111FACC0AB001D432A /* talkinghead-test.json in Resources */,
+				FFB7A2DD1FAD0ECF003B2FBE /* Loading Skull_00010.png in Resources */,
 				FF2391CA1FAC5F45001D432A /* LaunchScreen.storyboard in Resources */,
+				FFB7A2BC1FAD0ECF003B2FBE /* Loading Skull_00022.png in Resources */,
 				FF2392541FACE481001D432A /* Moving Talking Head_00016.png in Resources */,
 				FF2392551FACE481001D432A /* Moving Talking Head_00002.png in Resources */,
 				FF2392651FACE481001D432A /* Moving Talking Head_00009.png in Resources */,
+				FFB7A2C31FAD0ECF003B2FBE /* Loading Skull_00026.png in Resources */,
 				FF2392641FACE481001D432A /* Moving Talking Head_00008.png in Resources */,
+				FFB7A2BE1FAD0ECF003B2FBE /* Loading Skull_00037.png in Resources */,
 				FF2391F21FAC9979001D432A /* AboutView.xib in Resources */,
 				FF2392481FACE481001D432A /* Moving Talking Head_00038.png in Resources */,
-				FF2391E81FAC8D77001D432A /* PhotoUploadView.xib in Resources */,
+				FF2391E81FAC8D77001D432A /* LoadingView.xib in Resources */,
+				FFB7A2C91FAD0ECF003B2FBE /* Loading Skull_00031.png in Resources */,
+				FFB7A2B81FAD0ECF003B2FBE /* Loading Skull_00021.png in Resources */,
 				FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */,
 				FF23924F1FACE481001D432A /* Moving Talking Head_00015.png in Resources */,
+				FFB7A2B71FAD0ECF003B2FBE /* Loading Skull_00035.png in Resources */,
 				FF23925B1FACE481001D432A /* Moving Talking Head_00033.png in Resources */,
+				FFB7A2C01FAD0ECF003B2FBE /* Loading Skull_00027.png in Resources */,
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
 				FF2391ED1FAC9633001D432A /* UserView.xib in Resources */,
 				FF23924B1FACE481001D432A /* Moving Talking Head_00011.png in Resources */,
+				FFB7A2BF1FAD0ECF003B2FBE /* Loading Skull_00023.png in Resources */,
 				FF2392691FACE481001D432A /* Moving Talking Head_00023.png in Resources */,
 				FF2392531FACE481001D432A /* Moving Talking Head_00000.png in Resources */,
 				FF2392571FACE481001D432A /* Moving Talking Head_00017.png in Resources */,
+				FFB7A2CC1FAD0ECF003B2FBE /* Loading Skull_00000.png in Resources */,
 				FF23924E1FACE481001D432A /* Moving Talking Head_00001.png in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
 				FF2392501FACE481001D432A /* Moving Talking Head_00029.png in Resources */,
+				FFB7A2CA1FAD0ECF003B2FBE /* Loading Skull_00028.png in Resources */,
+				FFB7A2DC1FAD0ECF003B2FBE /* Loading Skull_00004.png in Resources */,
+				FFB7A2B91FAD0ECF003B2FBE /* Loading Skull_00020.png in Resources */,
 				FF2392601FACE481001D432A /* Moving Talking Head_00024.png in Resources */,
 				FF2392621FACE481001D432A /* Moving Talking Head_00020.png in Resources */,
+				FFB7A2D91FAD0ECF003B2FBE /* Loading Skull_00005.png in Resources */,
+				FFB7A2C11FAD0ECF003B2FBE /* Loading Skull_00033.png in Resources */,
 				FF2392081FACAF8F001D432A /* Futura.ttc in Resources */,
+				FFB7A2D31FAD0ECF003B2FBE /* Loading Skull_00002.png in Resources */,
 				FF2392661FACE481001D432A /* Moving Talking Head_00035.png in Resources */,
 				FF23925F1FACE481001D432A /* Moving Talking Head_00030.png in Resources */,
+				FFB7A2CF1FAD0ECF003B2FBE /* Loading Skull_00029.png in Resources */,
+				FFB7A2CE1FAD0ECF003B2FBE /* Loading Skull_00015.png in Resources */,
+				FFB7A2BA1FAD0ECF003B2FBE /* Loading Skull_00034.png in Resources */,
 				FF23924A1FACE481001D432A /* Moving Talking Head_00010.png in Resources */,
+				FFB7A2CB1FAD0ECF003B2FBE /* Loading Skull_00014.png in Resources */,
+				FFB7A2D01FAD0ECF003B2FBE /* Loading Skull_00003.png in Resources */,
+				FFB7A2BB1FAD0ECF003B2FBE /* Loading Skull_00008.png in Resources */,
+				FFB7A2B61FAD0ECF003B2FBE /* Loading Skull_00009.png in Resources */,
 				FF23925E1FACE481001D432A /* Moving Talking Head_00031.png in Resources */,
 				FF23925C1FACE481001D432A /* Moving Talking Head_00019.png in Resources */,
 				FF2392491FACE481001D432A /* Moving Talking Head_00004.png in Resources */,
 				FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */,
 				FF2392441FACE481001D432A /* Moving Talking Head_00013.png in Resources */,
 				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
+				FFB7A2D21FAD0ECF003B2FBE /* Loading Skull_00016.png in Resources */,
+				FFB7A2DB1FAD0ECF003B2FBE /* Loading Skull_00038.png in Resources */,
 				FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */,
+				FFB7A2C21FAD0ECF003B2FBE /* Loading Skull_00032.png in Resources */,
 				FF2392591FACE481001D432A /* Moving Talking Head_00026.png in Resources */,
+				FFB7A2C81FAD0ECF003B2FBE /* Loading Skull_00025.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,12 +810,13 @@
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
+				FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */,
 				FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */,
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
 				FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */,
 				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
-				FF2391E51FAC8134001D432A /* PhotoUploadController.swift in Sources */,
+				FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
 				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
@@ -656,7 +828,7 @@
 				FF2391D31FAC60D8001D432A /* ApiService.swift in Sources */,
 				FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */,
 				FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */,
-				FF23926D1FACE4A9001D432A /* TalkingAnimationView.swift in Sources */,
+				FF23926D1FACE4A9001D432A /* AnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,10 @@ import UIKit
 
 class BeerResultOverviewController: UITableViewController {
 
-  private let matches: [MatchesJson]
+  private let beers: [BeerJson]
 
-  init(matches: [MatchesJson]) {
-    self.matches = matches
+  init(beers: [BeerJson]) {
+    self.beers = beers
     super.init(style: .plain)
 
     title = "BEERS!"
@@ -36,19 +36,19 @@ class BeerResultOverviewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
-    return matches.count
+    return beers.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.beerResultCell, for: indexPath) else {
       return UITableViewCell()
     }
-    cell.beer = matches[indexPath.row].beer
+    cell.beer = beers[indexPath.row]
     return cell
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let controller = BeerDetailController(beer: matches[indexPath.row].beer)
+    let controller = BeerDetailController(beer: beers[indexPath.row])
     navigationController?.pushViewController(controller, animated: true)
   }
 

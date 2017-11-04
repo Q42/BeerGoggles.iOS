@@ -35,7 +35,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-r6-sEX">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="270.5"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIn-oj-2Wr">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIn-oj-2Wr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="TIn-oj-2Wr" secondAttribute="height" multiplier="2:1" id="B9h-IO-1e5"/>

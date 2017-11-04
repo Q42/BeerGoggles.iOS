@@ -11,15 +11,14 @@ import UIKit
 class BeerSelectCell: UITableViewCell {
   
   @IBOutlet weak private var nameLabel: UILabel!
-  @IBOutlet weak private var breweryLabel: UILabel!
   @IBOutlet weak private var selectIcon: UIImageView!
 
-  var beer: BeerJson? {
+  var possibility: String? {
     didSet {
       selectionStyle = .none
       backgroundColor = Colors.backgroundColor
-      nameLabel.text = beer?.name
-      breweryLabel.text = (beer?.brewery).map { "by \($0)" }
+      nameLabel.text = possibility
+//      breweryLabel.text = (beer?.brewery).map { "by \($0)" }
     }
   }
 

@@ -14,6 +14,7 @@ enum ApiError: Error {
   case noResponse
   case response(HTTPURLResponse)
   case decoding(DecodingError)
+  case encoding(EncodingError)
   case unknown(Error)
 }
 
@@ -54,8 +55,78 @@ class ApiService {
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
-
+    print(request.curlRequest ?? "")
     return session.codableUploadPromise(type: UploadJson.self, request: request, fromFile: photo)
+  }
+
+  func magic(matches: [String]) -> Promise<[MatchesJson], ApiError> {
+    guard let loginToken = loginToken() else {
+      return Promise(error: .notLoggedIn)
+    }
+    do {
+      let url = root.appendingPathComponent("/magic/check")
+      var request = URLRequest(url: url)
+      request.httpMethod = "POST"
+      request.httpBody = try JSONEncoder().encode(matches)
+      request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
+      print(request.curlRequest ?? "")
+      return session.codablePromise(type: [MatchesJson].self, request: request)
+
+    } catch let error as EncodingError {
+      return Promise(error: .encoding(error))
+    } catch {
+      return Promise(error: .unknown(error))
+    }
+  }
+
+}
+
+fileprivate extension String {
+
+  fileprivate func escapingQuotes() -> String {
+    return replacingOccurrences(of: "\"", with: "\\\"")
+  }
+
+}
+
+extension URLRequest {
+
+  var curlRequest: String? {
+
+    guard
+      let httpMethod = self.httpMethod,
+      let urlString = self.url?.absoluteString
+      else {
+        return nil
+    }
+
+    // Basic curl command with HTTP method
+    var components = ["curl -k -X \(httpMethod) --dump-header -"]
+
+    // Add request headers
+    if let headers = allHTTPHeaderFields {
+      components += headers.map { key, value in
+        let escapedKey = key.escapingQuotes()
+        let escapedValue = value.escapingQuotes()
+        return "-H \"\(escapedKey): \(escapedValue)\""
+      }
+    }
+
+    // Add request body
+    if
+      let data = httpBody,
+      let body = String(data: data, encoding: .utf8)
+    {
+      if body.characters.count > 0 {
+        let escapedBody = body.escapingQuotes()
+        components.append("-d \"\(escapedBody)\"")
+      }
+    }
+
+    // Add URL
+    components.append("\"\(urlString)\"")
+
+    return components.joined(separator: " ")
   }
 
 }
@@ -67,7 +138,7 @@ enum ValueOrError<ValueType, ErrorType: Error> {
 
 extension URLSession {
 
-  private func decodeInput<ResultType: Decodable>(type: ResultType.Type,data: Data?, response: URLResponse?, error: Error?) -> ValueOrError<ResultType, ApiError> {
+  private func decodeInput<ResultType: Decodable>(type: ResultType.Type, data: Data?, response: URLResponse?, error: Error?) -> ValueOrError<ResultType, ApiError> {
 
     guard let httpResponse = response as? HTTPURLResponse else {
       return .error(.noResponse)
@@ -96,7 +167,7 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = dataTask(with: request) { (data, response, error) in
-      print(data.flatMap({ String(data: $0, encoding: .utf8) }))
+      print(try? data.flatMap({ try JSONSerialization.jsonObject(with: $0, options: []) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
         promiseSource.resolve(value)
@@ -113,7 +184,7 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
-      print(data.flatMap({ String(data: $0, encoding: .utf8) }))
+      print(try? data.flatMap({ try JSONSerialization.jsonObject(with: $0, options: []) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
         promiseSource.resolve(value)
