@@ -63,6 +63,7 @@ class ApiService {
     guard let loginToken = loginToken() else {
       return Promise(error: .notLoggedIn)
     }
+
     do {
       let url = root.appendingPathComponent("/magic/check")
       var request = URLRequest(url: url)

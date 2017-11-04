@@ -78,7 +78,7 @@ class SessionsController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let controller = BeerResultOverviewController(beers: sessions[indexPath.row].beers)
+    let controller = BeerResultOverviewController(result: .beers(beers: sessions[indexPath.row].beers))
     navigationController?.pushViewController(controller, animated: true)
   }
 }

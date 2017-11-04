@@ -83,6 +83,8 @@
 		FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392421FACE480001D432A /* Moving Talking Head_00022.png */; };
 		FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392431FACE480001D432A /* Moving Talking Head_00036.png */; };
 		FF23926D1FACE4A9001D432A /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* AnimationView.swift */; };
+		FF4B910D1FADDC0A00C8375C /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B910C1FADDC0A00C8375C /* ErrorController.swift */; };
+		FF4B910F1FADDC2200C8375C /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4B910E1FADDC2200C8375C /* ErrorView.xib */; };
 		FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */; };
 		FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */; };
 		FFB7A2871FACFCE4003B2FBE /* BeerResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */; };
@@ -216,6 +218,8 @@
 		FF2392421FACE480001D432A /* Moving Talking Head_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00022.png"; sourceTree = "<group>"; };
 		FF2392431FACE480001D432A /* Moving Talking Head_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00036.png"; sourceTree = "<group>"; };
 		FF23926C1FACE4A9001D432A /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		FF4B910C1FADDC0A00C8375C /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
+		FF4B910E1FADDC2200C8375C /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultOverviewController.swift; sourceTree = "<group>"; };
 		FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultCell.swift; sourceTree = "<group>"; };
 		FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerResultCell.xib; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 		FF2391D81FAC7059001D432A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FF4B910B1FADDBFE00C8375C /* Error */,
 				FF2391D61FAC7026001D432A /* TabController.swift */,
 				FF2392141FACC106001D432A /* Authorization */,
 				FF2391F31FAC9FA8001D432A /* Sessions */,
@@ -510,6 +515,15 @@
 				FF2392431FACE480001D432A /* Moving Talking Head_00036.png */,
 			);
 			path = "Moving Talking Head";
+			sourceTree = "<group>";
+		};
+		FF4B910B1FADDBFE00C8375C /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				FF4B910C1FADDC0A00C8375C /* ErrorController.swift */,
+				FF4B910E1FADDC2200C8375C /* ErrorView.xib */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		FFB7A2881FAD000F003B2FBE /* BeerDetail */ = {
@@ -709,6 +723,7 @@
 				FF23925F1FACE481001D432A /* Moving Talking Head_00030.png in Resources */,
 				FFB7A2CF1FAD0ECF003B2FBE /* Loading Skull_00029.png in Resources */,
 				FFB7A2CE1FAD0ECF003B2FBE /* Loading Skull_00015.png in Resources */,
+				FF4B910F1FADDC2200C8375C /* ErrorView.xib in Resources */,
 				FFB7A2BA1FAD0ECF003B2FBE /* Loading Skull_00034.png in Resources */,
 				FF23924A1FACE481001D432A /* Moving Talking Head_00010.png in Resources */,
 				FFB7A2CB1FAD0ECF003B2FBE /* Loading Skull_00014.png in Resources */,
@@ -836,6 +851,7 @@
 				FF2391D31FAC60D8001D432A /* ApiService.swift in Sources */,
 				FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */,
 				FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */,
+				FF4B910D1FADDC0A00C8375C /* ErrorController.swift in Sources */,
 				FF23926D1FACE4A9001D432A /* AnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

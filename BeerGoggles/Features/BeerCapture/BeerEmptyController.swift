@@ -11,11 +11,11 @@ import UIKit
 class BeerEmptyController: UIViewController {
   init() {
     super.init(nibName: "BeerEmptyState", bundle: nil)
+    title = "NO BEERS :("
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-    title = "NO BEERS :("
   }
 
   override func viewDidLoad() {

@@ -46,7 +46,19 @@ class BeerCaptureOverviewController: UIViewController {
       self.result.possibles[$0.row]
     }
 
-    let controller = LoadingController(request: .matches(strings: strings, matches: result.matches, guid: guid))
+    let controller: UIViewController
+    if strings.isEmpty {
+      if result.matches.isEmpty {
+        controller = BeerEmptyController()
+      } else {
+        let tapped = result.matches.filter { $0.user_rating != nil }.map { $0.beer }
+        let untapped = result.matches.filter { $0.user_rating == nil }.map { $0.beer }
+        controller = BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
+      }
+    } else {
+      controller = LoadingController(request: .matches(strings: strings, matches: result.matches, guid: guid))
+    }
+
     navigationController?.pushViewController(controller, animated: true)
   }
 }

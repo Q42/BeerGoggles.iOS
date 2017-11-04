@@ -31,11 +31,17 @@ class LoadingController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     view.backgroundColor = Colors.backgroundColor
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
 
     animate()
+    action()
+  }
 
+  private func action() {
     switch request {
     case .photo(let file, let guid):
       ApiService.shared.upload(photo: file)
@@ -54,7 +60,9 @@ class LoadingController: UIViewController {
             if result.matches.isEmpty {
               controller = BeerEmptyController()
             } else {
-              controller = BeerResultOverviewController(beers: result.matches.map({ $0.beer }))
+              let tapped = result.matches.filter { $0.user_rating != nil }.map { $0.beer }
+              let untapped = result.matches.filter { $0.user_rating == nil }.map { $0.beer }
+              controller = BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
             }
           } else {
             controller = BeerCaptureOverviewController(result: result, guid: guid)
@@ -64,8 +72,8 @@ class LoadingController: UIViewController {
 
           navigationController?.setViewControllers(controllers, animated: true)
         }
-        .trap {
-          print($0)
+        .trap { [weak self] error in
+          self?.present(error: error)
         }
 
     case .matches(let strings, let matches, let guid):
@@ -78,16 +86,16 @@ class LoadingController: UIViewController {
         .then { [navigationController] newMatches in
           var controllers = navigationController?.viewControllers ?? []
 
-          let result = Array([matches, newMatches].joined().filter {
-            $0.user_rating == nil
-          }.map { $0.beer })
-          let controller = result.isEmpty ? BeerEmptyController() : BeerResultOverviewController(beers:  result)
+          let result = Array([matches, newMatches].joined())
+          let tapped = result.filter { $0.user_rating != nil }.map { $0.beer }
+          let untapped = result.filter { $0.user_rating == nil }.map { $0.beer }
 
+          let controller = result.isEmpty ? BeerEmptyController() : BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
           controllers[2] = controller
           navigationController?.setViewControllers(controllers, animated: true)
         }
-        .trap {
-          print($0)
+        .trap { [weak self] error in
+          self?.present(error: error)
         }
     }
   }
@@ -98,5 +106,12 @@ class LoadingController: UIViewController {
     rotation.duration = 2
     rotation.repeatCount = HUGE
     loadingAnimationView.layer.add(rotation, forKey: "rotationAnimation")
+  }
+
+  private func present(error: Error) {
+    let controller = ErrorController(error: error) { [weak self] errorController in
+      errorController.navigationController?.popViewController(animated: true)
+    }
+    navigationController?.pushViewController(controller, animated: true)
   }
 }

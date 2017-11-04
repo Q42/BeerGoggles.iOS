@@ -11,6 +11,8 @@ import UIKit
 class AnimationView: UIView {
   private let imageView = UIImageView()
 
+  private static let cache = NSCache<NSString, NSArray>()
+
   func initialize(name: String, max: Int) {
     backgroundColor = .clear
     addSubview(imageView)
@@ -20,17 +22,22 @@ class AnimationView: UIView {
     imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-    let images: [UIImage] = (0...max).map {
-      String(format: "%05d", $0)
-    }.flatMap {
-      Bundle.main.url(forResource: "\(name)_\($0)", withExtension: "png")
-    }.flatMap {
-      (try? Data(contentsOf: $0)).map {
-        UIImage(data: $0)
-      }
-    }.flatMap { $0 }.map { $0! }
+    if let images = AnimationView.cache.object(forKey: name as NSString) {
+      imageView.animationImages = images as? [UIImage]
+    } else {
+      let images: [UIImage] = (0...max).map {
+        String(format: "%05d", $0)
+      }.flatMap {
+        Bundle.main.url(forResource: "\(name)_\($0)", withExtension: "png")
+      }.flatMap {
+        (try? Data(contentsOf: $0)).map {
+          UIImage(data: $0)
+        }
+      }.flatMap { $0 }.map { $0! }
+      imageView.animationImages = images
+      AnimationView.cache.setObject(images as NSArray, forKey: name as NSString)
+    }
 
-    imageView.animationImages = images
     imageView.startAnimating()
   }
 }

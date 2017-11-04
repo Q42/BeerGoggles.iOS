@@ -24,25 +24,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="148.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="by Handlanger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eED-zs-cXR">
-                        <rect key="frame" x="118.5" y="26" width="232.5" height="24"/>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                        <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kompaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMw-n4-yC6">
-                        <rect key="frame" x="16" y="26" width="94.5" height="24"/>
+                        <rect key="frame" x="16" y="26" width="335" height="24"/>
                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="by Handlanger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eED-zs-cXR">
+                        <rect key="frame" x="16" y="58" width="335" height="24"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                        <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="qMw-n4-yC6" secondAttribute="trailing" constant="8" id="Cn0-Vl-8si"/>
                     <constraint firstItem="qMw-n4-yC6" firstAttribute="top" secondItem="dZU-FP-eIN" secondAttribute="topMargin" constant="15" id="LzS-yS-aPB"/>
                     <constraint firstItem="qMw-n4-yC6" firstAttribute="leading" secondItem="dZU-FP-eIN" secondAttribute="leadingMargin" id="Rga-nA-7qf"/>
-                    <constraint firstItem="eED-zs-cXR" firstAttribute="leading" secondItem="qMw-n4-yC6" secondAttribute="trailing" constant="8" id="TTw-Im-xsC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eED-zs-cXR" secondAttribute="trailing" constant="8" id="VNf-Qe-ehF"/>
-                    <constraint firstItem="eED-zs-cXR" firstAttribute="baseline" secondItem="qMw-n4-yC6" secondAttribute="baseline" id="bMm-PI-uLr"/>
+                    <constraint firstItem="eED-zs-cXR" firstAttribute="leading" secondItem="dZU-FP-eIN" secondAttribute="leadingMargin" id="ow9-ew-AcJ"/>
+                    <constraint firstItem="eED-zs-cXR" firstAttribute="top" secondItem="qMw-n4-yC6" secondAttribute="bottom" constant="8" id="rB3-Im-y2y"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
