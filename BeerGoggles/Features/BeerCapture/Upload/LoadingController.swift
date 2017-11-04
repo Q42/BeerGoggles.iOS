@@ -48,9 +48,20 @@ class LoadingController: UIViewController {
           print(result)
 
           var controllers = navigationController?.viewControllers ?? []
-          controllers[1] = result.possibles.isEmpty ?
-            BeerResultOverviewController(beers: result.matches.map({ $0.beer })) :
-            BeerCaptureOverviewController(result: result, guid: guid)
+
+          let controller: UIViewController
+          if result.possibles.isEmpty {
+            if result.matches.isEmpty {
+              controller = BeerEmptyController()
+            } else {
+              controller = BeerResultOverviewController(beers: result.matches.map({ $0.beer }))
+            }
+          } else {
+            controller = BeerCaptureOverviewController(result: result, guid: guid)
+          }
+
+          controllers[1] = controller
+
           navigationController?.setViewControllers(controllers, animated: true)
         }
         .trap {
@@ -66,9 +77,13 @@ class LoadingController: UIViewController {
         }
         .then { [navigationController] newMatches in
           var controllers = navigationController?.viewControllers ?? []
-          controllers[2] = BeerResultOverviewController(beers: Array([matches, newMatches].joined().filter {
+
+          let result = Array([matches, newMatches].joined().filter {
             $0.user_rating == nil
-          }.map { $0.beer } ))
+          }.map { $0.beer })
+          let controller = result.isEmpty ? BeerEmptyController() : BeerResultOverviewController(beers:  result)
+
+          controllers[2] = controller
           navigationController?.setViewControllers(controllers, animated: true)
         }
         .trap {

@@ -85,7 +85,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DHK-7z-yzv"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npM-Qm-Ryi">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npM-Qm-Ryi" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
                     <rect key="frame" x="30" y="607" width="315" height="30"/>
                     <state key="normal" title="Start scanning beer menu’s"/>
                     <connections>

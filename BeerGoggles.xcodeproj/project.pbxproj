@@ -131,6 +131,8 @@
 		FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */; };
 		FFB7A2E11FADC99A003B2FBE /* HowToController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2E01FADC99A003B2FBE /* HowToController.swift */; };
 		FFB7A2E31FADC9A4003B2FBE /* HowToView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */; };
+		FFB7A2E51FADD1F6003B2FBE /* BeerEmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */; };
+		FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +264,8 @@
 		FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		FFB7A2E01FADC99A003B2FBE /* HowToController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToController.swift; sourceTree = "<group>"; };
 		FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToView.xib; sourceTree = "<group>"; };
+		FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerEmptyState.xib; sourceTree = "<group>"; };
+		FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerEmptyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +386,8 @@
 				FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */,
 				FFB7A2841FACFCD7003B2FBE /* BeerResultCell.swift */,
 				FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */,
+				FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */,
+				FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */,
 			);
 			path = BeerCapture;
 			sourceTree = "<group>";
@@ -716,6 +722,7 @@
 				FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */,
 				FF2392441FACE481001D432A /* Moving Talking Head_00013.png in Resources */,
 				FF2391E31FAC7794001D432A /* CameraView.xib in Resources */,
+				FFB7A2E51FADD1F6003B2FBE /* BeerEmptyState.xib in Resources */,
 				FFB7A2D21FAD0ECF003B2FBE /* Loading Skull_00016.png in Resources */,
 				FFB7A2DB1FAD0ECF003B2FBE /* Loading Skull_00038.png in Resources */,
 				FF2392031FACA4DF001D432A /* ScanningView.xib in Resources */,
@@ -814,6 +821,7 @@
 				FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */,
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
+				FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */,
 				FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */,
 				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */,
