@@ -13,7 +13,7 @@ class LoadingController: UIViewController {
 
   enum Request {
     case photo(file: URL, guid: UUID)
-    case matches(strings: [String], beers: [BeerJson], guid: UUID)
+    case matches(strings: [String], matches: [MatchesJson], guid: UUID)
   }
 
   private let request: Request
@@ -57,16 +57,18 @@ class LoadingController: UIViewController {
           print($0)
         }
 
-    case .matches(let strings, let beers, let guid):
+    case .matches(let strings, let matches, let guid):
       ApiService.shared.magic(matches: strings)
         .mapError()
         .flatMap { (result: [MatchesJson]) -> Promise<[MatchesJson], Error> in
-          DatabaseService.shared.add(beers: beers, id: guid)
+          DatabaseService.shared.add(beers: result.map({ $0.beer }), id: guid)
             .map { result }
         }
-        .then { [navigationController] matches in
+        .then { [navigationController] newMatches in
           var controllers = navigationController?.viewControllers ?? []
-          controllers[2] = BeerResultOverviewController(beers: Array([matches.map({ $0.beer }), beers].joined()))
+          controllers[2] = BeerResultOverviewController(beers: Array([matches, newMatches].joined().filter {
+            $0.user_rating == nil
+          }.map { $0.beer } ))
           navigationController?.setViewControllers(controllers, animated: true)
         }
         .trap {

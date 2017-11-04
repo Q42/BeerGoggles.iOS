@@ -65,11 +65,15 @@ class SessionsController: UITableViewController {
       .flatMap { URL(string: $0) }?
       .appendingPathComponent("\(session.imageGuid).jpg")
 
-    if let file = fileOptional {
-      let data = FileManager.default.contents(atPath: file.absoluteString)
-      cell.imageView?.image = data.flatMap { UIImage(data: $0) }
+    DispatchQueue.global().async {
+      if let file = fileOptional {
+        let data = FileManager.default.contents(atPath: file.absoluteString)
+        let image = data.flatMap { UIImage(data: $0) }
+        DispatchQueue.main.async {
+          cell.imageView?.image = image
+        }
+      }
     }
-
     return cell
   }
 

@@ -16,8 +16,8 @@ class TabController: UITabBarController {
     viewControllers = [
       UINavigationController(rootViewController: CameraController()),
       UINavigationController(rootViewController: SessionsController()),
-      UINavigationController(rootViewController: AboutController()),
-      UINavigationController(rootViewController: UserController())
+      AboutController(),
+      SettingsController()
     ]
   }
 

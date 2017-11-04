@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsController" customModule="BeerGoggles" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="dgA-An-SUS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqo-Dh-k70" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                    <rect key="frame" x="30" y="607" width="315" height="30"/>
+                    <state key="normal" title="Log me out"/>
+                    <connections>
+                        <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="Gbd-eh-ZfN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0k-uh-sHV" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                    <rect key="frame" x="30" y="567" width="315" height="30"/>
+                    <state key="normal" title="How to Beer Goggle?"/>
+                    <connections>
+                        <action selector="howToPressed:" destination="-1" eventType="touchUpInside" id="9G3-hH-vd2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Oqo-Dh-k70" secondAttribute="trailing" constant="30" id="CQk-gL-kIZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Oqo-Dh-k70" secondAttribute="bottom" constant="30" id="CVD-od-CAz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a0k-uh-sHV" secondAttribute="trailing" constant="30" id="REw-qE-Ys4"/>
+                <constraint firstItem="Oqo-Dh-k70" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="dFL-Cm-8kB"/>
+                <constraint firstItem="Oqo-Dh-k70" firstAttribute="top" secondItem="a0k-uh-sHV" secondAttribute="bottom" constant="10" id="p5j-1h-16X"/>
+                <constraint firstItem="a0k-uh-sHV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="pAD-G3-DWo"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

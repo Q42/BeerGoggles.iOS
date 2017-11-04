@@ -18,7 +18,6 @@ class BeerSelectCell: UITableViewCell {
       selectionStyle = .none
       backgroundColor = Colors.backgroundColor
       nameLabel.text = possibility
-//      breweryLabel.text = (beer?.brewery).map { "by \($0)" }
     }
   }
 

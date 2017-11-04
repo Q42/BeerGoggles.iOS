@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HowToController" customModule="BeerGoggles" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="e8V-Td-rmT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="howto" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-cf-FfJ">
+                    <rect key="frame" x="-23.5" y="0.0" width="421" height="247"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-QH-Zh4" customClass="TalkingAnimationView" customModule="BeerGoggles" customModuleProvider="target">
+                    <rect key="frame" x="157" y="267" width="60" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="VLj-4E-xd6"/>
+                        <constraint firstAttribute="height" constant="60" id="rhm-uA-Qcl"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="x8b-lk-Zmm">
+                    <rect key="frame" x="157.5" y="367" width="0.0" height="139"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H4j-aZ-Xac">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="bar" translatesAutoresizingMaskIntoConstraints="NO" id="V0L-Z1-qPP">
+                                    <rect key="frame" x="0.0" y="0.0" width="23" height="24"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask for the beer menu at your favourite bar." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-Od-6xg">
+                                    <rect key="frame" x="0.0" y="12" width="0.0" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vmp-El-802">
+                            <rect key="frame" x="0.0" y="64" width="0.0" height="16"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="goggles" translatesAutoresizingMaskIntoConstraints="NO" id="Jyg-ya-eAd">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="16"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan the beer menu with BEER GOGGLES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N9-ys-cMQ">
+                                    <rect key="frame" x="0.0" y="8" width="0.0" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DFj-dH-yi9">
+                            <rect key="frame" x="0.0" y="120" width="0.0" height="19"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="beeer" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-hV-W89">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="19"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instantly see what beers on the menu are rated best around the world and by your friends." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oly-TW-dZc">
+                                    <rect key="frame" x="0.0" y="9.5" width="0.0" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DHK-7z-yzv"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npM-Qm-Ryi">
+                    <rect key="frame" x="30" y="607" width="315" height="30"/>
+                    <state key="normal" title="Start scanning beer menu’s"/>
+                    <connections>
+                        <action selector="dismissPressed:" destination="-1" eventType="touchUpInside" id="tjB-O3-GPu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="npM-Qm-Ryi" secondAttribute="trailing" constant="30" id="0YZ-bH-P0x"/>
+                <constraint firstItem="npM-Qm-Ryi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="5b5-mx-CMz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="npM-Qm-Ryi" secondAttribute="bottom" constant="30" id="GSR-Hp-1ZP"/>
+                <constraint firstItem="x8b-lk-Zmm" firstAttribute="top" secondItem="hZB-QH-Zh4" secondAttribute="bottom" constant="40" id="I1o-1F-YhW"/>
+                <constraint firstItem="hZB-QH-Zh4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XxL-Gj-sqy"/>
+                <constraint firstItem="hZB-QH-Zh4" firstAttribute="top" secondItem="Qi3-cf-FfJ" secondAttribute="bottom" constant="20" id="fch-Sf-WQE"/>
+                <constraint firstItem="x8b-lk-Zmm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lUz-3h-aAa"/>
+                <constraint firstItem="Qi3-cf-FfJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qJX-So-xrK"/>
+                <constraint firstItem="Qi3-cf-FfJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xNG-4e-OqD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="91.5" y="98.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bar" width="23" height="24"/>
+        <image name="beeer" width="16" height="19"/>
+        <image name="goggles" width="24" height="16"/>
+        <image name="howto" width="421" height="247"/>
+    </resources>
+</document>

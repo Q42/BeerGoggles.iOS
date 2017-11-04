@@ -46,7 +46,7 @@ class BeerCaptureOverviewController: UIViewController {
       self.result.possibles[$0.row]
     }
 
-    let controller = LoadingController(request: .matches(strings: strings, beers: result.matches.map({ $0.beer }), guid: guid))
+    let controller = LoadingController(request: .matches(strings: strings, matches: result.matches, guid: guid))
     navigationController?.pushViewController(controller, animated: true)
   }
 }

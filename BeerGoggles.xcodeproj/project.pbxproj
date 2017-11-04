@@ -21,8 +21,8 @@
 		FF2391E31FAC7794001D432A /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E21FAC7794001D432A /* CameraView.xib */; };
 		FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391E41FAC8134001D432A /* LoadingController.swift */; };
 		FF2391E81FAC8D77001D432A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391E71FAC8D77001D432A /* LoadingView.xib */; };
-		FF2391EB1FAC9617001D432A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EA1FAC9617001D432A /* UserController.swift */; };
-		FF2391ED1FAC9633001D432A /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391EC1FAC9633001D432A /* UserView.xib */; };
+		FF2391EB1FAC9617001D432A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EA1FAC9617001D432A /* SettingsController.swift */; };
+		FF2391ED1FAC9633001D432A /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391EC1FAC9633001D432A /* SettingsView.xib */; };
 		FF2391F01FAC9970001D432A /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EF1FAC9970001D432A /* AboutController.swift */; };
 		FF2391F21FAC9979001D432A /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391F11FAC9979001D432A /* AboutView.xib */; };
 		FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391F41FAC9FB8001D432A /* SessionsController.swift */; };
@@ -129,6 +129,8 @@
 		FFB7A2DC1FAD0ECF003B2FBE /* Loading Skull_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B41FAD0ECF003B2FBE /* Loading Skull_00004.png */; };
 		FFB7A2DD1FAD0ECF003B2FBE /* Loading Skull_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2B51FAD0ECF003B2FBE /* Loading Skull_00010.png */; };
 		FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */; };
+		FFB7A2E11FADC99A003B2FBE /* HowToController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2E01FADC99A003B2FBE /* HowToController.swift */; };
+		FFB7A2E31FADC9A4003B2FBE /* HowToView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,8 +152,8 @@
 		FF2391E21FAC7794001D432A /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
 		FF2391E41FAC8134001D432A /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
 		FF2391E71FAC8D77001D432A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		FF2391EA1FAC9617001D432A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		FF2391EC1FAC9633001D432A /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		FF2391EA1FAC9617001D432A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		FF2391EC1FAC9633001D432A /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FF2391EF1FAC9970001D432A /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		FF2391F11FAC9979001D432A /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		FF2391F41FAC9FB8001D432A /* SessionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,8 @@
 		FFB7A2B41FAD0ECF003B2FBE /* Loading Skull_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00004.png"; sourceTree = "<group>"; };
 		FFB7A2B51FAD0ECF003B2FBE /* Loading Skull_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading Skull_00010.png"; sourceTree = "<group>"; };
 		FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		FFB7A2E01FADC99A003B2FBE /* HowToController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToController.swift; sourceTree = "<group>"; };
+		FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,10 +344,9 @@
 				FF2392141FACC106001D432A /* Authorization */,
 				FF2391F31FAC9FA8001D432A /* Sessions */,
 				FF2391EE1FAC9965001D432A /* About */,
-				FF2391E91FAC9608001D432A /* User */,
+				FF2391E91FAC9608001D432A /* Settings */,
 				FF2391E61FAC8D66001D432A /* BeerCapture */,
 				FF2391DF1FAC773D001D432A /* Camera */,
-				FF2391DC1FAC7100001D432A /* Home */,
 				FF2391D91FAC7060001D432A /* Login */,
 			);
 			path = Features;
@@ -356,13 +359,6 @@
 				FF2391DA1FAC7093001D432A /* LoginView.xib */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		FF2391DC1FAC7100001D432A /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		FF2391DF1FAC773D001D432A /* Camera */ = {
@@ -390,13 +386,13 @@
 			path = BeerCapture;
 			sourceTree = "<group>";
 		};
-		FF2391E91FAC9608001D432A /* User */ = {
+		FF2391E91FAC9608001D432A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				FF2391EA1FAC9617001D432A /* UserController.swift */,
-				FF2391EC1FAC9633001D432A /* UserView.xib */,
+				FF2391EA1FAC9617001D432A /* SettingsController.swift */,
+				FF2391EC1FAC9633001D432A /* SettingsView.xib */,
 			);
-			path = User;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FF2391EE1FAC9965001D432A /* About */ = {
@@ -404,6 +400,8 @@
 			children = (
 				FF2391EF1FAC9970001D432A /* AboutController.swift */,
 				FF2391F11FAC9979001D432A /* AboutView.xib */,
+				FFB7A2E01FADC99A003B2FBE /* HowToController.swift */,
+				FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -682,7 +680,7 @@
 				FF23925B1FACE481001D432A /* Moving Talking Head_00033.png in Resources */,
 				FFB7A2C01FAD0ECF003B2FBE /* Loading Skull_00027.png in Resources */,
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
-				FF2391ED1FAC9633001D432A /* UserView.xib in Resources */,
+				FF2391ED1FAC9633001D432A /* SettingsView.xib in Resources */,
 				FF23924B1FACE481001D432A /* Moving Talking Head_00011.png in Resources */,
 				FFB7A2BF1FAD0ECF003B2FBE /* Loading Skull_00023.png in Resources */,
 				FF2392691FACE481001D432A /* Moving Talking Head_00023.png in Resources */,
@@ -709,6 +707,7 @@
 				FF23924A1FACE481001D432A /* Moving Talking Head_00010.png in Resources */,
 				FFB7A2CB1FAD0ECF003B2FBE /* Loading Skull_00014.png in Resources */,
 				FFB7A2D01FAD0ECF003B2FBE /* Loading Skull_00003.png in Resources */,
+				FFB7A2E31FADC9A4003B2FBE /* HowToView.xib in Resources */,
 				FFB7A2BB1FAD0ECF003B2FBE /* Loading Skull_00008.png in Resources */,
 				FFB7A2B61FAD0ECF003B2FBE /* Loading Skull_00009.png in Resources */,
 				FF23925E1FACE481001D432A /* Moving Talking Head_00031.png in Resources */,
@@ -806,11 +805,12 @@
 			files = (
 				FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */,
 				FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */,
-				FF2391EB1FAC9617001D432A /* UserController.swift in Sources */,
+				FF2391EB1FAC9617001D432A /* SettingsController.swift in Sources */,
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
 				FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */,
+				FFB7A2E11FADC99A003B2FBE /* HowToController.swift in Sources */,
 				FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */,
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
