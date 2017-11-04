@@ -83,8 +83,8 @@ class BeerResultOverviewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let controller = BeerDetailController(beer: beer(for: indexPath))
-    navigationController?.pushViewController(controller, animated: true)
+    let bier = beer(for: indexPath)
+    UIApplication.shared.open(URL(string: "untappd://beer/\(bier.bid ?? 0)")!, options: [:], completionHandler: nil)
   }
 
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
