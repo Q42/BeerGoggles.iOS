@@ -23,12 +23,22 @@ class AuthorizationController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = Colors.backgroundColor
-
-    
   }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    requestAccess()
+  }
+
   @IBAction func grantPressed(_ sender: Any) {
+    requestAccess()
+  }
+
+  private func requestAccess() {
     AVCaptureDevice.requestAccess(for: AVMediaType.video) { (accept) in
-      print(accept)
+      if accept {
+        AppDelegate.instance.backToRoot()
+      }
     }
   }
 }

@@ -596,6 +596,7 @@
 				FF2391B71FAC5F45001D432A /* Resources */,
 				F56D29D2A04BFEFFA869475C /* [CP] Embed Pods Frameworks */,
 				167CBBF902AB19B4626A442F /* [CP] Copy Pods Resources */,
+				FF4B91101FAE070500C8375C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -792,13 +793,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -817,6 +816,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/BeerGoggles\"";
+		};
+		FF4B91101FAE070500C8375C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 39565fffe91dd9abead537ef9886a02d5eeda9f2 5f9ba409bf7477095401c810a6ede9e0f8bd5811ff77bf61d4696f372fe5dbdb";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -990,7 +1002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.harkema.BeerGoggles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1007,7 +1019,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.harkema.BeerGoggles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
