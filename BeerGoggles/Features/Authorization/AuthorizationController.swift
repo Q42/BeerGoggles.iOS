@@ -37,7 +37,9 @@ class AuthorizationController: UIViewController {
   
   @objc func active() {
     if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
-      AppDelegate.instance.backToRoot()
+      DispatchQueue.main.async {
+        AppDelegate.instance.backToRoot()
+      }
     }
   }
   
@@ -53,7 +55,9 @@ class AuthorizationController: UIViewController {
     
     AVCaptureDevice.requestAccess(for: .video) { (accept) in
       if accept {
-        AppDelegate.instance.backToRoot()
+        DispatchQueue.main.async {
+          AppDelegate.instance.backToRoot()
+        }
       }
     }
   }
