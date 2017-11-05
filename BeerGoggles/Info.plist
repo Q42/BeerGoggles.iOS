@@ -50,7 +50,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>HAHA BIIEEER</string>
+	<string>We use your camera to scan the bar&apos;s menu. It&apos;s like goggles, but then much *burp* smarter.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Futura.ttc</string>
