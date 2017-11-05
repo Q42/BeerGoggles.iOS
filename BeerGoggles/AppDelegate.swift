@@ -89,6 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    self.saveContext()
   }
 
+//  func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+//    <#code#>
+//  }
+
   // MARK: - Handle URL
 
   func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

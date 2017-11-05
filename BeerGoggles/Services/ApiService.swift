@@ -18,10 +18,15 @@ enum ApiError: Error {
   case unknown(Error)
 }
 
-class ApiService {
+class ApiService: NSObject {
   static let shared = ApiService()
 
+  private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>)?
   private let session = URLSession(configuration: .default)
+  private lazy var backgroundSession: URLSession = {
+    return URLSession(configuration: .background(withIdentifier: "io.harkema.BeerGoggles.background"), delegate: self, delegateQueue: nil)
+  }()
+
   private let root = URL(string: "https://beer-goggles.herokuapp.com")!
 
   private let loginTokenKey = "loginTokenKey"
@@ -56,7 +61,14 @@ class ApiService {
     request.httpMethod = "POST"
     request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
     print(request.curlRequest ?? "")
-    return session.codableUploadPromise(type: UploadJson.self, request: request, fromFile: photo)
+
+    let promiseSource = PromiseSource<UploadJson, ApiError>()
+
+    let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
+    uploadTask.resume()
+    pendingUpload = (uploadTask, promiseSource)
+
+    return promiseSource.promise
   }
 
   func magic(matches: [String]) -> Promise<[MatchesJson], ApiError> {
@@ -80,6 +92,12 @@ class ApiService {
     }
   }
 
+}
+
+extension ApiService: URLSessionDelegate {
+  func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+    print("")
+  }
 }
 
 fileprivate extension String {

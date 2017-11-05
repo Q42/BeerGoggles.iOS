@@ -8,7 +8,7 @@ target 'BeerGoggles' do
   pod 'Promissum'
   pod 'R.swift'
   pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Crashlytics', '~>  3.9'
 
 end
 

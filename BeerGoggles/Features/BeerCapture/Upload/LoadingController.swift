@@ -109,7 +109,7 @@ class LoadingController: UIViewController {
   }
 
   private func present(error: Error) {
-    let controller = ErrorController(error: error) { [weak self] errorController in
+    let controller = ErrorController(error: error) { errorController in
       errorController.navigationController?.popViewController(animated: true)
     }
     navigationController?.pushViewController(controller, animated: true)
