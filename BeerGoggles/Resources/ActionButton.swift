@@ -23,10 +23,6 @@ class ActionButton: UIButton {
       switch self {
       case .default:
         return Colors.textColor
-//      case .destructive:
-//        return Color.deleteColor
-//      case .notice:
-//        return .white
       }
     }
 
@@ -34,10 +30,6 @@ class ActionButton: UIButton {
       switch self {
       case .default:
         return Colors.tintColor
-//      case .destructive:
-//        return .white
-//      case .notice:
-//        return .red
       }
     }
   }
@@ -69,6 +61,7 @@ class ActionButton: UIButton {
     backgroundColor = buttonStyle.backgroundColor
     setTitleColor(buttonStyle.titleColor, for: .normal)
     titleLabel?.font = Fonts.futuraBold(with: 16)
+    titleLabel?.numberOfLines = 0
 
     contentEdgeInsets = buttonStyle.insets
     layer.cornerRadius = 4

@@ -37,6 +37,9 @@ class SettingsController: UIViewController {
 
   @IBAction func howToPressed(_ sender: Any) {
     let controller = HowToController()
+    controller.completionHandler = { _ in
+      (AppDelegate.instance.window?.rootViewController as? TabController)?.selectedIndex = 0
+    }
     present(controller, animated: true, completion: nil)
   }
 }

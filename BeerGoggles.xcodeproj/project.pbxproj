@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B2A6BE18069C3DC38C46021 /* Pods_BeerGoggles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */; };
+		C3968BA81FAF48F9005623FC /* beer-menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3968BA71FAF48F9005623FC /* beer-menu.jpg */; };
 		FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BC1FAC5F45001D432A /* AppDelegate.swift */; };
 		FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BE1FAC5F45001D432A /* LoginController.swift */; };
 		FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF2391C31FAC5F45001D432A /* BeerGoggles.xcdatamodeld */; };
@@ -141,6 +142,7 @@
 		692CCE5406932C882910978F /* Pods-BeerGoggles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.debug.xcconfig"; sourceTree = "<group>"; };
 		78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerGoggles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C20C9E01C5FF87AECB6A2C /* Pods-BeerGoggles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.release.xcconfig"; sourceTree = "<group>"; };
+		C3968BA71FAF48F9005623FC /* beer-menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beer-menu.jpg"; sourceTree = "<group>"; };
 		FF2391B91FAC5F45001D432A /* BeerGoggles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerGoggles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2391BC1FAC5F45001D432A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF2391BE1FAC5F45001D432A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 			children = (
 				FFB7A28D1FAD0ECF003B2FBE /* Loading Skull */,
 				FF23921B1FACE480001D432A /* Moving Talking Head */,
+				C3968BA71FAF48F9005623FC /* beer-menu.jpg */,
 				FF2392071FACAF8F001D432A /* Futura.ttc */,
 				FF2392101FACC0AB001D432A /* talkinghead-test.json */,
 				FF2392051FACACC0001D432A /* Colors.swift */,
@@ -709,6 +712,7 @@
 				FF2392571FACE481001D432A /* Moving Talking Head_00017.png in Resources */,
 				FFB7A2CC1FAD0ECF003B2FBE /* Loading Skull_00000.png in Resources */,
 				FF23924E1FACE481001D432A /* Moving Talking Head_00001.png in Resources */,
+				C3968BA81FAF48F9005623FC /* beer-menu.jpg in Resources */,
 				FF2391DB1FAC7093001D432A /* LoginView.xib in Resources */,
 				FF2392501FACE481001D432A /* Moving Talking Head_00029.png in Resources */,
 				FFB7A2CA1FAD0ECF003B2FBE /* Loading Skull_00028.png in Resources */,

@@ -9,6 +9,9 @@
 import UIKit
 
 class HowToController: UIViewController {
+  
+  var completionHandler: ((HowToController) -> Void)?
+  
   init() {
     super.init(nibName: "HowToView", bundle: nil)
   }
@@ -18,6 +21,11 @@ class HowToController: UIViewController {
   }
 
   @IBAction func dismissPressed(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
+    dismiss(animated: true) { [weak self] in
+      guard let controller = self else {
+        return
+      }
+      controller.completionHandler?(controller)
+    }
   }
 }

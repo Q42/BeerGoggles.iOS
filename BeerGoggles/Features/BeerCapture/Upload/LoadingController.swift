@@ -8,11 +8,13 @@
 
 import UIKit
 import Promissum
+import AVKit
 
 class LoadingController: UIViewController {
 
   enum Request {
-    case photo(file: URL, guid: UUID)
+    case photo(photo: AVCapturePhoto)
+    case simulate
     case matches(strings: [String], matches: [MatchesJson], guid: UUID)
   }
 
@@ -41,40 +43,52 @@ class LoadingController: UIViewController {
     action()
   }
 
+  private func compress(image: UIImage, maxFileSize: Int) -> Data {
+    var compression = 1.0
+    let maxCompression = 0.1
+    var imageData = UIImageJPEGRepresentation(image, 0.9)!
+    
+    while (imageData.count > maxFileSize && compression > maxCompression) {
+      compression -= 0.1;
+      imageData = UIImageJPEGRepresentation(image, CGFloat(compression))!
+    }
+    
+    return imageData
+  }
+  
   private func action() {
     switch request {
-    case .photo(let file, let guid):
-      ApiService.shared.upload(photo: file)
-        .mapError()
-        .flatMap { (result: UploadJson) -> Promise<UploadJson, Error> in
-          DatabaseService.shared.save(beers: result.matches.map({ $0.beer }), image: guid)
-            .map { result }
-        }
-        .then { [navigationController] (result: UploadJson) in
-          print(result)
-
-          var controllers = navigationController?.viewControllers ?? []
-
-          let controller: UIViewController
-          if result.possibles.isEmpty {
-            if result.matches.isEmpty {
-              controller = BeerEmptyController()
-            } else {
-              let tapped = result.matches.filter { $0.user_rating != nil }.map { $0.beer }
-              let untapped = result.matches.filter { $0.user_rating == nil }.map { $0.beer }
-              controller = BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
-            }
-          } else {
-            controller = BeerCaptureOverviewController(result: result, guid: guid)
-          }
-
-          controllers[1] = controller
-
-          navigationController?.setViewControllers(controllers, animated: true)
-        }
-        .trap { [weak self] error in
-          self?.present(error: error)
-        }
+    case .simulate:
+      upload(file: R.file.beerMenuJpg()!, guid: UUID())
+      
+    case .photo(let photo):
+      
+      let guid = UUID()
+      
+      let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        .first
+        .flatMap { URL(string: $0) }?
+        .appendingPathComponent("\(guid).jpg")
+      
+      guard let file = fileOptional,
+        let photoData = photo.fileDataRepresentation(),
+        let image = UIImage(data: photoData)
+        else {
+          return
+      }
+      
+      let maxSize = 8 * 1024
+      
+      let finalImageData: Data
+      if photoData.count > maxSize {
+        finalImageData = compress(image: image, maxFileSize: maxSize)
+      } else {
+        finalImageData = photoData
+      }
+      
+      FileManager.default.createFile(atPath: file.absoluteString, contents: finalImageData, attributes: nil)
+      
+      upload(file: file, guid: guid)
 
     case .matches(let strings, let matches, let guid):
       ApiService.shared.magic(matches: strings)
@@ -100,6 +114,40 @@ class LoadingController: UIViewController {
     }
   }
 
+  private func upload(file: URL, guid: UUID) {
+    ApiService.shared.upload(photo: file)
+      .mapError()
+      .flatMap { (result: UploadJson) -> Promise<UploadJson, Error> in
+        DatabaseService.shared.save(beers: result.matches.map({ $0.beer }), image: guid)
+          .map { result }
+      }
+      .then { [navigationController] (result: UploadJson) in
+        print(result)
+        
+        var controllers = navigationController?.viewControllers ?? []
+        
+        let controller: UIViewController
+        if result.possibles.isEmpty {
+          if result.matches.isEmpty {
+            controller = BeerEmptyController()
+          } else {
+            let tapped = result.matches.filter { $0.user_rating != nil }.map { $0.beer }
+            let untapped = result.matches.filter { $0.user_rating == nil }.map { $0.beer }
+            controller = BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
+          }
+        } else {
+          controller = BeerCaptureOverviewController(result: result, guid: guid)
+        }
+        
+        controllers[1] = controller
+        
+        navigationController?.setViewControllers(controllers, animated: true)
+      }
+      .trap { [weak self] error in
+        self?.present(error: error)
+    }
+  }
+  
   private func animate() {
     let rotation = CABasicAnimation(keyPath: "transform.rotation")
     rotation.toValue = Double.pi * 2
