@@ -23,19 +23,35 @@ class AuthorizationController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = Colors.backgroundColor
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(active), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    requestAccess()
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
-
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  @objc func active() {
+    if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+      AppDelegate.instance.backToRoot()
+    }
+  }
+  
   @IBAction func grantPressed(_ sender: Any) {
     requestAccess()
   }
 
   private func requestAccess() {
-    AVCaptureDevice.requestAccess(for: AVMediaType.video) { (accept) in
+    if AVCaptureDevice.authorizationStatus(for: .video) == .denied {
+      UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+      return
+    }
+    
+    AVCaptureDevice.requestAccess(for: .video) { (accept) in
       if accept {
         AppDelegate.instance.backToRoot()
       }
