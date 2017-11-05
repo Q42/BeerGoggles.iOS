@@ -63,7 +63,6 @@ class ApiService: NSObject {
     print(request.curlRequest ?? "")
 
     let promiseSource = PromiseSource<UploadJson, ApiError>()
-
     let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
     uploadTask.resume()
     pendingUpload = (uploadTask, promiseSource)
@@ -94,9 +93,32 @@ class ApiService: NSObject {
 
 }
 
-extension ApiService: URLSessionDelegate {
-  func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-    print("")
+extension ApiService: URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
+  func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+    guard let pending = pendingUpload, let error = error else {
+      return
+    }
+    
+    switch backgroundSession.decodeInput(type: UploadJson.self, data: nil, response: task.response, error: error) {
+    case .value(let value):
+      pending.1.resolve(value)
+    case .error(let error):
+      pending.1.reject(error)
+    }
+    
+  }
+  
+  func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+    guard let pending = pendingUpload else {
+      return
+    }
+    
+    switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
+    case .value(let value):
+      pending.1.resolve(value)
+    case .error(let error):
+      pending.1.reject(error)
+    }
   }
 }
 
@@ -157,7 +179,7 @@ enum ValueOrError<ValueType, ErrorType: Error> {
 
 extension URLSession {
 
-  private func decodeInput<ResultType: Decodable>(type: ResultType.Type, data: Data?, response: URLResponse?, error: Error?) -> ValueOrError<ResultType, ApiError> {
+  fileprivate func decodeInput<ResultType: Decodable>(type: ResultType.Type, data: Data?, response: URLResponse?, error: Error?) -> ValueOrError<ResultType, ApiError> {
 
     guard let httpResponse = response as? HTTPURLResponse else {
       return .error(.noResponse)

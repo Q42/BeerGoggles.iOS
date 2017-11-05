@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraController" customModule="BeerGoggles" customModuleProvider="target">
             <connections>
+                <outlet property="captureButton" destination="m3C-hn-iO1" id="pWg-rf-OhX"/>
                 <outlet property="captureView" destination="A2Y-YU-af6" id="6bs-ae-m0E"/>
                 <outlet property="view" destination="9Wh-v9-PvQ" id="Rym-yY-915"/>
             </connections>
