@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="howto" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-cf-FfJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="howto" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-cf-FfJ">
                     <rect key="frame" x="-23.5" y="0.0" width="421" height="247"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-QH-Zh4" customClass="TalkingAnimationView" customModule="BeerGoggles" customModuleProvider="target">
@@ -36,44 +36,41 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="x8b-lk-Zmm">
-                    <rect key="frame" x="157.5" y="367" width="0.0" height="139"/>
+                    <rect key="frame" x="157.5" y="347" width="0.0" height="139"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H4j-aZ-Xac">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H4j-aZ-Xac">
                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="bar" translatesAutoresizingMaskIntoConstraints="NO" id="V0L-Z1-qPP">
                                     <rect key="frame" x="0.0" y="0.0" width="23" height="24"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask for the beer menu at your favourite bar." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-Od-6xg">
-                                    <rect key="frame" x="0.0" y="12" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vmp-El-802">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vmp-El-802">
                             <rect key="frame" x="0.0" y="64" width="0.0" height="16"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="goggles" translatesAutoresizingMaskIntoConstraints="NO" id="Jyg-ya-eAd">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan the beer menu with BEER GOGGLES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N9-ys-cMQ">
-                                    <rect key="frame" x="0.0" y="8" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DFj-dH-yi9">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DFj-dH-yi9">
                             <rect key="frame" x="0.0" y="120" width="0.0" height="19"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="beeer" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-hV-W89">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="19"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instantly see what beers on the menu are rated best around the world and by your friends." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oly-TW-dZc">
-                                    <rect key="frame" x="0.0" y="9.5" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -98,8 +95,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="npM-Qm-Ryi" secondAttribute="trailing" constant="30" id="0YZ-bH-P0x"/>
                 <constraint firstItem="npM-Qm-Ryi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="5b5-mx-CMz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="npM-Qm-Ryi" secondAttribute="bottom" constant="30" id="GSR-Hp-1ZP"/>
-                <constraint firstItem="x8b-lk-Zmm" firstAttribute="top" secondItem="hZB-QH-Zh4" secondAttribute="bottom" constant="40" id="I1o-1F-YhW"/>
+                <constraint firstItem="x8b-lk-Zmm" firstAttribute="top" secondItem="hZB-QH-Zh4" secondAttribute="bottom" constant="20" id="I1o-1F-YhW"/>
                 <constraint firstItem="hZB-QH-Zh4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XxL-Gj-sqy"/>
+                <constraint firstItem="npM-Qm-Ryi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="x8b-lk-Zmm" secondAttribute="bottom" constant="20" id="aRg-4A-9Lo"/>
                 <constraint firstItem="hZB-QH-Zh4" firstAttribute="top" secondItem="Qi3-cf-FfJ" secondAttribute="bottom" constant="20" id="fch-Sf-WQE"/>
                 <constraint firstItem="x8b-lk-Zmm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lUz-3h-aAa"/>
                 <constraint firstItem="Qi3-cf-FfJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qJX-So-xrK"/>

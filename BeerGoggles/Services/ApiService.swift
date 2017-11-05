@@ -16,6 +16,23 @@ enum ApiError: Error {
   case decoding(DecodingError)
   case encoding(EncodingError)
   case unknown(Error)
+  
+  var localizedDescription: String {
+    switch self {
+    case .notLoggedIn:
+      return "Not Logged In"
+    case .noResponse:
+      return "We didn't *burp* understand the menu you scanned."
+    case .response(let response):
+      return "We didn't *burp* understand the menu you scanned. (\(response.statusCode))"
+    case .decoding(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    case .encoding(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    case .unknown(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    }
+  }
 }
 
 class ApiService: NSObject {
@@ -95,29 +112,24 @@ class ApiService: NSObject {
 
 extension ApiService: URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
   func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-    guard let pending = pendingUpload, let error = error else {
+    guard let error = error else {
       return
     }
     
     switch backgroundSession.decodeInput(type: UploadJson.self, data: nil, response: task.response, error: error) {
     case .value(let value):
-      pending.1.resolve(value)
+      pendingUpload?.1.resolve(value)
     case .error(let error):
-      pending.1.reject(error)
+      pendingUpload?.1.reject(error)
     }
-    
   }
   
   func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-    guard let pending = pendingUpload else {
-      return
-    }
-    
-    switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
+  switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
     case .value(let value):
-      pending.1.resolve(value)
+      pendingUpload?.1.resolve(value)
     case .error(let error):
-      pending.1.reject(error)
+      pendingUpload?.1.reject(error)
     }
   }
 }

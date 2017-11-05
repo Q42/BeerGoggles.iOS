@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AppDelegate.instance.backToRoot()
   }
 
-  private func topMostViewController() -> UIViewController? {
+  func topMostViewController() -> UIViewController? {
     guard let root = window?.rootViewController else {
       return nil
     }
