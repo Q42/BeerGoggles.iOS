@@ -62,33 +62,34 @@ class LoadingController: UIViewController {
       upload(file: R.file.beerMenuJpg()!, guid: UUID())
       
     case .photo(let photo):
-      
-      let guid = UUID()
-      
-      let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        .first
-        .flatMap { URL(string: $0) }?
-        .appendingPathComponent("\(guid).jpg")
-      
-      guard let file = fileOptional,
-        let photoData = photo.fileDataRepresentation(),
-        let image = UIImage(data: photoData)
-        else {
-          return
+      DispatchQueue.global().async {
+        let guid = UUID()
+
+        let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+          .first
+          .flatMap { URL(string: $0) }?
+          .appendingPathComponent("\(guid).jpg")
+
+        guard let file = fileOptional,
+          let photoData = photo.fileDataRepresentation(),
+          let image = UIImage(data: photoData)
+          else {
+            return
+          }
+
+        let maxSize = 8 * 1024
+
+        let finalImageData: Data
+        if photoData.count > maxSize {
+          finalImageData = self.compress(image: image, maxFileSize: maxSize)
+        } else {
+          finalImageData = photoData
+        }
+
+        FileManager.default.createFile(atPath: file.absoluteString, contents: finalImageData, attributes: nil)
+
+        self.upload(file: URL(string: "file://\(file.absoluteString)")!, guid: guid)
       }
-      
-      let maxSize = 8 * 1024
-      
-      let finalImageData: Data
-      if photoData.count > maxSize {
-        finalImageData = compress(image: image, maxFileSize: maxSize)
-      } else {
-        finalImageData = photoData
-      }
-      
-      FileManager.default.createFile(atPath: file.absoluteString, contents: finalImageData, attributes: nil)
-      
-      upload(file: file, guid: guid)
 
     case .matches(let strings, let matches, let guid):
       ApiService.shared.magic(matches: strings)
