@@ -9,40 +9,19 @@
 import Foundation
 import Promissum
 
-enum ApiError: Error {
-  case notLoggedIn
-  case noResponse
-  case response(HTTPURLResponse)
-  case decoding(DecodingError)
-  case encoding(EncodingError)
-  case unknown(Error)
-  
-  var localizedDescription: String {
-    switch self {
-    case .notLoggedIn:
-      return "Not Logged In"
-    case .noResponse:
-      return "We didn't *burp* understand the menu you scanned."
-    case .response(let response):
-      return "We didn't *burp* understand the menu you scanned. (\(response.statusCode))"
-    case .decoding(let error):
-      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
-    case .encoding(let error):
-      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
-    case .unknown(let error):
-      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
-    }
-  }
-}
-
 class ApiService: NSObject {
   static let shared = ApiService()
 
   private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>)?
   private let session = URLSession(configuration: .default)
   private lazy var backgroundSession: URLSession = {
-    return URLSession(configuration: .background(withIdentifier: "io.harkema.BeerGoggles.background"), delegate: self, delegateQueue: nil)
+    let configuration = URLSessionConfiguration.background(withIdentifier: "io.harkema.BeerGoggles.background")
+    configuration.timeoutIntervalForRequest = 60 * 2
+    configuration.timeoutIntervalForResource = 60 * 2
+    return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
   }()
+
+  private var backgroundCompletionHandler: (() -> Void)?
 
   private let root = URL(string: "https://beer-goggles.herokuapp.com")!
 
@@ -82,6 +61,7 @@ class ApiService: NSObject {
     let promiseSource = PromiseSource<UploadJson, ApiError>()
     let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
     uploadTask.resume()
+
     pendingUpload = (uploadTask, promiseSource)
 
     return promiseSource.promise
@@ -98,7 +78,9 @@ class ApiService: NSObject {
       request.httpMethod = "POST"
       request.httpBody = try JSONEncoder().encode(matches)
       request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
+
       print(request.curlRequest ?? "")
+
       return session.codablePromise(type: [MatchesJson].self, request: request)
 
     } catch let error as EncodingError {
@@ -110,7 +92,16 @@ class ApiService: NSObject {
 
 }
 
-extension ApiService: URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
+extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
+
+  func handleFinishBackground(completionHandler: @escaping () -> Void) {
+    backgroundSession.getAllTasks { task in
+      print(task)
+    }
+
+    backgroundCompletionHandler = completionHandler
+  }
+
   func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
     guard let error = error else {
       return
@@ -125,11 +116,17 @@ extension ApiService: URLSessionDelegate, URLSessionTaskDelegate, URLSessionData
   }
   
   func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-  switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
+    switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
     case .value(let value):
       pendingUpload?.1.resolve(value)
     case .error(let error):
       pendingUpload?.1.reject(error)
+    }
+  }
+
+  func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+    DispatchQueue.main.async {
+      self.backgroundCompletionHandler?()
     }
   }
 }
@@ -182,11 +179,6 @@ extension URLRequest {
     return components.joined(separator: " ")
   }
 
-}
-
-enum ValueOrError<ValueType, ErrorType: Error> {
-  case value(ValueType)
-  case error(ErrorType)
 }
 
 extension URLSession {
@@ -248,5 +240,36 @@ extension URLSession {
     task.resume()
 
     return promiseSource.promise
+  }
+}
+
+enum ValueOrError<ValueType, ErrorType: Error> {
+  case value(ValueType)
+  case error(ErrorType)
+}
+
+enum ApiError: Error {
+  case notLoggedIn
+  case noResponse
+  case response(HTTPURLResponse)
+  case decoding(DecodingError)
+  case encoding(EncodingError)
+  case unknown(Error)
+
+  var localizedDescription: String {
+    switch self {
+    case .notLoggedIn:
+      return "Not Logged In"
+    case .noResponse:
+      return "We didn't *burp* understand the menu you scanned."
+    case .response(let response):
+      return "We didn't *burp* understand the menu you scanned. (\(response.statusCode))"
+    case .decoding(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    case .encoding(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    case .unknown(let error):
+      return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    }
   }
 }

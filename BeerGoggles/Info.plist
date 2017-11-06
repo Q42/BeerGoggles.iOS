@@ -47,10 +47,14 @@
 	</dict>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>untappd</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>We use your camera to scan the bar&apos;s menu. It&apos;s like goggles, but then much *burp* smarter.</string>
+	<string>We use your camera to scan the bar's menu. It's like goggles, but then much *burp* smarter.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Futura.ttc</string>

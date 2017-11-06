@@ -84,7 +84,13 @@ class BeerResultOverviewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bier = beer(for: indexPath)
-    UIApplication.shared.open(URL(string: "untappd://beer/\(bier.bid ?? 0)")!, options: [:], completionHandler: nil)
+
+    if let schemaUrl = URL(string: "untappd://beer/\(bier.bid ?? 0)"),
+      UIApplication.shared.canOpenURL(schemaUrl) {
+      UIApplication.shared.open(schemaUrl, options: [:], completionHandler: nil)
+    } else {
+      UIApplication.shared.open(URL(string: "https://untappd.com/beer/\(bier.bid ?? 0)")!, options: [:], completionHandler: nil)
+    }
   }
 
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
