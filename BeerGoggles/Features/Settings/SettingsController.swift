@@ -31,7 +31,7 @@ class SettingsController: UIViewController {
   }
 
   @IBAction func logoutPressed(_ sender: Any) {
-    ApiService.shared.logout()
+    App.apiService.logout()
     AppDelegate.instance.backToRoot()
   }
 

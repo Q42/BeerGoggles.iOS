@@ -45,21 +45,20 @@ class BeerCaptureOverviewController: UIViewController {
     let strings = (tableView.indexPathsForSelectedRows ?? []).map {
       self.result.possibles[$0.row]
     }
-
-    let controller: UIViewController
+    let matches = result.matches
     if strings.isEmpty {
-      if result.matches.isEmpty {
-        controller = BeerEmptyController()
-      } else {
-        let tapped = result.matches.filter { $0.user_rating != nil }.map { $0.beer }
-        let untapped = result.matches.filter { $0.user_rating == nil }.map { $0.beer }
-        controller = BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
-      }
+      navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, guid: guid), animated: true)
     } else {
-      controller = LoadingController(request: .matches(strings: strings, matches: result.matches, guid: guid))
+      App.imageService.magic(strings: strings, matches: result.matches, guid: guid)
+        .map { (newMatches, guid) in (Array([matches, newMatches].joined()), guid) }
+        .presentLoader(for: self, handler: { (matches, guid)  in
+          BeerResultCoordinator.controller(for: matches, guid: guid)
+        })
+        .attachError(for: self, handler: { [weak self] (controller) in
+          controller.navigationController?.popViewController(animated: true)
+          self?.nextPressed(sender)
+        })
     }
-
-    navigationController?.pushViewController(controller, animated: true)
   }
 }
 

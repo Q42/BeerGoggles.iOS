@@ -84,6 +84,9 @@
 		FF23926A1FACE481001D432A /* Moving Talking Head_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392421FACE480001D432A /* Moving Talking Head_00022.png */; };
 		FF23926B1FACE481001D432A /* Moving Talking Head_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2392431FACE480001D432A /* Moving Talking Head_00036.png */; };
 		FF23926D1FACE4A9001D432A /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23926C1FACE4A9001D432A /* AnimationView.swift */; };
+		FF33FEF51FB4F07D00C322F8 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF41FB4F07D00C322F8 /* ImageService.swift */; };
+		FF33FEF71FB4F4BA00C322F8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF61FB4F4BA00C322F8 /* App.swift */; };
+		FF33FEF91FB4F8E900C322F8 /* BeerResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */; };
 		FF4B910D1FADDC0A00C8375C /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B910C1FADDC0A00C8375C /* ErrorController.swift */; };
 		FF4B910F1FADDC2200C8375C /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4B910E1FADDC2200C8375C /* ErrorView.xib */; };
 		FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */; };
@@ -220,6 +223,9 @@
 		FF2392421FACE480001D432A /* Moving Talking Head_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00022.png"; sourceTree = "<group>"; };
 		FF2392431FACE480001D432A /* Moving Talking Head_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00036.png"; sourceTree = "<group>"; };
 		FF23926C1FACE4A9001D432A /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		FF33FEF41FB4F07D00C322F8 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		FF33FEF61FB4F4BA00C322F8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultCoordinator.swift; sourceTree = "<group>"; };
 		FF4B910C1FADDC0A00C8375C /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 		FF4B910E1FADDC2200C8375C /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultOverviewController.swift; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 				FF2391D11FAC60CB001D432A /* Services */,
 				FF2391BC1FAC5F45001D432A /* AppDelegate.swift */,
 				FF23920C1FACB185001D432A /* R.generated.swift */,
+				FF33FEF61FB4F4BA00C322F8 /* App.swift */,
 				FF2391C61FAC5F45001D432A /* Assets.xcassets */,
 				FF2391C81FAC5F45001D432A /* LaunchScreen.storyboard */,
 				FF2391CB1FAC5F45001D432A /* Info.plist */,
@@ -343,6 +350,8 @@
 				FF2391D21FAC60D8001D432A /* ApiService.swift */,
 				FF2391D41FAC6278001D432A /* Model.swift */,
 				FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */,
+				FF33FEF41FB4F07D00C322F8 /* ImageService.swift */,
+				FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -844,6 +853,8 @@
 				FF23920A1FACAF9C001D432A /* Fonts.swift in Sources */,
 				FFB7A2851FACFCD7003B2FBE /* BeerResultCell.swift in Sources */,
 				FF2391EB1FAC9617001D432A /* SettingsController.swift in Sources */,
+				FF33FEF91FB4F8E900C322F8 /* BeerResultCoordinator.swift in Sources */,
+				FF33FEF71FB4F4BA00C322F8 /* App.swift in Sources */,
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
@@ -857,6 +868,7 @@
 				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
+				FF33FEF51FB4F07D00C322F8 /* ImageService.swift in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
 				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
 				FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */,

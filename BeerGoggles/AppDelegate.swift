@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func backToRoot() {
 
     let controller: UIViewController
-    if !ApiService.shared.isLoggedIn() {
+    if !App.apiService.isLoggedIn() {
       controller = LoginController()
     } else if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
       controller = AuthorizationController()
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
     print(identifier)
-    ApiService.shared.handleFinishBackground(completionHandler: completionHandler)
+    App.apiService.handleFinishBackground(completionHandler: completionHandler)
   }
 
   // MARK: - Handle URL
@@ -89,7 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return
       }
 
-    ApiService.shared.login(with: accessToken)
+    App.apiService.login(with: accessToken)
+    
     guard let safariViewController = topMostViewController() as? SFSafariViewController else {
       return
     }

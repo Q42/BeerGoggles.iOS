@@ -29,11 +29,15 @@ class LoginController: UIViewController {
   }
 
   @IBAction func loginPressed(_ sender: Any) {
-    ApiService.shared.auth().then { [weak self] result in
-      self?.openLogin(url: result.url)
-    }.trap {
-      print($0)
-    }
+    App.apiService.auth()
+      .presentLoader(for: self, handler: { (auth) -> UIViewController in
+        SFSafariViewController(url: auth.url)
+      })
+      .mapError()
+      .attachError(for: self, handler: { [weak self] (error) in
+        error.dismiss()
+        self?.loginPressed(sender)
+      })
   }
 
   private func openLogin(url: URL) {

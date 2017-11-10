@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import Promissum
 
 class CameraController: UIViewController {
 
@@ -92,9 +93,9 @@ class CameraController: UIViewController {
     return .lightContent
   }
 
-  @IBAction func didPressCapture(_ sender: Any) {
+  @IBAction private func didPressCapture(_ sender: Any) {
     #if (arch(i386) || arch(x86_64)) && os(iOS)
-      navigationController?.pushViewController(LoadingController(request: .simulate), animated: true)
+      simulateImage()
     #else
       captureButton.isHidden = true
       let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])
@@ -105,11 +106,32 @@ class CameraController: UIViewController {
       captureButton.isHidden = true
     #endif
   }
+
+  private func simulateImage() {
+    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID()))
+  }
+
+  private func upload(photo: AVCapturePhoto) {
+    handle(promise: App.imageService.upload(photo: photo))
+  }
+
+  private func handle(promise: Promise<(UploadJson, UUID), Error>) {
+    promise.presentLoader(for: self, handler: { (result, guid) in
+      BeerResultCoordinator.controller(for: result, guid: guid)
+    })
+      .attachError(for: self, handler: { [weak self, navigationController] (controller) in
+        print("ERROR HANDLED")
+        navigationController?.popViewController(animated: true)
+        //TODO: fix
+        self?.simulateImage()
+      })
+  }
+
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
   func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-    navigationController?.pushViewController(LoadingController(request: .photo(photo: photo)), animated: true)
+    upload(photo: photo)
     captureButton.isHidden = false
   }
 }

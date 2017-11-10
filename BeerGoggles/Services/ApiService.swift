@@ -10,7 +10,6 @@ import Foundation
 import Promissum
 
 class ApiService: NSObject {
-  static let shared = ApiService()
 
   private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>)?
   private let session = URLSession(configuration: .default)
