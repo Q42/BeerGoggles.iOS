@@ -69,8 +69,9 @@ extension Promise {
         navigationController.setViewControllers(controllers, animated: true)
 
       } else {
-        loadingController?.dismiss(animated: true, completion: nil)
-        controller.present(handler(result), animated: true, completion: nil)
+        loadingController?.dismiss(animated: true) {
+          controller.present(handler(result), animated: true, completion: nil)
+        }
       }
     }.trap { [weak loadingController] _ in
       if let navigationController = controller.navigationController {
