@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B2A6BE18069C3DC38C46021 /* Pods_BeerGoggles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */; };
+		948E3D5DAAEB0FA78E861E93 /* Pods_Uncheckd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A624C2E081F0F3DB4BB16DD9 /* Pods_Uncheckd.framework */; };
 		C30BB76C1FB72674008B2A5D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */; };
 		C30BB76E1FB73A7D008B2A5D /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */; };
 		C30BB7701FB73A85008B2A5D /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76F1FB73A85008B2A5D /* SessionCell.swift */; };
@@ -146,7 +147,10 @@
 /* Begin PBXFileReference section */
 		692CCE5406932C882910978F /* Pods-BeerGoggles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.debug.xcconfig"; sourceTree = "<group>"; };
 		78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerGoggles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F5F20C7CB9F8A37428D9DBC /* Pods-Uncheckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uncheckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd.debug.xcconfig"; sourceTree = "<group>"; };
 		99C20C9E01C5FF87AECB6A2C /* Pods-BeerGoggles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.release.xcconfig"; sourceTree = "<group>"; };
+		A624C2E081F0F3DB4BB16DD9 /* Pods_Uncheckd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uncheckd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB03DBA658D5AC91AE70EFFB /* Pods-Uncheckd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uncheckd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd.release.xcconfig"; sourceTree = "<group>"; };
 		C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
 		C30BB76F1FB73A85008B2A5D /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B2A6BE18069C3DC38C46021 /* Pods_BeerGoggles.framework in Frameworks */,
+				948E3D5DAAEB0FA78E861E93 /* Pods_Uncheckd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */,
+				A624C2E081F0F3DB4BB16DD9 /* Pods_Uncheckd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -309,6 +315,8 @@
 			children = (
 				692CCE5406932C882910978F /* Pods-BeerGoggles.debug.xcconfig */,
 				99C20C9E01C5FF87AECB6A2C /* Pods-BeerGoggles.release.xcconfig */,
+				7F5F20C7CB9F8A37428D9DBC /* Pods-Uncheckd.debug.xcconfig */,
+				BB03DBA658D5AC91AE70EFFB /* Pods-Uncheckd.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -782,7 +790,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A84FA98D8FC0184172B3B5BD /* [CP] Check Pods Manifest.lock */ = {
@@ -796,7 +804,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BeerGoggles-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Uncheckd-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -809,20 +817,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CancellationToken/CancellationToken.framework",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CancellationToken.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF23920B1FACB12B001D432A /* ShellScript */ = {
@@ -1017,7 +1027,7 @@
 		};
 		FF2391CF1FAC5F45001D432A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 692CCE5406932C882910978F /* Pods-BeerGoggles.debug.xcconfig */;
+			baseConfigurationReference = 7F5F20C7CB9F8A37428D9DBC /* Pods-Uncheckd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1034,7 +1044,7 @@
 		};
 		FF2391D01FAC5F45001D432A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99C20C9E01C5FF87AECB6A2C /* Pods-BeerGoggles.release.xcconfig */;
+			baseConfigurationReference = BB03DBA658D5AC91AE70EFFB /* Pods-Uncheckd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

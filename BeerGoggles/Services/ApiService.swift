@@ -8,12 +8,20 @@
 
 import Foundation
 import Promissum
+import CancellationToken
 
 class ApiService: NSObject {
 
+  struct PendingUpload {
+    let task: URLSessionUploadTask
+    let promiseSource: PromiseSource<UploadJson, ApiError>
+    let progressHandler: ProgressHandler?
+  }
+
   typealias ProgressHandler = (Float) -> Void
   
-  private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>, ProgressHandler?)?
+  private var pendingUpload: PendingUpload?
+
   private let session = URLSession(configuration: .default)
   private lazy var backgroundSession: URLSession = {
     let configuration = URLSessionConfiguration.background(withIdentifier: "io.harkema.BeerGoggles.background")
@@ -28,10 +36,10 @@ class ApiService: NSObject {
   private let root = URL(string: "https://beer-goggles.herokuapp.com")!
 
   func auth() -> Promise<AuthenticateJson, ApiError> {
-    return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")))
+    return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")), cancellationToken: nil)
   }
   
-  func upload(photo: URL, progressHandler: ProgressHandler?) -> (_ token: AuthenticationToken) -> Promise<UploadJson, ApiError> {
+  func upload(photo: URL, cancellationToken: CancellationToken?, progressHandler: ProgressHandler?) -> (_ token: AuthenticationToken) -> Promise<UploadJson, ApiError> {
     return { [root, backgroundSession] token in
       let url = root.appendingPathComponent("/magic")
       var request = URLRequest(url: url)
@@ -43,13 +51,17 @@ class ApiService: NSObject {
       let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
       uploadTask.resume()
 
-      self.pendingUpload = (uploadTask, promiseSource, progressHandler)
+      cancellationToken?.register {
+        uploadTask.cancel()
+      }
+
+      self.pendingUpload = PendingUpload(task: uploadTask, promiseSource: promiseSource, progressHandler: progressHandler)
 
       return promiseSource.promise
     }
   }
 
-  func magic(matches: [String]) -> (_ token: AuthenticationToken) -> Promise<[MatchesJson], ApiError> {
+  func magic(matches: [String], cancellationToken: CancellationToken?) -> (_ token: AuthenticationToken) -> Promise<[MatchesJson], ApiError> {
     return { [root, session] token in
       do {
         let url = root.appendingPathComponent("/magic/check")
@@ -60,7 +72,7 @@ class ApiService: NSObject {
   
         print(request.curlRequest ?? "")
   
-        return session.codablePromise(type: [MatchesJson].self, request: request)
+        return session.codablePromise(type: [MatchesJson].self, request: request, cancellationToken: cancellationToken)
   
       } catch let error as EncodingError {
         return Promise(error: .encoding(error))
@@ -83,19 +95,24 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
   }
 
   func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-    pendingUpload?.2?(Float(totalBytesSent)/Float(totalBytesExpectedToSend))
+    pendingUpload?.progressHandler?(Float(totalBytesSent)/Float(totalBytesExpectedToSend))
   }
   
   func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
     guard let error = error else {
       return
     }
-    
+
+    if let httpError = error as? URLError, httpError.code == URLError.cancelled {
+      pendingUpload?.promiseSource.reject(.cancelled)
+      return
+    }
+
     switch backgroundSession.decodeInput(type: UploadJson.self, data: nil, response: task.response, error: error) {
     case .value(let value):
-      pendingUpload?.1.resolve(value)
+      pendingUpload?.promiseSource.resolve(value)
     case .error(let error):
-      pendingUpload?.1.reject(error)
+      pendingUpload?.promiseSource.reject(error)
     }
     
     pendingUpload = nil
@@ -104,9 +121,9 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
   func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
     switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
     case .value(let value):
-      pendingUpload?.1.resolve(value)
+      pendingUpload?.promiseSource.resolve(value)
     case .error(let error):
-      pendingUpload?.1.reject(error)
+      pendingUpload?.promiseSource.reject(error)
     }
     
     pendingUpload = nil
@@ -196,7 +213,7 @@ extension URLSession {
     }
   }
 
-  func codablePromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest) -> Promise<ResultType, ApiError> {
+  func codablePromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest, cancellationToken: CancellationToken?) -> Promise<ResultType, ApiError> {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = dataTask(with: request) { (data, response, error) in
@@ -208,11 +225,13 @@ extension URLSession {
       }
     }
     task.resume()
-
+    cancellationToken?.register {
+      task.cancel()
+    }
     return promiseSource.promise
   }
 
-  func codableUploadPromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest, fromFile: URL) -> Promise<ResultType, ApiError> {
+  func codableUploadPromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest, fromFile: URL, cancellationToken: CancellationToken?) -> Promise<ResultType, ApiError> {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
@@ -224,6 +243,10 @@ extension URLSession {
       }
     }
     task.resume()
+
+    cancellationToken?.register {
+      task.cancel()
+    }
 
     return promiseSource.promise
   }
@@ -241,6 +264,7 @@ enum ApiError: Error {
   case decoding(DecodingError)
   case encoding(EncodingError)
   case unknown(Error)
+  case cancelled
 
   var localizedDescription: String {
     switch self {
@@ -256,6 +280,8 @@ enum ApiError: Error {
       return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
     case .unknown(let error):
       return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
+    case .cancelled:
+      return "Operation Cancelled"
     }
   }
 }

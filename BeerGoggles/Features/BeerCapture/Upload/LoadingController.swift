@@ -9,11 +9,16 @@
 import UIKit
 import Promissum
 import AVKit
+import CancellationToken
 
 final class LoadingController: UIViewController {
+
+  private let cancellationTokenSource: CancellationTokenSource
+
   @IBOutlet weak private var loadingAnimationView: UIImageView!
 
-  init() {
+  init(cancellationTokenSource: CancellationTokenSource) {
+    self.cancellationTokenSource = cancellationTokenSource
     super.init(nibName: R.nib.loadingView.name, bundle: R.nib.loadingView.bundle)
   }
 
@@ -30,6 +35,11 @@ final class LoadingController: UIViewController {
     super.viewWillAppear(animated)
 
     animate()
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    cancellationTokenSource.cancel()
   }
 
   private func animate() {
@@ -50,9 +60,9 @@ final class LoadingController: UIViewController {
 }
 
 extension Promise {
-  func presentLoader(for controller: UIViewController, handler: @escaping (Value) -> UIViewController) -> Promise<Value, Error> {
+  func presentLoader(for controller: UIViewController, cancellationTokenSource: CancellationTokenSource, handler: @escaping (Value) -> UIViewController) -> Promise<Value, Error> {
 
-    let loadingController = LoadingController()
+    let loadingController = LoadingController(cancellationTokenSource: cancellationTokenSource)
 
     if let navigationController = controller.navigationController {
       navigationController.pushViewController(loadingController, animated: true)
@@ -61,6 +71,10 @@ extension Promise {
     }
 
     return self.delay(1).then { [weak loadingController] result in
+      if cancellationTokenSource.token.isCancellationRequested {
+        return
+      }
+
       if let navigationController = controller.navigationController {
         let index = navigationController.viewControllers.index { $0 is LoadingController } ?? 0
 
@@ -74,6 +88,10 @@ extension Promise {
         }
       }
     }.trap { [weak loadingController] _ in
+      if cancellationTokenSource.token.isCancellationRequested {
+        return
+      }
+      
       if let navigationController = controller.navigationController {
 //        navigationController.popViewController(animated: true)
       } else {

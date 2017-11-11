@@ -9,6 +9,7 @@
 import Foundation
 import Promissum
 import AVKit
+import CancellationToken
 
 class ImageService {
 
@@ -83,21 +84,21 @@ class ImageService {
     })
   }
 
-  func upload(photo: AVCapturePhoto, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
+  func upload(photo: AVCapturePhoto, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
     let guid = UUID()
     return conform(photo: photo)
       .flatMap { self.save(data: $0, fileName: guid.uuidString) }
-      .flatMap { self.upload(file: $0, guid: guid, progressHandler: progressHandler) }
+      .flatMap { self.upload(file: $0, guid: guid, cancellationToken: cancellationToken, progressHandler: progressHandler) }
   }
 
-  func upload(file: URL, guid: UUID, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
+  func upload(file: URL, guid: UUID, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
     pendingGUID = guid
     return promisify({ try Data(contentsOf: file) })
       .flatMap {
         self.save(data: $0, fileName: guid.uuidString)
       }
       .flatMap { [authenticationService, apiService] (url: URL) -> Promise<UploadJson, Error> in
-        authenticationService.wrapAuthenticate(apiService.upload(photo: url, progressHandler: progressHandler)).mapError()
+        authenticationService.wrapAuthenticate(apiService.upload(photo: url, cancellationToken: cancellationToken, progressHandler: progressHandler)).mapError()
       }
       .flatMap { [databaseService] (result: UploadJson) -> Promise<(UploadJson, UUID), Error> in
         databaseService.save(beers: result.matches.map({ $0.beer }), image: guid)
@@ -110,7 +111,7 @@ class ImageService {
 
   //TODO: find a better place for this
   func magic(strings: [String], matches: [MatchesJson], guid: UUID) -> Promise<([MatchesJson], UUID), Error> {
-    return authenticationService.wrapAuthenticate(apiService.magic(matches: strings))
+    return authenticationService.wrapAuthenticate(apiService.magic(matches: strings, cancellationToken: nil))
       .mapError()
       .flatMap { [databaseService] (result: [MatchesJson]) -> Promise<([MatchesJson], UUID), Error> in
         databaseService.add(beers: result.map({ $0.beer }), id: guid)

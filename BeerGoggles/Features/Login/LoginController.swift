@@ -8,8 +8,11 @@
 
 import UIKit
 import SafariServices
+import CancellationToken
 
 class LoginController: UIViewController {
+
+  private var cancellationTokenSource: CancellationTokenSource!
 
   init() {
     super.init(nibName: "LoginView", bundle: nil)
@@ -29,8 +32,11 @@ class LoginController: UIViewController {
   }
 
   @IBAction func loginPressed(_ sender: Any) {
+
+    cancellationTokenSource = CancellationTokenSource()
+
     App.authenticationService.auth()
-      .presentLoader(for: self, handler: { (auth) -> UIViewController in
+      .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (auth) -> UIViewController in
         SFSafariViewController(url: auth.url)
       })
       .mapError()

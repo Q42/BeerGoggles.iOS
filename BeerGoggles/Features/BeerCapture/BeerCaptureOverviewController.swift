@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CancellationToken
 
 class BeerCaptureOverviewController: UIViewController {
 
   private let result: UploadJson
   private let guid: UUID
+  private var cancellationTokenSource: CancellationTokenSource!
 
   @IBOutlet weak private var tableView: UITableView!
 
@@ -51,10 +53,11 @@ class BeerCaptureOverviewController: UIViewController {
     if strings.isEmpty {
       navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, guid: guid), animated: true)
     } else {
+      cancellationTokenSource = CancellationTokenSource()
       App.databaseService.add(possibles: strings, id: guid)
         .flatMap { [result, guid] in App.imageService.magic(strings: strings, matches: result.matches, guid: guid) }
         .map { (newMatches, guid) in (Array([matches, newMatches].joined()), guid) }
-        .presentLoader(for: self, handler: { (matches, guid)  in
+        .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (matches, guid)  in
           BeerResultCoordinator.controller(for: matches, guid: guid)
         })
         .attachError(for: self, handler: { [weak self] (controller) in

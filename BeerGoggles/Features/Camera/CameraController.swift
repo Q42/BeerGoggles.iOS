@@ -9,12 +9,15 @@
 import UIKit
 import AVKit
 import Promissum
+import CancellationToken
 
 class CameraController: UIViewController {
 
   private var session: AVCaptureSession?
   private var stillImageOutput: AVCapturePhotoOutput?
   private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+
+  private var cancellationTokenSource: CancellationTokenSource!
   
   @IBOutlet weak private var captureButton: UIButton!
   @IBOutlet weak private var captureView: UIView!
@@ -108,19 +111,21 @@ class CameraController: UIViewController {
   }
 
   private func simulateImage() {
-    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID(), progressHandler: { print($0) }), retry: { [weak self] in
+    cancellationTokenSource = CancellationTokenSource()
+    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
       self?.simulateImage()
     })
   }
 
   private func upload(photo: AVCapturePhoto) {
-    handle(promise: App.imageService.upload(photo: photo, progressHandler: { print($0) }), retry: { [weak self] in
+    cancellationTokenSource = CancellationTokenSource()
+    handle(promise: App.imageService.upload(photo: photo, cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
       self?.upload(photo: photo)
     })
   }
 
   private func handle(promise: Promise<(UploadJson, UUID), Error>, retry: @escaping () -> Void) {
-    promise.presentLoader(for: self, handler: { (result, guid) in
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, guid) in
       BeerResultCoordinator.controller(for: result, guid: guid)
     }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
       print("ERROR HANDLED")

@@ -1,4 +1,7 @@
 PODS:
+  - CancellationToken (2.0.1):
+    - CancellationToken/Core (= 2.0.1)
+  - CancellationToken/Core (2.0.1)
   - Crashlytics (3.9.0):
     - Fabric (~> 1.7.0)
   - Fabric (1.7.1)
@@ -11,6 +14,7 @@ PODS:
   - Valet (2.4.2)
 
 DEPENDENCIES:
+  - CancellationToken
   - Crashlytics
   - Fabric
   - Promissum (from `https://github.com/tomlokhorst/Promissum`, branch `develop`)
@@ -28,6 +32,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tomlokhorst/Promissum
 
 SPEC CHECKSUMS:
+  CancellationToken: 3ec68e4bb81b0b50c85b35c9dfebc52a430d449c
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: c7cfc652f036180a72fe2539646c8a624420419d
   Promissum: 8ecfdfb9129f053a74aa5fd8fda67b3534d356c8
@@ -35,6 +40,6 @@ SPEC CHECKSUMS:
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
 
-PODFILE CHECKSUM: f62cd53d9e632cc01fe1b43f22d96029a54ca4f5
+PODFILE CHECKSUM: f9194de959a44d80f6937451a9dff2b533fa11c9
 
 COCOAPODS: 1.3.1
