@@ -22,6 +22,7 @@ class ApiService: NSObject {
 
   private var backgroundCompletionHandler: (() -> Void)?
 
+  // private let root = URL(string: "https://api.uncheckd.com")!
   private let root = URL(string: "https://beer-goggles.herokuapp.com")!
 
   private let loginTokenKey = "loginTokenKey"
@@ -262,7 +263,7 @@ enum ApiError: Error {
     case .noResponse:
       return "We didn't *burp* understand the menu you scanned."
     case .response(let response):
-      return "We didn't *burp* understand the menu you scanned. (\(response.statusCode))"
+      return "We didn't *burp* understand the menu you scanned. (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))"
     case .decoding(let error):
       return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
     case .encoding(let error):

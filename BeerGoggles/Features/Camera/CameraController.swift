@@ -108,23 +108,25 @@ class CameraController: UIViewController {
   }
 
   private func simulateImage() {
-    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID()))
+    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID()), retry: { [weak self] in
+      self?.simulateImage()
+    })
   }
 
   private func upload(photo: AVCapturePhoto) {
-    handle(promise: App.imageService.upload(photo: photo))
+    handle(promise: App.imageService.upload(photo: photo), retry: { [weak self] in
+      self?.upload(photo: photo)
+    })
   }
 
-  private func handle(promise: Promise<(UploadJson, UUID), Error>) {
+  private func handle(promise: Promise<(UploadJson, UUID), Error>, retry: @escaping () -> Void) {
     promise.presentLoader(for: self, handler: { (result, guid) in
       BeerResultCoordinator.controller(for: result, guid: guid)
+    }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
+      print("ERROR HANDLED")
+      navigationController?.popViewController(animated: true)
+      retry()
     })
-      .attachError(for: self, handler: { [weak self, navigationController] (controller) in
-        print("ERROR HANDLED")
-        navigationController?.popViewController(animated: true)
-        //TODO: fix
-        self?.simulateImage()
-      })
   }
 
 }
