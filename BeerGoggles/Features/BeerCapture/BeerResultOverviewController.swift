@@ -34,6 +34,8 @@ class BeerResultOverviewController: UITableViewController {
     tableView.register(R.nib.beerResultCell)
     tableView.backgroundColor = Colors.backgroundColor
     tableView.rowHeight = 105
+    tableView.separatorStyle = .singleLine
+    tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {

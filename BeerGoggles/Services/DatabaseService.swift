@@ -66,7 +66,8 @@ class DatabaseService {
       match.beers = Set(beerModels) as NSSet
       match.captureDate = Date()
       match.imageGuid = image
-
+      match.possibles = []
+      
       do {
         try ctx.save()
       } catch {
@@ -79,6 +80,27 @@ class DatabaseService {
     return promiseSource.promise
   }
 
+  func add(possibles: [String], id: UUID) -> Promise<Void, Error> {
+    let promiseSource = PromiseSource<Void, Error>()
+    
+    persistentContainer.performBackgroundTask { ctx in
+      do {
+        let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), id.uuidString)
+        
+        if let result = try ctx.fetch(request).first {
+          result.possibles = possibles as NSArray
+        }
+        
+        try ctx.save()
+        return promiseSource.resolve(())
+      } catch {
+        return promiseSource.reject(error)
+      }
+    }
+    return promiseSource.promise
+  }
+  
   func add(beers: [BeerJson], id: UUID) -> Promise<Void, Error> {
     let promiseSource = PromiseSource<Void, Error>()
 

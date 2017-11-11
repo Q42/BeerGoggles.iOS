@@ -10,11 +10,8 @@ import UIKit
 
 class SessionsController: UITableViewController {
 
-  private var sessions: [Session] = [] {
-    didSet {
-      tableView?.reloadData()
-    }
-  }
+  private var sessions: [Session] = []
+  private var emptySessions: [Session] = []
 
   init() {
     super.init(style: .plain)
@@ -26,14 +23,25 @@ class SessionsController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.backgroundColor = Colors.backgroundColor
-    tableView.rowHeight = 65
+    tableView.rowHeight = 70
+    tableView.register(R.nib.sessionCell)
+    tableView.separatorStyle = .singleLine
+    tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    DatabaseService.shared.sessions().then { [weak self] sessions in
-      self?.sessions = sessions
+    DatabaseService.shared.sessions().then { [weak self, tableView] sessions in
+      self?.sessions = sessions.filter {
+        !$0.beers.isEmpty
+      }
+      
+      self?.emptySessions = sessions.filter {
+        $0.beers.isEmpty
+      }
+      
+      tableView?.reloadData()
     }.trap {
       print($0)
     }
@@ -44,41 +52,29 @@ class SessionsController: UITableViewController {
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sessions.count
+    return section == 0 ? sessions.count : emptySessions.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") ?? UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "DefaultCell")
-
-    let session = sessions[indexPath.row]
-    cell.textLabel?.text = "\(session.captureDate)"
-    cell.textLabel?.textColor = .white
-    cell.textLabel?.font = Fonts.futuraMedium(with: 18)
-    cell.backgroundColor = Colors.backgroundColor
-
-    let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-      .first
-      .flatMap { URL(string: $0) }?
-      .appendingPathComponent("\(session.imageGuid).jpg")
-
-    DispatchQueue.global().async {
-      if let file = fileOptional {
-        let data = FileManager.default.contents(atPath: file.absoluteString)
-        let image = data.flatMap { UIImage(data: $0) }
-        DispatchQueue.main.async {
-          cell.imageView?.image = image
-        }
-      }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.sessionCell, for: indexPath) else {
+      return UITableViewCell()
     }
+
+    let session = indexPath.section == 0 ? sessions[indexPath.row] : emptySessions[indexPath.row]
+    cell.session = session
     return cell
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let controller = BeerResultOverviewController(result: .beers(beers: sessions[indexPath.row].beers))
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return section == 0 ? "Previous scans" : "No results"
   }
 }

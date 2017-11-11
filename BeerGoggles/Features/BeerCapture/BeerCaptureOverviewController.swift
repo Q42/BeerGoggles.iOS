@@ -38,6 +38,8 @@ class BeerCaptureOverviewController: UIViewController {
     tableView.rowHeight = 70
     tableView.allowsSelection = true
     tableView.allowsMultipleSelection = true
+    tableView.separatorStyle = .singleLine
+    tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
   }
 
   @IBAction func nextPressed(_ sender: Any) {
@@ -49,7 +51,8 @@ class BeerCaptureOverviewController: UIViewController {
     if strings.isEmpty {
       navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, guid: guid), animated: true)
     } else {
-      App.imageService.magic(strings: strings, matches: result.matches, guid: guid)
+      App.databaseService.add(possibles: strings, id: guid)
+        .flatMap { [result, guid] in App.imageService.magic(strings: strings, matches: result.matches, guid: guid) }
         .map { (newMatches, guid) in (Array([matches, newMatches].joined()), guid) }
         .presentLoader(for: self, handler: { (matches, guid)  in
           BeerResultCoordinator.controller(for: matches, guid: guid)

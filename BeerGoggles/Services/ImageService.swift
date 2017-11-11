@@ -15,6 +15,7 @@ class ImageService {
   private let apiService: ApiService
   private let databaseService: DatabaseService
   private let authenticationService: AuthenticationService
+  private let pendingHandleKey = "pendingHandleKey"
   
   init(apiService: ApiService, databaseService: DatabaseService, authenticationService: AuthenticationService) {
     self.apiService = apiService
@@ -22,6 +23,15 @@ class ImageService {
     self.authenticationService = authenticationService
   }
 
+  var pendingGUID: UUID? {
+    set {
+      UserDefaults.standard.set(pendingGUID?.uuidString, forKey: pendingHandleKey)
+    }
+    get {
+      return UserDefaults.standard.string(forKey: pendingHandleKey).flatMap { UUID(uuidString: $0) }
+    }
+  }
+  
   private func compress(image: UIImage, maxFileSize: Int) -> Data {
     var compression = 1.0
     let maxCompression = 0.1
@@ -81,6 +91,7 @@ class ImageService {
   }
 
   func upload(file: URL, guid: UUID, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
+    pendingGUID = guid
     return promisify({ try Data(contentsOf: file) })
       .flatMap {
         self.save(data: $0, fileName: guid.uuidString)
@@ -91,6 +102,9 @@ class ImageService {
       .flatMap { [databaseService] (result: UploadJson) -> Promise<(UploadJson, UUID), Error> in
         databaseService.save(beers: result.matches.map({ $0.beer }), image: guid)
           .map { _ in (result, guid) }
+      }
+      .finally {
+        self.pendingGUID = nil
       }
   }
 
