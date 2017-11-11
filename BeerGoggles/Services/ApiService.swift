@@ -12,6 +12,9 @@ import CancellationToken
 
 class ApiService: NSObject {
 
+  //   private let root = URL(string: "https://api.uncheckd.com")!
+  private let root = URL(string: "https://beer-goggles.herokuapp.com")!
+
   struct PendingUpload {
     let task: URLSessionUploadTask
     let promiseSource: PromiseSource<UploadJson, ApiError>
@@ -32,14 +35,18 @@ class ApiService: NSObject {
 
   private var backgroundCompletionHandler: (() -> Void)?
 
-//   private let root = URL(string: "https://api.uncheckd.com")!
-  private let root = URL(string: "https://beer-goggles.herokuapp.com")!
-
   func auth() -> Promise<AuthenticateJson, ApiError> {
-    return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")), cancellationToken: nil)
+    return session.codablePromise(type: AuthenticateJson.self,
+                                  request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")),
+                                  cancellationToken: nil)
   }
   
-  func upload(photo: URL, cancellationToken: CancellationToken?, progressHandler: ProgressHandler?) -> (_ token: AuthenticationToken) -> Promise<UploadJson, ApiError> {
+  func upload(photo: URL,
+              cancellationToken: CancellationToken?,
+              progressHandler: ProgressHandler?)
+    -> (_ token: AuthenticationToken)
+    -> Promise<UploadJson, ApiError> {
+
     return { [root, backgroundSession] token in
       let url = root.appendingPathComponent("/magic")
       var request = URLRequest(url: url)
@@ -55,13 +62,18 @@ class ApiService: NSObject {
         uploadTask.cancel()
       }
 
-      self.pendingUpload = PendingUpload(task: uploadTask, promiseSource: promiseSource, progressHandler: progressHandler)
+      self.pendingUpload = PendingUpload(task: uploadTask,
+                                         promiseSource: promiseSource,
+                                         progressHandler: progressHandler)
 
       return promiseSource.promise
     }
   }
 
-  func magic(matches: [String], cancellationToken: CancellationToken?) -> (_ token: AuthenticationToken) -> Promise<[MatchesJson], ApiError> {
+  func magic(matches: [String], cancellationToken: CancellationToken?)
+    -> (_ token: AuthenticationToken)
+    -> Promise<[MatchesJson], ApiError> {
+
     return { [root, session] token in
       do {
         let url = root.appendingPathComponent("/magic/check")
@@ -72,7 +84,9 @@ class ApiService: NSObject {
   
         print(request.curlRequest ?? "")
   
-        return session.codablePromise(type: [MatchesJson].self, request: request, cancellationToken: cancellationToken)
+        return session.codablePromise(type: [MatchesJson].self,
+                                      request: request,
+                                      cancellationToken: cancellationToken)
   
       } catch let error as EncodingError {
         return Promise(error: .encoding(error))
@@ -87,28 +101,35 @@ class ApiService: NSObject {
 extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
 
   func handleFinishBackground(completionHandler: @escaping () -> Void) {
-//    backgroundSession.getAllTasks { task in
-//      print(task)
-//    }
-
     backgroundCompletionHandler = completionHandler
   }
 
-  func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-    pendingUpload?.progressHandler?(Float(totalBytesSent)/Float(totalBytesExpectedToSend))
+  func urlSession(_ session: URLSession,
+                  task: URLSessionTask,
+                  didSendBodyData bytesSent: Int64,
+                  totalBytesSent: Int64,
+                  totalBytesExpectedToSend: Int64) {
+    pendingUpload?.progressHandler?(Float(totalBytesSent) / Float(totalBytesExpectedToSend))
   }
   
-  func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+  func urlSession(_ session: URLSession,
+                  task: URLSessionTask,
+                  didCompleteWithError error: Error?) {
     guard let error = error else {
       return
     }
 
-    if let httpError = error as? URLError, httpError.code == URLError.cancelled {
+    if let httpError = error as? URLError,
+      httpError.code == URLError.cancelled {
+      
       pendingUpload?.promiseSource.reject(.cancelled)
       return
     }
 
-    switch backgroundSession.decodeInput(type: UploadJson.self, data: nil, response: task.response, error: error) {
+    switch backgroundSession.decodeInput(type: UploadJson.self,
+                                         data: nil,
+                                         response: task.response,
+                                         error: error) {
     case .value(let value):
       pendingUpload?.promiseSource.resolve(value)
     case .error(let error):
@@ -118,8 +139,13 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
     pendingUpload = nil
   }
   
-  func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-    switch backgroundSession.decodeInput(type: UploadJson.self, data: data, response: dataTask.response, error: nil) {
+  func urlSession(_ session: URLSession,
+                  dataTask: URLSessionDataTask,
+                  didReceive data: Data) {
+    switch backgroundSession.decodeInput(type: UploadJson.self,
+                                         data: data,
+                                         response: dataTask.response,
+                                         error: nil) {
     case .value(let value):
       pendingUpload?.promiseSource.resolve(value)
     case .error(let error):
@@ -188,7 +214,11 @@ extension URLRequest {
 
 extension URLSession {
 
-  fileprivate func decodeInput<ResultType: Decodable>(type: ResultType.Type, data: Data?, response: URLResponse?, error: Error?) -> ValueOrError<ResultType, ApiError> {
+  fileprivate func decodeInput<ResultType: Decodable>(type: ResultType.Type,
+                                                      data: Data?,
+                                                      response: URLResponse?,
+                                                      error: Error?)
+    -> ValueOrError<ResultType, ApiError> {
 
     guard let httpResponse = response as? HTTPURLResponse else {
       return .error(.noResponse)
@@ -213,7 +243,10 @@ extension URLSession {
     }
   }
 
-  func codablePromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest, cancellationToken: CancellationToken?) -> Promise<ResultType, ApiError> {
+  func codablePromise<ResultType: Decodable>(type: ResultType.Type,
+                                             request: URLRequest,
+                                             cancellationToken: CancellationToken?)
+    -> Promise<ResultType, ApiError> {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = dataTask(with: request) { (data, response, error) in
@@ -231,8 +264,13 @@ extension URLSession {
     return promiseSource.promise
   }
 
-  func codableUploadPromise<ResultType: Decodable>(type: ResultType.Type, request: URLRequest, fromFile: URL, cancellationToken: CancellationToken?) -> Promise<ResultType, ApiError> {
-    let promiseSource = PromiseSource<ResultType, ApiError>()
+  func codableUploadPromise<ResultType: Decodable>(type: ResultType.Type,
+                                                   request: URLRequest,
+                                                   fromFile: URL,
+                                                   cancellationToken: CancellationToken?)
+    -> Promise<ResultType, ApiError> {
+
+      let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
