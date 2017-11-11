@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     Fabric.with([Crashlytics.self])
-
+    App.authenticationService.migrate()
     applyAppearance()
 
     window = UIWindow(frame: UIScreen.main.bounds)
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func backToRoot() {
 
     let controller: UIViewController
-    if !App.apiService.isLoggedIn() {
+    if !App.authenticationService.isLoggedIn() {
       controller = LoginController()
     } else if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
       controller = AuthorizationController()
@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
-    print(identifier)
     App.apiService.handleFinishBackground(completionHandler: completionHandler)
   }
 
@@ -89,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return
       }
 
-    App.apiService.login(with: accessToken)
+    App.authenticationService.login(with: AuthenticationToken(rawValue: accessToken))
     
     guard let safariViewController = topMostViewController() as? SFSafariViewController else {
       return

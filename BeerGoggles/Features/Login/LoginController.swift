@@ -29,7 +29,7 @@ class LoginController: UIViewController {
   }
 
   @IBAction func loginPressed(_ sender: Any) {
-    App.apiService.auth()
+    App.authenticationService.auth()
       .presentLoader(for: self, handler: { (auth) -> UIViewController in
         SFSafariViewController(url: auth.url)
       })
@@ -48,8 +48,6 @@ class LoginController: UIViewController {
   @IBAction func howToPressed(_ sender: Any) {
     let controller = HowToController()
     present(controller, animated: true, completion: nil)
-
   }
-
 }
 

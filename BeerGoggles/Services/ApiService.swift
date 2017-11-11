@@ -11,7 +11,9 @@ import Promissum
 
 class ApiService: NSObject {
 
-  private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>)?
+  typealias ProgressHandler = (Float) -> Void
+  
+  private var pendingUpload: (URLSessionUploadTask, PromiseSource<UploadJson, ApiError>, ProgressHandler?)?
   private let session = URLSession(configuration: .default)
   private lazy var backgroundSession: URLSession = {
     let configuration = URLSessionConfiguration.background(withIdentifier: "io.harkema.BeerGoggles.background")
@@ -22,71 +24,49 @@ class ApiService: NSObject {
 
   private var backgroundCompletionHandler: (() -> Void)?
 
-  // private let root = URL(string: "https://api.uncheckd.com")!
+//   private let root = URL(string: "https://api.uncheckd.com")!
   private let root = URL(string: "https://beer-goggles.herokuapp.com")!
-
-  private let loginTokenKey = "loginTokenKey"
-
-  private func loginToken() -> String? {
-    return UserDefaults.standard.string(forKey: loginTokenKey)
-  }
-
-  func isLoggedIn() -> Bool {
-    return loginToken() != nil
-  }
-
-  func login(with token: String) {
-    UserDefaults.standard.set(token, forKey: loginTokenKey)
-  }
-
-  func logout() {
-    UserDefaults.standard.removeObject(forKey: loginTokenKey)
-  }
 
   func auth() -> Promise<AuthenticateJson, ApiError> {
     return session.codablePromise(type: AuthenticateJson.self, request: URLRequest(url: root.appendingPathComponent("/untappd/authenticate/")))
   }
-
-  func upload(photo: URL) -> Promise<UploadJson, ApiError> {
-    guard let loginToken = loginToken() else {
-      return Promise(error: .notLoggedIn)
-    }
-
-    let url = root.appendingPathComponent("/magic")
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
-    print(request.curlRequest ?? "")
-
-    let promiseSource = PromiseSource<UploadJson, ApiError>()
-    let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
-    uploadTask.resume()
-
-    pendingUpload = (uploadTask, promiseSource)
-
-    return promiseSource.promise
-  }
-
-  func magic(matches: [String]) -> Promise<[MatchesJson], ApiError> {
-    guard let loginToken = loginToken() else {
-      return Promise(error: .notLoggedIn)
-    }
-
-    do {
-      let url = root.appendingPathComponent("/magic/check")
+  
+  func upload(photo: URL, progressHandler: ProgressHandler?) -> (_ token: AuthenticationToken) -> Promise<UploadJson, ApiError> {
+    return { [root, backgroundSession] token in
+      let url = root.appendingPathComponent("/magic")
       var request = URLRequest(url: url)
       request.httpMethod = "POST"
-      request.httpBody = try JSONEncoder().encode(matches)
-      request.addValue(loginToken, forHTTPHeaderField: "X-Access-Token")
-
+      request.addValue(token.rawValue, forHTTPHeaderField: "X-Access-Token")
       print(request.curlRequest ?? "")
 
-      return session.codablePromise(type: [MatchesJson].self, request: request)
+      let promiseSource = PromiseSource<UploadJson, ApiError>()
+      let uploadTask = backgroundSession.uploadTask(with: request, fromFile: photo)
+      uploadTask.resume()
 
-    } catch let error as EncodingError {
-      return Promise(error: .encoding(error))
-    } catch {
-      return Promise(error: .unknown(error))
+      self.pendingUpload = (uploadTask, promiseSource, progressHandler)
+
+      return promiseSource.promise
+    }
+  }
+
+  func magic(matches: [String]) -> (_ token: AuthenticationToken) -> Promise<[MatchesJson], ApiError> {
+    return { [root, session] token in
+      do {
+        let url = root.appendingPathComponent("/magic/check")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try JSONEncoder().encode(matches)
+        request.addValue(token.rawValue, forHTTPHeaderField: "X-Access-Token")
+  
+        print(request.curlRequest ?? "")
+  
+        return session.codablePromise(type: [MatchesJson].self, request: request)
+  
+      } catch let error as EncodingError {
+        return Promise(error: .encoding(error))
+      } catch {
+        return Promise(error: .unknown(error))
+      }
     }
   }
 
@@ -95,13 +75,17 @@ class ApiService: NSObject {
 extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
 
   func handleFinishBackground(completionHandler: @escaping () -> Void) {
-    backgroundSession.getAllTasks { task in
-      print(task)
-    }
+//    backgroundSession.getAllTasks { task in
+//      print(task)
+//    }
 
     backgroundCompletionHandler = completionHandler
   }
 
+  func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+    pendingUpload?.2?(Float(totalBytesSent)/Float(totalBytesExpectedToSend))
+  }
+  
   func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
     guard let error = error else {
       return
@@ -113,6 +97,8 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
     case .error(let error):
       pendingUpload?.1.reject(error)
     }
+    
+    pendingUpload = nil
   }
   
   func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
@@ -122,6 +108,8 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
     case .error(let error):
       pendingUpload?.1.reject(error)
     }
+    
+    pendingUpload = nil
   }
 
   func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
@@ -212,7 +200,6 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = dataTask(with: request) { (data, response, error) in
-      print(try? data.flatMap({ try JSONSerialization.jsonObject(with: $0, options: []) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
         promiseSource.resolve(value)
@@ -229,7 +216,6 @@ extension URLSession {
     let promiseSource = PromiseSource<ResultType, ApiError>()
 
     let task = uploadTask(with: request, fromFile: fromFile) { (data, response, error) in
-      print(try? data.flatMap({ try JSONSerialization.jsonObject(with: $0, options: []) }))
       switch self.decodeInput(type: type, data: data, response: response, error: error) {
       case .value(let value):
         promiseSource.resolve(value)

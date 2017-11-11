@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B2A6BE18069C3DC38C46021 /* Pods_BeerGoggles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */; };
+		C30BB76C1FB72674008B2A5D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */; };
 		C3968BA81FAF48F9005623FC /* beer-menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3968BA71FAF48F9005623FC /* beer-menu.jpg */; };
 		FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BC1FAC5F45001D432A /* AppDelegate.swift */; };
 		FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BE1FAC5F45001D432A /* LoginController.swift */; };
@@ -145,6 +146,7 @@
 		692CCE5406932C882910978F /* Pods-BeerGoggles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.debug.xcconfig"; sourceTree = "<group>"; };
 		78E8A70B3DC701D86292AD04 /* Pods_BeerGoggles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerGoggles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C20C9E01C5FF87AECB6A2C /* Pods-BeerGoggles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerGoggles.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles.release.xcconfig"; sourceTree = "<group>"; };
+		C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C3968BA71FAF48F9005623FC /* beer-menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beer-menu.jpg"; sourceTree = "<group>"; };
 		FF2391B91FAC5F45001D432A /* BeerGoggles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerGoggles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2391BC1FAC5F45001D432A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -333,9 +335,9 @@
 				FF2392041FACACB4001D432A /* Resources */,
 				FF2391D81FAC7059001D432A /* Features */,
 				FF2391D11FAC60CB001D432A /* Services */,
+				FF33FEF61FB4F4BA00C322F8 /* App.swift */,
 				FF2391BC1FAC5F45001D432A /* AppDelegate.swift */,
 				FF23920C1FACB185001D432A /* R.generated.swift */,
-				FF33FEF61FB4F4BA00C322F8 /* App.swift */,
 				FF2391C61FAC5F45001D432A /* Assets.xcassets */,
 				FF2391C81FAC5F45001D432A /* LaunchScreen.storyboard */,
 				FF2391CB1FAC5F45001D432A /* Info.plist */,
@@ -352,6 +354,7 @@
 				FFB7A2DE1FAD304F003B2FBE /* DatabaseService.swift */,
 				FF33FEF41FB4F07D00C322F8 /* ImageService.swift */,
 				FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */,
+				C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -806,11 +809,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeerGoggles/Pods-BeerGoggles-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -857,6 +862,7 @@
 				FF33FEF71FB4F4BA00C322F8 /* App.swift in Sources */,
 				FF2392061FACACC0001D432A /* Colors.swift in Sources */,
 				FF2391F01FAC9970001D432A /* AboutController.swift in Sources */,
+				C30BB76C1FB72674008B2A5D /* AuthenticationService.swift in Sources */,
 				FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */,
 				FFB7A2DF1FAD304F003B2FBE /* DatabaseService.swift in Sources */,
 				FFB7A2E11FADC99A003B2FBE /* HowToController.swift in Sources */,

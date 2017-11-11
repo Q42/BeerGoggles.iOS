@@ -39,6 +39,14 @@ final class LoadingController: UIViewController {
     rotation.repeatCount = HUGE
     loadingAnimationView.layer.add(rotation, forKey: "rotationAnimation")
   }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    if navigationController != nil {
+      return .default
+    } else {
+      return .lightContent
+    }
+  }
 }
 
 extension Promise {

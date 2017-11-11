@@ -108,13 +108,13 @@ class CameraController: UIViewController {
   }
 
   private func simulateImage() {
-    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID()), retry: { [weak self] in
+    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID(), progressHandler: { print($0) }), retry: { [weak self] in
       self?.simulateImage()
     })
   }
 
   private func upload(photo: AVCapturePhoto) {
-    handle(promise: App.imageService.upload(photo: photo), retry: { [weak self] in
+    handle(promise: App.imageService.upload(photo: photo, progressHandler: { print($0) }), retry: { [weak self] in
       self?.upload(photo: photo)
     })
   }

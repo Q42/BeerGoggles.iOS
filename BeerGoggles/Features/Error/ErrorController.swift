@@ -46,6 +46,7 @@ class ErrorController: UIViewController {
 }
 
 extension Promise where Error == Swift.Error {
+  @discardableResult
   func attachError(for controller: UIViewController, handler: @escaping ErrorController.ErrorClosure) -> Promise<Value, Error> {
     return self.trap {
       let errorController = ErrorController(error: $0, retry: handler)

@@ -8,22 +8,24 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - Valet (2.4.2)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.9)
+  - Crashlytics
   - Fabric
-  - Promissum (from `https://github.com/tomlokhorst/Promissum.git`, branch `locking`)
+  - Promissum (from `https://github.com/tomlokhorst/Promissum`, branch `develop`)
   - R.swift
+  - Valet
 
 EXTERNAL SOURCES:
   Promissum:
-    :branch: locking
-    :git: https://github.com/tomlokhorst/Promissum.git
+    :branch: develop
+    :git: https://github.com/tomlokhorst/Promissum
 
 CHECKOUT OPTIONS:
   Promissum:
-    :commit: 3321233c4a1cc9f09b0bbe7ca97541d3db15822f
-    :git: https://github.com/tomlokhorst/Promissum.git
+    :commit: ca7ea8913ef11aef800913cdb2372decf4425444
+    :git: https://github.com/tomlokhorst/Promissum
 
 SPEC CHECKSUMS:
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   Promissum: 8ecfdfb9129f053a74aa5fd8fda67b3534d356c8
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
 
-PODFILE CHECKSUM: a20d3eba35ca048c1c10496bdefc4133826f65b0
+PODFILE CHECKSUM: f62cd53d9e632cc01fe1b43f22d96029a54ca4f5
 
 COCOAPODS: 1.3.1
