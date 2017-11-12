@@ -100,7 +100,7 @@ class SessionsController: UITableViewController {
     if !session.done {
       retry(session: session)
     } else if session.beers.isEmpty {
-      
+      retry(session: session)
     } else {
       let controller = BeerResultOverviewController(result: .beers(beers: session.beers))
       navigationController?.pushViewController(controller, animated: true)
