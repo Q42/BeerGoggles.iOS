@@ -16,12 +16,17 @@ class ImageService {
   private let apiService: ApiService
   private let databaseService: DatabaseService
   private let authenticationService: AuthenticationService
+  private let ocrService: OcrService
   private let pendingHandleKey = "pendingHandleKey"
   
-  init(apiService: ApiService, databaseService: DatabaseService, authenticationService: AuthenticationService) {
+  init(apiService: ApiService,
+       databaseService: DatabaseService,
+       authenticationService: AuthenticationService,
+       ocrService: OcrService) {
     self.apiService = apiService
     self.databaseService = databaseService
     self.authenticationService = authenticationService
+    self.ocrService = ocrService
   }
 
   var pendingGUID: UUID? {
@@ -93,6 +98,9 @@ class ImageService {
 
   func upload(file: URL, guid: UUID, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, UUID), Error> {
     pendingGUID = guid
+
+    ocrService.applyOcr(url: file)
+
     return promisify({ try Data(contentsOf: file) })
       .flatMap {
         self.save(data: $0, fileName: guid.uuidString)

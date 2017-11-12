@@ -12,5 +12,6 @@ struct App {
   static let apiService = ApiService()
   static let authenticationService = AuthenticationService(apiService: apiService)
   static let databaseService = DatabaseService()
-  static let imageService = ImageService(apiService: apiService, databaseService: databaseService, authenticationService: authenticationService)
+  static let ocrService = OcrService()
+  static let imageService = ImageService(apiService: apiService, databaseService: databaseService, authenticationService: authenticationService, ocrService: ocrService)
 }
