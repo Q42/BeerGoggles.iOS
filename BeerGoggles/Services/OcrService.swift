@@ -12,19 +12,19 @@ import TesseractOCR
 class OcrService {
 
   func applyOcr(url: URL) {
-    DispatchQueue.global().async {
-      let tesseract = G8Tesseract(language: "nld+eng")!
-      tesseract.maximumRecognitionTime = 60
-      tesseract.image = UIImage(contentsOfFile: url.absoluteString.replacingOccurrences(of: "file://", with: ""))?.g8_blackAndWhite()
-      tesseract.recognize()
-
-      let strings = tesseract.recognizedText.split(separator: "\n")
-      strings.forEach {
-        print("====")
-        print($0)
-        print("====")
-      }
-      print("ding")
-    }
+//    DispatchQueue.global().async {
+//      let tesseract = G8Tesseract(language: "nld+eng")!
+//      tesseract.maximumRecognitionTime = 60
+//      tesseract.image = UIImage(contentsOfFile: url.absoluteString.replacingOccurrences(of: "file://", with: ""))//?.g8_blackAndWhite()
+//      tesseract.recognize()
+//
+//      let strings = tesseract.recognizedText.split(separator: "\n")
+//      strings.forEach {
+//        print("====")
+//        print($0)
+//        print("====")
+//      }
+//      print("ding")
+//    }
   }
 }

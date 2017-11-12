@@ -25,13 +25,8 @@ class SessionCell: UITableViewCell {
       
       thumbnail.image = nil
       
-      let fileOptional = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        .first
-        .flatMap { URL(string: $0) }?
-        .appendingPathComponent("\(session.imageGuid).jpg")
-      
       DispatchQueue.global().async { [thumbnail] in
-        if let file = fileOptional {
+        if let file = session.imageReference.url() {
           let data = FileManager.default.contents(atPath: file.absoluteString)
           let image = data.flatMap { UIImage(data: $0) }
           DispatchQueue.main.async { [thumbnail] in

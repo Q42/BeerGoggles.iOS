@@ -112,22 +112,25 @@ class CameraController: UIViewController {
 
   private func simulateImage() {
     cancellationTokenSource = CancellationTokenSource()
-    handle(promise: App.imageService.upload(file: R.file.beerMenuJpg()!, guid: UUID(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
+    
+    let promise = App.imageService.upload(originalUrl: R.file.beerMenuJpg()!, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) })
+    
+    handle(promise: promise, retry: { [weak self] in
       self?.simulateImage()
     })
   }
 
   private func upload(photo: AVCapturePhoto) {
     cancellationTokenSource = CancellationTokenSource()
-    handle(promise: App.imageService.upload(photo: photo, cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
+    handle(promise: App.imageService.upload(photo: photo, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
       self?.upload(photo: photo)
     })
   }
 
-  private func handle(promise: Promise<(UploadJson, UUID), Error>, retry: @escaping () -> Void) {
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, guid) in
-      BeerResultCoordinator.controller(for: result, guid: guid)
-    }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
+  private func handle(promise: Promise<(UploadJson, SavedImageReference), Error>, retry: @escaping () -> Void) {
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, imageReference) in
+      BeerResultCoordinator.controller(for: result, imageReference: imageReference)
+    }).attachError(for: self, handler: { [navigationController] (controller) in
       print("ERROR HANDLED")
       navigationController?.popViewController(animated: true)
       retry()

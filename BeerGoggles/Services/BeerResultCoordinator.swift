@@ -10,11 +10,11 @@ import UIKit
 
 struct BeerResultCoordinator {
 
-  static func controller(for uploadJson: UploadJson, guid: UUID)  -> UIViewController {
-    return controller(for: uploadJson.matches, possibles: uploadJson.possibles, guid: guid)
+  static func controller(for uploadJson: UploadJson, imageReference: SavedImageReference)  -> UIViewController {
+    return controller(for: uploadJson.matches, possibles: uploadJson.possibles, imageReference: imageReference)
   }
 
-  static func controller(for matches: [MatchesJson], possibles: [String] = [], guid: UUID) -> UIViewController {
+  static func controller(for matches: [MatchesJson], possibles: [String] = [], imageReference: SavedImageReference) -> UIViewController {
     if possibles.isEmpty {
       if matches.isEmpty {
         return BeerEmptyController()
@@ -24,7 +24,7 @@ struct BeerResultCoordinator {
         return BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
       }
     } else {
-      return BeerCaptureOverviewController(result: UploadJson(matches: matches, possibles: possibles), guid: guid)
+      return BeerCaptureOverviewController(result: UploadJson(matches: matches, possibles: possibles), imageReference: imageReference)
     }
   }
 

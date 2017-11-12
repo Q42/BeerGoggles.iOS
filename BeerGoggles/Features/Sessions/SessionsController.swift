@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import CancellationToken
 
 class SessionsController: UITableViewController {
 
   private var sessions: [Session] = []
   private var emptySessions: [Session] = []
+  private var unfinishedSessions: [Session] = []
 
+  private var cancellationTokenSource: CancellationTokenSource!
+  
   init() {
     super.init(style: .plain)
 
@@ -34,11 +38,15 @@ class SessionsController: UITableViewController {
 
     DatabaseService.shared.sessions().then { [weak self, tableView] sessions in
       self?.sessions = sessions.filter {
-        !$0.beers.isEmpty
+        !$0.beers.isEmpty && $0.done
       }
       
       self?.emptySessions = sessions.filter {
-        $0.beers.isEmpty
+        $0.beers.isEmpty && $0.done
+      }
+      
+      self?.unfinishedSessions = sessions.filter {
+        !$0.done
       }
       
       tableView?.reloadData()
@@ -52,29 +60,81 @@ class SessionsController: UITableViewController {
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return 3
   }
 
+  private func sessions(for section: Int) -> [Session] {
+    switch section {
+    case 0:
+      return sessions
+    case 1:
+      return emptySessions
+    case 2:
+      return unfinishedSessions
+    default:
+      return []
+    }
+  }
+  
+  private func session(for indexPath: IndexPath) -> Session {
+    return sessions(for: indexPath.section)[indexPath.row]
+  }
+  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return section == 0 ? sessions.count : emptySessions.count
+    return sessions(for: section).count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.sessionCell, for: indexPath) else {
       return UITableViewCell()
     }
-
-    let session = indexPath.section == 0 ? sessions[indexPath.row] : emptySessions[indexPath.row]
-    cell.session = session
+    
+    cell.session = session(for: indexPath)
     return cell
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let controller = BeerResultOverviewController(result: .beers(beers: sessions[indexPath.row].beers))
-    navigationController?.pushViewController(controller, animated: true)
+    
+    let session = self.session(for: indexPath)
+    
+    if !session.done {
+      retry(session: session)
+    } else if session.beers.isEmpty {
+      
+    } else {
+      let controller = BeerResultOverviewController(result: .beers(beers: session.beers))
+      navigationController?.pushViewController(controller, animated: true)
+    }
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return section == 0 ? "Previous scans" : "No results"
+    
+    if sessions(for: section).isEmpty {
+      return nil
+    }
+    
+    switch section {
+    case 0:
+      return "previous scans"
+    case 1:
+      return "no results"
+    case 2:
+      return "unfinished"
+    default:
+      return nil
+    }
+  }
+  
+  private func retry(session: Session) {
+    print("RETRY SESSION: \(session)")
+    cancellationTokenSource = CancellationTokenSource()
+    let promise = App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token)
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, imageReference) in
+      BeerResultCoordinator.controller(for: result, imageReference: imageReference)
+    }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
+      print("ERROR HANDLED")
+      navigationController?.popViewController(animated: true)
+      self?.retry(session: session)
+    })
   }
 }

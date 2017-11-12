@@ -8,6 +8,40 @@
 
 import Foundation
 
+struct ImageReference: RawRepresentable {
+  let rawValue: UUID
+  
+  init(rawValue: UUID) {
+    self.rawValue = rawValue
+  }
+  
+  init() {
+    rawValue = UUID()
+  }
+  
+  func url() -> URL? {
+    return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+      .first
+      .flatMap { URL(string: $0) }?
+      .appendingPathComponent("\(rawValue.uuidString).jpg")
+  }
+}
+
+struct SavedImageReference: RawRepresentable {
+  let rawValue: ImageReference
+  init(rawValue: ImageReference) {
+    self.rawValue = rawValue
+  }
+  
+  func url() -> URL? {
+    return rawValue.url()
+  }
+  
+  func fileUrl() -> URL? {
+    return url().flatMap { URL(string: "file://\($0.absoluteString)") }
+  }
+}
+
 struct AuthenticateJson: Decodable {
   let url: URL
 }
@@ -39,8 +73,9 @@ struct BeerJson: Decodable {
 
 struct Session {
   let captureDate: Date
-  let imageGuid: UUID
+  let imageReference: SavedImageReference
   let beers: [BeerJson]
+  let done: Bool
 
   init?(model: SessionModel) {
 
@@ -52,7 +87,8 @@ struct Session {
       }
 
     self.captureDate = captureDate
-    self.imageGuid = imageGuid
+    self.imageReference = SavedImageReference(rawValue: ImageReference(rawValue: imageGuid))
+    self.done = model.done
     self.beers = beers.flatMap { (beer: BeerModel) -> BeerJson? in
 
       guard let name = beer.name,

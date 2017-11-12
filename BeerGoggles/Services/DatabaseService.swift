@@ -41,34 +41,72 @@ class DatabaseService {
 
     return promiseSource.promise
   }
-
-  func save(beers: [BeerJson], image: UUID) -> Promise<Void, Error> {
+  
+  private func initialBlocking(on ctx: NSManagedObjectContext, imageReference: SavedImageReference) throws -> SessionModel {
+    let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
+    request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+    
+    let match = (try ctx.fetch(request).first) ?? SessionModel(context: ctx)
+    match.beers = NSSet()
+    match.captureDate = Date()
+    match.imageGuid = imageReference.rawValue.rawValue
+    match.possibles = []
+    match.done = false
+    
+    try ctx.save()
+    return match
+  }
+  
+  func intitialOnMain(imageReference: SavedImageReference) throws -> SessionModel {
+    return try initialBlocking(on: persistentContainer.viewContext, imageReference: imageReference)
+  }
+  
+  func initial(imageReference: SavedImageReference) -> Promise<Void, Error> {
+    let promiseSource = PromiseSource<Void, Error>()
+    
+    persistentContainer.performBackgroundTask { ctx in
+      do {
+        _ = try self.initialBlocking(on: ctx, imageReference: imageReference)
+        return promiseSource.resolve(())
+      } catch {
+        return promiseSource.reject(error)
+      }
+    }
+    
+    return promiseSource.promise
+  }
+  
+  func save(beers: [BeerJson], imageReference: SavedImageReference) -> Promise<Void, Error> {
     let promiseSource = PromiseSource<Void, Error>()
 
     persistentContainer.performBackgroundTask { ctx in
-      let beerModels = beers.map { (beer: BeerJson) -> BeerModel in
-        let model = BeerModel(context: ctx)
-        model.id = Int64(beer.id)
-        model.bid = beer.bid.map { Int64($0) } ?? -1
-        model.name = beer.name
-        model.brewery = beer.brewery
-        model.full_name = beer.full_name
-        model.abv = beer.abv
-        model.ibu = Int64(beer.ibu)
-        model.style = beer.style
-        model.beerDescription = beer.description
-        model.label = beer.label
-        model.rating_score = beer.rating_score ?? 0
-        return model
-      }
-
-      let match = SessionModel(context: ctx)
-      match.beers = Set(beerModels) as NSSet
-      match.captureDate = Date()
-      match.imageGuid = image
-      match.possibles = []
-      
       do {
+        let beerModels = beers.map { (beer: BeerJson) -> BeerModel in
+          let model = BeerModel(context: ctx)
+          model.id = Int64(beer.id)
+          model.bid = beer.bid.map { Int64($0) } ?? -1
+          model.name = beer.name
+          model.brewery = beer.brewery
+          model.full_name = beer.full_name
+          model.abv = beer.abv
+          model.ibu = Int64(beer.ibu)
+          model.style = beer.style
+          model.beerDescription = beer.description
+          model.label = beer.label
+          model.rating_score = beer.rating_score ?? 0
+          return model
+        }
+        
+        let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+        
+        let match = (try ctx.fetch(request).first) ?? SessionModel(context: ctx)
+        match.beers = Set(beerModels) as NSSet
+        match.captureDate = Date()
+        match.imageGuid = imageReference.rawValue.rawValue
+        match.possibles = []
+        match.done = true
+      
         try ctx.save()
       } catch {
         return promiseSource.reject(error)
@@ -80,13 +118,13 @@ class DatabaseService {
     return promiseSource.promise
   }
 
-  func add(possibles: [String], id: UUID) -> Promise<Void, Error> {
+  func add(possibles: [String], imageReference: SavedImageReference) -> Promise<Void, Error> {
     let promiseSource = PromiseSource<Void, Error>()
     
     persistentContainer.performBackgroundTask { ctx in
       do {
         let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), id.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
         
         if let result = try ctx.fetch(request).first {
           result.possibles = possibles as NSArray
@@ -101,7 +139,7 @@ class DatabaseService {
     return promiseSource.promise
   }
   
-  func add(beers: [BeerJson], id: UUID) -> Promise<Void, Error> {
+  func add(beers: [BeerJson], imageReference: SavedImageReference) -> Promise<Void, Error> {
     let promiseSource = PromiseSource<Void, Error>()
 
     persistentContainer.performBackgroundTask { ctx in
@@ -129,7 +167,7 @@ class DatabaseService {
         }
 
         let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), id.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
 
         if let result = try ctx.fetch(request).first {
           result.addToBeers(Set(beerModels) as NSSet)

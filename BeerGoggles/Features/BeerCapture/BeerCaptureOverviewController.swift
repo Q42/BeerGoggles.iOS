@@ -12,14 +12,14 @@ import CancellationToken
 class BeerCaptureOverviewController: UIViewController {
 
   private let result: UploadJson
-  private let guid: UUID
+  private let imageReference: SavedImageReference
   private var cancellationTokenSource: CancellationTokenSource!
 
   @IBOutlet weak private var tableView: UITableView!
 
-  init(result: UploadJson, guid: UUID) {
+  init(result: UploadJson, imageReference: SavedImageReference) {
     self.result = result
-    self.guid = guid
+    self.imageReference = imageReference
     super.init(nibName: "BeerCaptureOverviewView", bundle: nil)
     title = "BEERS...?"
   }
@@ -51,14 +51,14 @@ class BeerCaptureOverviewController: UIViewController {
     }
     let matches = result.matches
     if strings.isEmpty {
-      navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, guid: guid), animated: true)
+      navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, imageReference: imageReference), animated: true)
     } else {
       cancellationTokenSource = CancellationTokenSource()
-      App.databaseService.add(possibles: strings, id: guid)
-        .flatMap { [result, guid] in App.imageService.magic(strings: strings, matches: result.matches, guid: guid) }
-        .map { (newMatches, guid) in (Array([matches, newMatches].joined()), guid) }
-        .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (matches, guid)  in
-          BeerResultCoordinator.controller(for: matches, guid: guid)
+      App.databaseService.add(possibles: strings, imageReference: imageReference)
+        .flatMap { [result, imageReference] in App.imageService.magic(strings: strings, matches: result.matches, imageReference: imageReference) }
+        .map { (newMatches, imageReference) in (Array([matches, newMatches].joined()), imageReference) }
+        .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (matches, imageReference)  in
+          BeerResultCoordinator.controller(for: matches, imageReference: imageReference)
         })
         .attachError(for: self, handler: { [weak self] (controller) in
           controller.navigationController?.popViewController(animated: true)
