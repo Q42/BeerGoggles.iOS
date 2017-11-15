@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsController" customModule="BeerGoggles" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsController" customModule="Uncheckd" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="iN0-l3-epB" id="dgA-An-SUS"/>
             </connections>
@@ -19,14 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqo-Dh-k70" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vIM-1c-lex">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqo-Dh-k70" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="607" width="315" height="30"/>
                     <state key="normal" title="Log me out"/>
                     <connections>
                         <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="Gbd-eh-ZfN"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0k-uh-sHV" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0k-uh-sHV" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="567" width="315" height="30"/>
                     <state key="normal" title="How to Beer Goggle?"/>
                     <connections>
@@ -36,14 +39,22 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="vIM-1c-lex" secondAttribute="bottom" id="4fJ-jo-k58"/>
+                <constraint firstItem="vIM-1c-lex" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Bnk-TO-RT8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Oqo-Dh-k70" secondAttribute="trailing" constant="30" id="CQk-gL-kIZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Oqo-Dh-k70" secondAttribute="bottom" constant="30" id="CVD-od-CAz"/>
+                <constraint firstItem="vIM-1c-lex" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="E6P-Ng-jPy"/>
+                <constraint firstAttribute="trailing" secondItem="vIM-1c-lex" secondAttribute="trailing" id="Llc-Qe-Ald"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a0k-uh-sHV" secondAttribute="trailing" constant="30" id="REw-qE-Ys4"/>
                 <constraint firstItem="Oqo-Dh-k70" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="dFL-Cm-8kB"/>
                 <constraint firstItem="Oqo-Dh-k70" firstAttribute="top" secondItem="a0k-uh-sHV" secondAttribute="bottom" constant="10" id="p5j-1h-16X"/>
                 <constraint firstItem="a0k-uh-sHV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="pAD-G3-DWo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="101.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="background" width="1054" height="678"/>
+    </resources>
 </document>

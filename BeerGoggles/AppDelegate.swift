@@ -55,6 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().shadowImage = UIImage()
     UINavigationBar.appearance().isTranslucent = true
     UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    UINavigationBar.appearance().backIndicatorImage = R.image.back()
+    UINavigationBar.appearance().backIndicatorTransitionMaskImage = R.image.back()
+
+    UIBarButtonItem.appearance().setTitleTextAttributes([
+      .font: Fonts.futuraBold(with: 16)
+    ], for: .normal)
 
     UINavigationBar.appearance().titleTextAttributes = [
       .foregroundColor: UIColor.textColor,
@@ -62,7 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ]
 
     UITabBar.appearance().barTintColor = .tintColor
-    UITabBar.appearance().tintColor = .backgroundColor
+    UITabBar.appearance().tintColor = .white
+    UITabBar.appearance().unselectedItemTintColor = .backgroundColor
     UITabBarItem.appearance().setTitleTextAttributes([
       .font: Fonts.futuraBold(with: 10)
     ], for: .normal)

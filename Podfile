@@ -21,10 +21,5 @@ post_install do |installer|
         config.build_settings['SWIFT_VERSION'] = '3.2'
       end
     end
-    if ['TesseractOCRiOS'].include? target.name
-      target.build_configurations.each do |config|
-        config.build_settings['ENABLE_BITCODE'] = 'NO'
-      end
-    end
   end
 end

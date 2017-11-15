@@ -25,7 +25,7 @@ class CameraController: UIViewController {
   init() {
     super.init(nibName: R.nib.cameraView.name, bundle: R.nib.cameraView.bundle)
     title = "NEW SCAN"
-    tabBarItem = UITabBarItem(title: "NEW SCAN", image: R.image.home(), tag: 0)
+    tabBarItem = UITabBarItem(title: "NEW SCAN", image: R.image.newScan(), tag: 0)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ class CameraController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationItem.titleView?.isHidden = true
+    navigationItem.titleView = UIView(frame: .zero)
 
     #if (arch(i386) || arch(x86_64)) && os(iOS)
       

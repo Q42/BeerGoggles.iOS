@@ -13,8 +13,8 @@ class SettingsController: UIViewController {
   init() {
     super.init(nibName: "SettingsView", bundle: nil)
 
-    title = "SETTINGS"
-    tabBarItem = UITabBarItem(title: "SETTINGS", image: R.image.settings(), tag: 4)
+    title = "PROFILE"
+    tabBarItem = UITabBarItem(title: "PROFILE", image: R.image.profile(), tag: 4)
   }
   
   required init?(coder aDecoder: NSCoder) {

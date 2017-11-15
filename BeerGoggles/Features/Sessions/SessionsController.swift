@@ -20,8 +20,8 @@ class SessionsController: UITableViewController {
   init() {
     super.init(style: .plain)
 
-    title = "SESSIONS"
-    tabBarItem = UITabBarItem(title: "SESSIONS", image: R.image.previous(), tag: 1)
+    title = "HISTORY"
+    tabBarItem = UITabBarItem(title: "HISTORY", image: R.image.history(), tag: 1)
   }
 
   override func viewDidLoad() {
@@ -31,6 +31,8 @@ class SessionsController: UITableViewController {
     tableView.register(R.nib.sessionCell)
     tableView.separatorStyle = .singleLine
     tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
+
+    navigationItem.titleView = UIView(frame: .zero)
   }
 
   override func viewWillAppear(_ animated: Bool) {

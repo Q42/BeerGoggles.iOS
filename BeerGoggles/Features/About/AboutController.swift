@@ -13,7 +13,7 @@ class AboutController: UIViewController {
     super.init(nibName: "AboutView", bundle: nil)
 
     title = "ABOUT"
-    tabBarItem = UITabBarItem(title: "ABOUT", image: R.image.about(), tag: 3)
+    tabBarItem = UITabBarItem(title: "TIPS", image: R.image.tips(), tag: 3)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -23,5 +23,9 @@ class AboutController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .backgroundColor
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 }

@@ -42,6 +42,7 @@ class BeerResultOverviewController: UIViewController, UITableViewDelegate, UITab
     tableView.separatorStyle = .singleLine
     tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
 
+    navigationItem.titleView = UIView(frame: .zero)
 
     let totalString: String
     let untappedString: String
