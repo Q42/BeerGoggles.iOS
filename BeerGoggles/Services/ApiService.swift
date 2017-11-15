@@ -76,7 +76,7 @@ class ApiService: NSObject {
 
   func magic(matches: [String], cancellationToken: CancellationToken?)
     -> (_ token: AuthenticationToken)
-    -> Promise<[MatchesJson], ApiError> {
+    -> Promise<[BeerJson], ApiError> {
 
     return { [root, session] token in
       do {
@@ -88,7 +88,7 @@ class ApiService: NSObject {
   
         print(request.curlRequest ?? "")
   
-        return session.codablePromise(type: [MatchesJson].self,
+        return session.codablePromise(type: [BeerJson].self,
                                       request: request,
                                       cancellationToken: cancellationToken)
   

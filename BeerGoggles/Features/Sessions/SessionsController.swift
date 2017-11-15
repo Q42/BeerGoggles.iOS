@@ -26,7 +26,7 @@ class SessionsController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.backgroundColor = Colors.backgroundColor
+    tableView.backgroundColor = .backgroundColor
     tableView.rowHeight = 70
     tableView.register(R.nib.sessionCell)
     tableView.separatorStyle = .singleLine

@@ -8,9 +8,15 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="BeerGoggles" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="Uncheckd" customModuleProvider="target">
             <connections>
+                <outlet property="aboutButton" destination="K36-Q5-dEv" id="Hmm-xs-rV9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="sDs-y3-Fqb"/>
             </connections>
         </placeholder>
@@ -19,43 +25,67 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K36-Q5-dEv" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="VAu-Sy-Qbz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K36-Q5-dEv" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="619" width="315" height="30"/>
-                    <state key="normal" title="How to Beer Goggle?"/>
+                    <state key="normal" title="ABOUT THIS APP"/>
                     <connections>
                         <action selector="howToPressed:" destination="-1" eventType="touchUpInside" id="oBk-nH-ljF"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" image="intro" translatesAutoresizingMaskIntoConstraints="NO" id="Sif-uZ-6rB">
-                    <rect key="frame" x="30" y="70" width="315" height="479"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlc-5C-rdO" customClass="ActionButton" customModule="BeerGoggles" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlc-5C-rdO" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="579" width="315" height="30"/>
-                    <state key="normal" title="Login to Untappd"/>
+                    <state key="normal" title="ACTIVATE"/>
                     <connections>
                         <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="bbc-pZ-bzM"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ags-8G-7Ae">
+                    <rect key="frame" x="30" y="502" width="315" height="52"/>
+                    <string key="text">Scan big beer lists.
+Find the ones you missed.</string>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small" translatesAutoresizingMaskIntoConstraints="NO" id="UXw-9a-Le8">
+                    <rect key="frame" x="147" y="80" width="81" height="68"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explainatory" translatesAutoresizingMaskIntoConstraints="NO" id="mxz-cv-Fwa">
+                    <rect key="frame" x="30" y="178" width="315" height="99"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="K36-Q5-dEv" secondAttribute="trailing" constant="30" id="3xj-DV-Mf6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Xlc-5C-rdO" secondAttribute="trailing" constant="30" id="5uH-rN-Fjo"/>
                 <constraint firstItem="K36-Q5-dEv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="61U-jI-dvM"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sif-uZ-6rB" secondAttribute="trailing" constant="30" id="6a3-kQ-DHs"/>
-                <constraint firstItem="Sif-uZ-6rB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="76p-BO-fpC"/>
-                <constraint firstItem="Xlc-5C-rdO" firstAttribute="top" secondItem="Sif-uZ-6rB" secondAttribute="bottom" constant="30" id="Ig1-XB-aoG"/>
+                <constraint firstItem="UXw-9a-Le8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="JK5-z5-9xq"/>
                 <constraint firstItem="Xlc-5C-rdO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="LGe-Zx-aJj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="K36-Q5-dEv" secondAttribute="bottom" constant="18" id="LPF-wM-X90"/>
-                <constraint firstItem="Sif-uZ-6rB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="XVi-eI-dDk"/>
+                <constraint firstItem="mxz-cv-Fwa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="OxO-Z0-0YE"/>
+                <constraint firstItem="VAu-Sy-Qbz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PPe-OP-Zea"/>
+                <constraint firstItem="VAu-Sy-Qbz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="QDN-9D-hMW"/>
+                <constraint firstItem="VAu-Sy-Qbz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Rif-bH-gUg"/>
                 <constraint firstItem="K36-Q5-dEv" firstAttribute="top" secondItem="Xlc-5C-rdO" secondAttribute="bottom" constant="10" id="Y7W-21-I24"/>
-                <constraint firstItem="Sif-uZ-6rB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="fNg-0a-La2"/>
+                <constraint firstItem="mxz-cv-Fwa" firstAttribute="top" secondItem="UXw-9a-Le8" secondAttribute="bottom" constant="30" id="c9y-Sx-eZE"/>
+                <constraint firstItem="ags-8G-7Ae" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="fQv-XX-PHR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mxz-cv-Fwa" secondAttribute="trailing" constant="30" id="kJU-ev-fBP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ags-8G-7Ae" secondAttribute="trailing" constant="30" id="m9U-iL-5fM"/>
+                <constraint firstItem="VAu-Sy-Qbz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mNT-zS-YFr"/>
                 <constraint firstItem="K36-Q5-dEv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sVj-jz-YB9"/>
+                <constraint firstItem="UXw-9a-Le8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="t9S-QW-r7m"/>
+                <constraint firstItem="Xlc-5C-rdO" firstAttribute="top" secondItem="ags-8G-7Ae" secondAttribute="bottom" constant="25" id="zFF-6k-pRv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="101.5"/>
         </view>
     </objects>
     <resources>
-        <image name="intro" width="166" height="437"/>
+        <image name="background" width="1058" height="679"/>
+        <image name="explainatory" width="335" height="99"/>
+        <image name="logo-small" width="81" height="68"/>
     </resources>
 </document>

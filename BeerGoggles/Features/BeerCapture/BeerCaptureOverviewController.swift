@@ -31,11 +31,11 @@ class BeerCaptureOverviewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
 
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.backgroundColor = Colors.backgroundColor
+    tableView.backgroundColor = .backgroundColor
     tableView.register(R.nib.beerSelectCell)
     tableView.rowHeight = 70
     tableView.allowsSelection = true

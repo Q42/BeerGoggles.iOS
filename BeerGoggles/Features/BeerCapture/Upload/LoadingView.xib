@@ -8,10 +8,15 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingController" customModule="BeerGoggles" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingController" customModule="Uncheckd" customModuleProvider="target">
             <connections>
-                <outlet property="loadingAnimationView" destination="A3A-47-g8f" id="3pT-Hu-RLx"/>
+                <outlet property="cancelButton" destination="p1j-2h-0jY" id="ea5-UT-YcA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="755-LU-aED"/>
             </connections>
         </placeholder>
@@ -20,36 +25,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading-animation" translatesAutoresizingMaskIntoConstraints="NO" id="A3A-47-g8f">
-                    <rect key="frame" x="-175.5" y="-122.5" width="725" height="911"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-zj-TCm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="Nnj-1S-0eI">
-                    <rect key="frame" x="52" y="40" width="271" height="249"/>
-                </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZC3-Ev-iXU" customClass="LoadingAnimationView" customModule="BeerGoggles" customModuleProvider="target">
-                    <rect key="frame" x="112.5" y="298.5" width="150" height="150"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="lfB-eq-WWS"/>
-                        <constraint firstAttribute="height" constant="150" id="zLp-P5-WdH"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-2h-0jY" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
+                    <rect key="frame" x="30" y="607" width="315" height="30"/>
+                    <state key="normal" title="CANCEL"/>
+                    <connections>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="Wsg-Vh-XjO"/>
+                    </connections>
+                </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EJ1-Ai-Rt7">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-Z5-Ey3">
+                    <rect key="frame" x="30" y="372" width="315" height="52"/>
+                    <string key="text">Looking for beers
+in your scan…</string>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Nnj-1S-0eI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="4OU-id-Ers"/>
-                <constraint firstItem="ZC3-Ev-iXU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="7vY-6m-YUG"/>
-                <constraint firstItem="ZC3-Ev-iXU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nnj-1S-0eI" secondAttribute="bottom" constant="10" id="Aj9-zQ-wez"/>
-                <constraint firstItem="ZC3-Ev-iXU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZFX-Ub-7c0"/>
-                <constraint firstItem="A3A-47-g8f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zvq-hj-wRi"/>
-                <constraint firstItem="Nnj-1S-0eI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bPY-KZ-jDE"/>
-                <constraint firstItem="A3A-47-g8f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="heV-VS-fnV"/>
+                <constraint firstAttribute="trailing" secondItem="MZo-zj-TCm" secondAttribute="trailing" id="AJD-F0-gRs"/>
+                <constraint firstItem="EJ1-Ai-Rt7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CMS-2T-mBl"/>
+                <constraint firstItem="SxV-Z5-Ey3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Gfa-cr-sSl"/>
+                <constraint firstItem="MZo-zj-TCm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HnY-OL-3mP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p1j-2h-0jY" secondAttribute="trailing" constant="30" id="Q27-qm-xTS"/>
+                <constraint firstItem="EJ1-Ai-Rt7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zii-FE-H8u"/>
+                <constraint firstItem="SxV-Z5-Ey3" firstAttribute="top" secondItem="EJ1-Ai-Rt7" secondAttribute="bottom" constant="20" id="dYy-AT-X7r"/>
+                <constraint firstItem="p1j-2h-0jY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="hwB-dP-KMA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="p1j-2h-0jY" secondAttribute="bottom" constant="30" id="mF3-eW-I3P"/>
+                <constraint firstItem="MZo-zj-TCm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="u6d-wk-PL4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SxV-Z5-Ey3" secondAttribute="trailing" constant="30" id="x3K-ck-OeE"/>
+                <constraint firstAttribute="bottom" secondItem="MZo-zj-TCm" secondAttribute="bottom" id="yxv-jK-rOd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="101.5"/>
         </view>
     </objects>
     <resources>
-        <image name="loading" width="271" height="249"/>
-        <image name="loading-animation" width="725" height="911"/>
+        <image name="background" width="1058" height="679"/>
     </resources>
 </document>

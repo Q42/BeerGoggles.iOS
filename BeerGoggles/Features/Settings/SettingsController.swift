@@ -23,7 +23,7 @@ class SettingsController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {

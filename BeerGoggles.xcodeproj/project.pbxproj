@@ -140,6 +140,7 @@
 		FFB7A2E31FADC9A4003B2FBE /* HowToView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */; };
 		FFB7A2E51FADD1F6003B2FBE /* BeerEmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */; };
 		FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */; };
+		FFD216421FBCCFDA009DAB0D /* BeerResultOverview.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD216411FBCCFDA009DAB0D /* BeerResultOverview.xib */; };
 		FFE945581FB877BD00CB5BA1 /* beer-menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFE945571FB877BC00CB5BA1 /* beer-menu.jpg */; };
 /* End PBXBuildFile section */
 
@@ -284,6 +285,7 @@
 		FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToView.xib; sourceTree = "<group>"; };
 		FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerEmptyState.xib; sourceTree = "<group>"; };
 		FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerEmptyController.swift; sourceTree = "<group>"; };
+		FFD216411FBCCFDA009DAB0D /* BeerResultOverview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerResultOverview.xib; sourceTree = "<group>"; };
 		FFE945571FB877BC00CB5BA1 /* beer-menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beer-menu.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -424,6 +426,7 @@
 				FFB7A2861FACFCE4003B2FBE /* BeerResultCell.xib */,
 				FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */,
 				FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */,
+				FFD216411FBCCFDA009DAB0D /* BeerResultOverview.xib */,
 			);
 			path = BeerCapture;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				FFB7A2B91FAD0ECF003B2FBE /* Loading Skull_00020.png in Resources */,
 				FF2392601FACE481001D432A /* Moving Talking Head_00024.png in Resources */,
 				FF2392621FACE481001D432A /* Moving Talking Head_00020.png in Resources */,
+				FFD216421FBCCFDA009DAB0D /* BeerResultOverview.xib in Resources */,
 				FFB7A2D91FAD0ECF003B2FBE /* Loading Skull_00005.png in Resources */,
 				FFB7A2C11FAD0ECF003B2FBE /* Loading Skull_00033.png in Resources */,
 				C30BB76E1FB73A7D008B2A5D /* SessionCell.xib in Resources */,

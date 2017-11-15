@@ -10,16 +10,23 @@ import UIKit
 
 class BeerResultCell: UITableViewCell {
 
+  struct ViewModel {
+    let beer: BeerJson
+    let uncheckd: Bool
+  }
+
   @IBOutlet weak private var beerNameLabel: UILabel!
   @IBOutlet weak private var breweryLabel: UILabel!
+  @IBOutlet weak private var checkedView: UIImageView!
 
-  var beer: BeerJson? {
+  var viewModel: ViewModel? {
     didSet {
-      backgroundColor = Colors.backgroundColor
-      accessoryType = .disclosureIndicator
+      backgroundColor = .backgroundColor
+//      accessoryType = .disclosureIndicator
 
-      beerNameLabel.text = beer?.name
-      breweryLabel.text = (beer?.brewery).map { "by \($0)" }
+      beerNameLabel.text = viewModel?.beer.name
+      breweryLabel.text = (viewModel?.beer.brewery).map { "by \($0)" }
+      checkedView.isHidden = viewModel?.uncheckd == false
     }
   }
 

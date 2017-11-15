@@ -111,11 +111,11 @@ class ImageService {
   }
 
   //TODO: find a better place for this
-  func magic(strings: [String], matches: [MatchesJson], imageReference: SavedImageReference) -> Promise<([MatchesJson], SavedImageReference), Error> {
+  func magic(strings: [String], matches: [BeerJson], imageReference: SavedImageReference) -> Promise<([BeerJson], SavedImageReference), Error> {
     return authenticationService.wrapAuthenticate(apiService.magic(matches: strings, cancellationToken: nil))
       .mapError()
       .flatMap { [databaseService] result in
-        databaseService.add(beers: result.map({ $0.beer }), imageReference: imageReference)
+        databaseService.add(beers: result, imageReference: imageReference)
           .map { (result, imageReference) }
       }
   }
@@ -124,7 +124,7 @@ class ImageService {
     return authenticationService.wrapAuthenticate(apiService.upload(imageReference: session.imageReference, cancellationToken: cancellationToken, progressHandler: nil))
       .mapError()
       .flatMap { [databaseService] (result: UploadJson) in
-        databaseService.save(beers: result.matches.map({ $0.beer }), imageReference: session.imageReference)
+        databaseService.save(beers: result.matches, imageReference: session.imageReference)
           .map { (result, session.imageReference) }
       }
   }

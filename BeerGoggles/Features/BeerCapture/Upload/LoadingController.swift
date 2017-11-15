@@ -15,7 +15,7 @@ final class LoadingController: UIViewController {
 
   private let cancellationTokenSource: CancellationTokenSource
 
-  @IBOutlet weak private var loadingAnimationView: UIImageView!
+  @IBOutlet weak private var cancelButton: ActionButton!
 
   init(cancellationTokenSource: CancellationTokenSource) {
     self.cancellationTokenSource = cancellationTokenSource
@@ -28,34 +28,22 @@ final class LoadingController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = Colors.backgroundColor
+    cancelButton.buttonStyle = .small
+    navigationItem.hidesBackButton = true
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    animate()
-  }
-
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     cancellationTokenSource.cancel()
   }
-
-  private func animate() {
-    let rotation = CABasicAnimation(keyPath: "transform.rotation")
-    rotation.toValue = Double.pi * 2
-    rotation.duration = 2
-    rotation.repeatCount = HUGE
-    loadingAnimationView.layer.add(rotation, forKey: "rotationAnimation")
-  }
   
+  @IBAction func cancelButtonPressed(_ sender: Any) {
+    cancellationTokenSource.cancel()
+    navigationController?.popViewController(animated: true)
+  }
+
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    if navigationController != nil {
-      return .default
-    } else {
-      return .lightContent
-    }
+    return .lightContent
   }
 }
 

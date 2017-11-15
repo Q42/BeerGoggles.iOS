@@ -20,7 +20,7 @@ class BeerEmptyController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
   }
 
   @IBAction func backPressed(_ sender: Any) {

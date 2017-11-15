@@ -28,7 +28,7 @@ class ErrorController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
     errorLabel.text = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
     
     print("Present error: \(error)")

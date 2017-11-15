@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BeerResultCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeerResultCell" rowHeight="210" id="QL8-xg-A5D" customClass="BeerResultCell" customModule="BeerGoggles" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BeerResultCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeerResultCell" rowHeight="210" id="QL8-xg-A5D" customClass="BeerResultCell" customModule="Uncheckd" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QL8-xg-A5D" id="dZU-FP-eIN">
@@ -36,10 +36,15 @@
                         <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="GxJ-fE-erB">
+                        <rect key="frame" x="339" y="0.0" width="36" height="36"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="qMw-n4-yC6" secondAttribute="trailing" constant="8" id="Cn0-Vl-8si"/>
+                    <constraint firstAttribute="trailing" secondItem="GxJ-fE-erB" secondAttribute="trailing" id="JNu-Du-vea"/>
                     <constraint firstItem="qMw-n4-yC6" firstAttribute="top" secondItem="dZU-FP-eIN" secondAttribute="topMargin" constant="15" id="LzS-yS-aPB"/>
+                    <constraint firstItem="GxJ-fE-erB" firstAttribute="top" secondItem="dZU-FP-eIN" secondAttribute="top" id="N8D-B7-LSK"/>
                     <constraint firstItem="qMw-n4-yC6" firstAttribute="leading" secondItem="dZU-FP-eIN" secondAttribute="leadingMargin" id="Rga-nA-7qf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eED-zs-cXR" secondAttribute="trailing" constant="8" id="VNf-Qe-ehF"/>
                     <constraint firstItem="eED-zs-cXR" firstAttribute="leading" secondItem="dZU-FP-eIN" secondAttribute="leadingMargin" id="ow9-ew-AcJ"/>
@@ -49,8 +54,12 @@
             <connections>
                 <outlet property="beerNameLabel" destination="qMw-n4-yC6" id="gGK-jm-lG7"/>
                 <outlet property="breweryLabel" destination="eED-zs-cXR" id="YjS-fA-cpf"/>
+                <outlet property="checkedView" destination="GxJ-fE-erB" id="SGT-Nd-Xo7"/>
             </connections>
             <point key="canvasLocation" x="118.5" y="211.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checked" width="36" height="36"/>
+    </resources>
 </document>

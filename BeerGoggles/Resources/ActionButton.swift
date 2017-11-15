@@ -12,24 +12,34 @@ class ActionButton: UIButton {
 
   enum Style {
     case `default`
+    case small
 //    case destructive
 //    case notice
 
     var insets: UIEdgeInsets {
-      return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+      switch self {
+      case .default:
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+      case .small:
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+      }
     }
 
     var titleColor: UIColor {
       switch self {
       case .default:
-        return Colors.textColor
+        return .textColor
+      case .small:
+        return .tintColor
       }
     }
 
     var backgroundColor: UIColor {
       switch self {
       case .default:
-        return Colors.tintColor
+        return .tintColor
+      case .small:
+        return .clear
       }
     }
   }

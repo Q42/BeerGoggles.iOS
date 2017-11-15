@@ -22,7 +22,7 @@ class AuthorizationController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
     
     NotificationCenter.default.addObserver(self, selector: #selector(active), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }

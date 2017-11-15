@@ -8,10 +8,11 @@
 
 import UIKit
 
-struct Colors {
-  static let tintColor = UIColor(hex: 0xFFCC01)
+extension UIColor {
+  static let tintColor = UIColor(hex: 0xFFCC00)
   static let textColor = UIColor(hex: 0x4A4A4A)
   static let backgroundColor = UIColor(hex: 0x4A4A4A)
+  static let barTextColor = UIColor(hex: 0x979797)
 }
 
 extension UIColor {

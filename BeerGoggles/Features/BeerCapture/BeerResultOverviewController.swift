@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerResultOverviewController: UITableViewController {
+class BeerResultOverviewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   enum Result {
     case beers(beers: [BeerJson])
@@ -16,12 +16,14 @@ class BeerResultOverviewController: UITableViewController {
   }
 
   private let result: Result
+  @IBOutlet weak private var tableView: UITableView!
+  @IBOutlet weak private var countLabel: UILabel!
 
   init(result: Result) {
     self.result = result
-    super.init(style: .plain)
+    super.init(nibName: R.nib.beerResultOverview.name, bundle: R.nib.beerResultOverview.bundle)
 
-    title = "BEERS!"
+    title = "BEERS FOUND"
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -31,14 +33,36 @@ class BeerResultOverviewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    tableView.delegate = self
+    tableView.dataSource = self
+
     tableView.register(R.nib.beerResultCell)
-    tableView.backgroundColor = Colors.backgroundColor
+    tableView.backgroundColor = .backgroundColor
     tableView.rowHeight = 105
     tableView.separatorStyle = .singleLine
     tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
+
+
+    let totalString: String
+    let untappedString: String
+    switch result {
+    case .beers(let beers):
+      totalString = "We found \(beers.count) beers"
+      untappedString = "."
+    case .matches(let untapped, let tapped):
+      let total = untapped.count + tapped.count
+      totalString = "We found \(total) beers"
+      untappedString = untapped.isEmpty ? "." : ", and you haven’t checkd \(untapped.count) of them."
+    }
+
+    countLabel.text = "\(totalString)\(untappedString)"
   }
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+
+  func numberOfSections(in tableView: UITableView) -> Int {
     switch result {
     case .beers:
       return 1
@@ -47,7 +71,7 @@ class BeerResultOverviewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
     switch result {
     case .beers(let beers):
@@ -74,17 +98,17 @@ class BeerResultOverviewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.beerResultCell, for: indexPath) else {
       return UITableViewCell()
     }
 
-    cell.beer = beer(for: indexPath)
+    cell.viewModel = BeerResultCell.ViewModel(beer: beer(for: indexPath), uncheckd: indexPath.section == 1)
 
     return cell
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bier = beer(for: indexPath)
 
     if let schemaUrl = URL(string: "untappd://beer/\(bier.bid ?? 0)"),
@@ -95,16 +119,16 @@ class BeerResultOverviewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
     switch result {
     case .beers:
       return nil
-    case .matches:
+    case .matches(let tappd, let untappd):
       if section == 1 {
-        return "already checked in"
+        return untappd.isEmpty ? nil : "ALREADY CHECKD"
       } else {
-        return "new beers for your"
+        return tappd.isEmpty ? nil : "UNCHECKD"
       }
     }
   }

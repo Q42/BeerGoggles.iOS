@@ -50,18 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func applyAppearance() {
-    UINavigationBar.appearance().tintColor = Colors.textColor
-    UINavigationBar.appearance().barTintColor = Colors.tintColor
+    UINavigationBar.appearance().tintColor = .barTextColor
+    UINavigationBar.appearance().barTintColor = .clear
     UINavigationBar.appearance().shadowImage = UIImage()
+    UINavigationBar.appearance().isTranslucent = true
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+
     UINavigationBar.appearance().titleTextAttributes = [
-      .foregroundColor: Colors.textColor,
+      .foregroundColor: UIColor.textColor,
       .font: Fonts.futuraBold(with: 20)
     ]
 
-    UITabBar.appearance().barTintColor = Colors.backgroundColor
-    UITabBar.appearance().tintColor = Colors.tintColor
+    UITabBar.appearance().barTintColor = .tintColor
+    UITabBar.appearance().tintColor = .backgroundColor
     UITabBarItem.appearance().setTitleTextAttributes([
-      .font: Fonts.futuraMedium(with: 8)
+      .font: Fonts.futuraBold(with: 10)
     ], for: .normal)
   }
 
@@ -113,3 +116,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UINavigationController {
+
+  open override var childViewControllerForStatusBarHidden: UIViewController? {
+    return topViewController
+  }
+
+  open override var childViewControllerForStatusBarStyle: UIViewController? {
+    return topViewController
+  }
+
+}

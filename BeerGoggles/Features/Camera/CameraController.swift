@@ -23,23 +23,20 @@ class CameraController: UIViewController {
   @IBOutlet weak private var captureView: UIView!
 
   init() {
-    super.init(nibName: "CameraView", bundle: nil)
-    
-    title = "START"
-    tabBarItem = UITabBarItem(title: "START", image: R.image.home(), tag: 0)
+    super.init(nibName: R.nib.cameraView.name, bundle: R.nib.cameraView.bundle)
+    title = "NEW SCAN"
+    tabBarItem = UITabBarItem(title: "NEW SCAN", image: R.image.home(), tag: 0)
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    videoPreviewLayer?.frame = captureView.bounds
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    navigationItem.titleView?.isHidden = true
+
     #if (arch(i386) || arch(x86_64)) && os(iOS)
       
     #else
@@ -82,14 +79,17 @@ class CameraController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     session?.startRunning()
-    navigationController?.setNavigationBarHidden(true, animated: animated)
     captureButton.isHidden = false
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     session?.stopRunning()
-    navigationController?.setNavigationBarHidden(false, animated: animated)
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    videoPreviewLayer?.frame = captureView.bounds
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {

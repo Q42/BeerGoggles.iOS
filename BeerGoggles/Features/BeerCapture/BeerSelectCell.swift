@@ -16,7 +16,7 @@ class BeerSelectCell: UITableViewCell {
   var possibility: String? {
     didSet {
       selectionStyle = .none
-      backgroundColor = Colors.backgroundColor
+      backgroundColor = .backgroundColor
       nameLabel.text = possibility
     }
   }

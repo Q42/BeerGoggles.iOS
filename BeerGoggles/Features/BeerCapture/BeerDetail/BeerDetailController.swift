@@ -28,7 +28,7 @@ class BeerDetailController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
     beerNameLabel.text = beer.name
     breweryLabel.text = beer.brewery
 

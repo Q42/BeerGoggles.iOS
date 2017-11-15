@@ -14,6 +14,8 @@ class LoginController: UIViewController {
 
   private var cancellationTokenSource: CancellationTokenSource!
 
+  @IBOutlet weak private var aboutButton: ActionButton!
+
   init() {
     super.init(nibName: "LoginView", bundle: nil)
   }
@@ -24,7 +26,8 @@ class LoginController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = Colors.backgroundColor
+    view.backgroundColor = .backgroundColor
+    aboutButton.buttonStyle = .small
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
