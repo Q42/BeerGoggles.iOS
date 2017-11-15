@@ -11,7 +11,6 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
-  - TesseractOCRiOS (4.0.0)
   - Valet (2.4.2)
 
 DEPENDENCIES:
@@ -20,7 +19,6 @@ DEPENDENCIES:
   - Fabric
   - Promissum (from `https://github.com/tomlokhorst/Promissum`, branch `develop`)
   - R.swift
-  - TesseractOCRiOS (= 4.0.0)
   - Valet
 
 EXTERNAL SOURCES:
@@ -40,9 +38,8 @@ SPEC CHECKSUMS:
   Promissum: 8ecfdfb9129f053a74aa5fd8fda67b3534d356c8
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
-  TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
 
-PODFILE CHECKSUM: 86a914f0e180ab979e2fc53943b41936d14ed38c
+PODFILE CHECKSUM: 4983b31ccdcf5b7db324b7c9b9af30924e2d4751
 
 COCOAPODS: 1.3.1

@@ -27,7 +27,7 @@
 			<string>nl.q42.beergoggles</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>beergoggles</string>
+				<string>uncheckd</string>
 			</array>
 		</dict>
 	</array>

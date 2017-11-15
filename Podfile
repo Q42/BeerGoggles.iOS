@@ -1,5 +1,5 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+
+platform :ios, '11.0'
 
 target 'Uncheckd' do
   use_frameworks!
@@ -10,7 +10,6 @@ target 'Uncheckd' do
   pod 'Crashlytics'
   pod 'Valet'
   pod 'CancellationToken'
-  pod 'TesseractOCRiOS', '4.0.0'
   
 end
 

@@ -47,7 +47,7 @@ struct AuthenticateJson: Decodable {
 }
 
 struct UploadJson: Decodable {
-  let matches: [MatchesJson]
+  let matches: [BeerJson]
   let possibles: [String]
 }
 

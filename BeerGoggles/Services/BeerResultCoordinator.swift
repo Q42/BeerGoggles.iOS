@@ -14,13 +14,13 @@ struct BeerResultCoordinator {
     return controller(for: uploadJson.matches, possibles: uploadJson.possibles, imageReference: imageReference)
   }
 
-  static func controller(for matches: [MatchesJson], possibles: [String] = [], imageReference: SavedImageReference) -> UIViewController {
+  static func controller(for matches: [BeerJson], possibles: [String] = [], imageReference: SavedImageReference) -> UIViewController {
     if possibles.isEmpty {
       if matches.isEmpty {
         return BeerEmptyController()
       } else {
-        let tapped = matches.filter { $0.user_rating != nil }.map { $0.beer }
-        let untapped = matches.filter { $0.user_rating == nil }.map { $0.beer }
+        let tapped = matches.filter { $0.user_rating != nil }.flatMap { $0.beer }
+        let untapped = matches.filter { $0.user_rating == nil }.flatMap { $0.beer }
         return BeerResultOverviewController(result: .matches(untapped: untapped, tapped: tapped))
       }
     } else {

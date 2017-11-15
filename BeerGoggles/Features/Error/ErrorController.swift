@@ -29,7 +29,9 @@ class ErrorController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = Colors.backgroundColor
-    errorLabel.text = error.localizedDescription
+    errorLabel.text = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+    
+    print("Present error: \(error)")
   }
   
   @IBAction func tryAgainPressed(_ sender: Any) {
@@ -49,7 +51,6 @@ extension Promise where Error == Swift.Error {
   @discardableResult
   func attachError(for controller: UIViewController, handler: @escaping ErrorController.ErrorClosure) -> Promise<Value, Error> {
     return self.trap { error in
-
       if let apiError = error as? ApiError, case .cancelled = apiError {
         return
       }

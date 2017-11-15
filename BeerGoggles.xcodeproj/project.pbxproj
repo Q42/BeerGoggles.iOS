@@ -88,7 +88,6 @@
 		FF33FEF51FB4F07D00C322F8 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF41FB4F07D00C322F8 /* ImageService.swift */; };
 		FF33FEF71FB4F4BA00C322F8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF61FB4F4BA00C322F8 /* App.swift */; };
 		FF33FEF91FB4F8E900C322F8 /* BeerResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */; };
-		FF33FF601FB7ADD300C322F8 /* OcrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33FF5F1FB7ADD300C322F8 /* OcrService.swift */; };
 		FF4B910D1FADDC0A00C8375C /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B910C1FADDC0A00C8375C /* ErrorController.swift */; };
 		FF4B910F1FADDC2200C8375C /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4B910E1FADDC2200C8375C /* ErrorView.xib */; };
 		FFB7A2831FACFA8C003B2FBE /* BeerResultOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */; };
@@ -141,7 +140,6 @@
 		FFB7A2E31FADC9A4003B2FBE /* HowToView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */; };
 		FFB7A2E51FADD1F6003B2FBE /* BeerEmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */; };
 		FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */; };
-		FFE945521FB86ED700CB5BA1 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = FFE945511FB86ED700CB5BA1 /* tessdata */; };
 		FFE945581FB877BD00CB5BA1 /* beer-menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFE945571FB877BC00CB5BA1 /* beer-menu.jpg */; };
 /* End PBXBuildFile section */
 
@@ -234,7 +232,6 @@
 		FF33FEF41FB4F07D00C322F8 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		FF33FEF61FB4F4BA00C322F8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultCoordinator.swift; sourceTree = "<group>"; };
-		FF33FF5F1FB7ADD300C322F8 /* OcrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OcrService.swift; sourceTree = "<group>"; };
 		FF4B910C1FADDC0A00C8375C /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 		FF4B910E1FADDC2200C8375C /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		FFB7A2821FACFA8C003B2FBE /* BeerResultOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerResultOverviewController.swift; sourceTree = "<group>"; };
@@ -287,7 +284,6 @@
 		FFB7A2E21FADC9A4003B2FBE /* HowToView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToView.xib; sourceTree = "<group>"; };
 		FFB7A2E41FADD1F6003B2FBE /* BeerEmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerEmptyState.xib; sourceTree = "<group>"; };
 		FFB7A2E61FADD203003B2FBE /* BeerEmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerEmptyController.swift; sourceTree = "<group>"; };
-		FFE945511FB86ED700CB5BA1 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		FFE945571FB877BC00CB5BA1 /* beer-menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beer-menu.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,7 +348,6 @@
 		FF2391BB1FAC5F45001D432A /* BeerGoggles */ = {
 			isa = PBXGroup;
 			children = (
-				FFE945511FB86ED700CB5BA1 /* tessdata */,
 				C30BB7731FB73E52008B2A5D /* Extensions */,
 				FF2392041FACACB4001D432A /* Resources */,
 				FF2391D81FAC7059001D432A /* Features */,
@@ -377,7 +372,6 @@
 				FF33FEF41FB4F07D00C322F8 /* ImageService.swift */,
 				FF33FEF81FB4F8E900C322F8 /* BeerResultCoordinator.swift */,
 				C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */,
-				FF33FF5F1FB7ADD300C322F8 /* OcrService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -730,7 +724,6 @@
 				FF23925B1FACE481001D432A /* Moving Talking Head_00033.png in Resources */,
 				FFB7A2C01FAD0ECF003B2FBE /* Loading Skull_00027.png in Resources */,
 				FF2391C71FAC5F45001D432A /* Assets.xcassets in Resources */,
-				FFE945521FB86ED700CB5BA1 /* tessdata in Resources */,
 				FF2391ED1FAC9633001D432A /* SettingsView.xib in Resources */,
 				FF23924B1FACE481001D432A /* Moving Talking Head_00011.png in Resources */,
 				FFB7A2BF1FAD0ECF003B2FBE /* Loading Skull_00023.png in Resources */,
@@ -826,7 +819,6 @@
 				"${BUILT_PRODUCTS_DIR}/CancellationToken/CancellationToken.framework",
 				"${BUILT_PRODUCTS_DIR}/Promissum/Promissum.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -834,7 +826,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CancellationToken.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promissum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -897,7 +888,6 @@
 				C30BB7721FB73E4D008B2A5D /* Date.swift in Sources */,
 				FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */,
 				FF33FEF51FB4F07D00C322F8 /* ImageService.swift in Sources */,
-				FF33FF601FB7ADD300C322F8 /* OcrService.swift in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
 				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
 				FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */,
@@ -1039,12 +1029,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RSRVS8D9PW;
+				DEVELOPMENT_TEAM = 8J6VSUTQNX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BeerGoggles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.harkema.BeerGoggles;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.q42.uncheckd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1057,12 +1047,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RSRVS8D9PW;
+				DEVELOPMENT_TEAM = 8J6VSUTQNX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BeerGoggles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.harkema.BeerGoggles;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.q42.uncheckd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

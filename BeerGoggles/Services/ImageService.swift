@@ -16,17 +16,14 @@ class ImageService {
   private let apiService: ApiService
   private let databaseService: DatabaseService
   private let authenticationService: AuthenticationService
-  private let ocrService: OcrService
   private let pendingHandleKey = "pendingHandleKey"
   
   init(apiService: ApiService,
        databaseService: DatabaseService,
-       authenticationService: AuthenticationService,
-       ocrService: OcrService) {
+       authenticationService: AuthenticationService) {
     self.apiService = apiService
     self.databaseService = databaseService
     self.authenticationService = authenticationService
-    self.ocrService = ocrService
   }
 
   var pendingGUID: SavedImageReference? {
@@ -105,7 +102,7 @@ class ImageService {
         authenticationService.wrapAuthenticate(apiService.upload(imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler)).mapError()
       }
       .flatMap { [databaseService] (result: UploadJson) in
-        databaseService.save(beers: result.matches.map({ $0.beer }), imageReference: imageReference)
+        databaseService.save(beers: result.matches, imageReference: imageReference)
           .map { _ in (result, imageReference) }
       }
       .finally {

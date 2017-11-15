@@ -12,8 +12,7 @@ import CancellationToken
 
 class ApiService: NSObject {
 
-  //   private let root = URL(string: "https://api.uncheckd.com")!
-  private let root = URL(string: "https://beer-goggles.herokuapp.com")!
+  private let root = URL(string: "https://api.uncheckd.com")!
 
   struct PendingUpload {
     let task: URLSessionUploadTask
@@ -237,6 +236,10 @@ extension URLSession {
       return .error(.noResponse)
     }
 
+    #if DEBUG
+      print(String(data: data, encoding: .utf8))
+    #endif
+      
     do {
       let decoder = JSONDecoder()
       let result = try decoder.decode(type, from: data)
@@ -300,7 +303,7 @@ enum ValueOrError<ValueType, ErrorType: Error> {
   case error(ErrorType)
 }
 
-enum ApiError: Error {
+enum ApiError: Error, LocalizedError {
   case notLoggedIn
   case noResponse
   case response(HTTPURLResponse)
@@ -309,8 +312,8 @@ enum ApiError: Error {
   case unknown(Error)
   case cancelled
   case imageReferenceUrlNotPresent
-
-  var localizedDescription: String {
+  
+  var errorDescription: String {
     switch self {
     case .notLoggedIn:
       return "Not Logged In"
