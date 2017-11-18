@@ -40,17 +40,13 @@ class ApiService: NSObject {
                                   cancellationToken: nil)
   }
   
-  func upload(imageReference: SavedImageReference,
+  func upload(imageURL: URL,
               cancellationToken: CancellationToken?,
               progressHandler: ProgressHandler?)
     -> (_ token: AuthenticationToken)
     -> Promise<UploadJson, ApiError> {
 
     return { [root, backgroundSession] token in
-      
-      guard let path = imageReference.fileUrl() else {
-        return Promise(error: .imageReferenceUrlNotPresent)
-      }
       
       let url = root.appendingPathComponent("/magic")
       var request = URLRequest(url: url)
@@ -59,7 +55,7 @@ class ApiService: NSObject {
       print(request.curlRequest ?? "")
 
       let promiseSource = PromiseSource<UploadJson, ApiError>()
-      let uploadTask = backgroundSession.uploadTask(with: request, fromFile: path)
+      let uploadTask = backgroundSession.uploadTask(with: request, fromFile: imageURL)
       uploadTask.resume()
 
       cancellationToken?.register {
@@ -311,7 +307,6 @@ enum ApiError: Error, LocalizedError {
   case encoding(EncodingError)
   case unknown(Error)
   case cancelled
-  case imageReferenceUrlNotPresent
   
   var errorDescription: String {
     switch self {
@@ -329,8 +324,6 @@ enum ApiError: Error, LocalizedError {
       return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
     case .cancelled:
       return "Operation Cancelled"
-    case .imageReferenceUrlNotPresent:
-      return "derp"
     }
   }
 }

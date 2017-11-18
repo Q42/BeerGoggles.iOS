@@ -12,14 +12,14 @@ import CancellationToken
 class BeerCaptureOverviewController: UIViewController {
 
   private let result: UploadJson
-  private let imageReference: SavedImageReference
+  private let sessionIdentifier: SessionIdentifier
   private var cancellationTokenSource: CancellationTokenSource!
 
   @IBOutlet weak private var tableView: UITableView!
 
-  init(result: UploadJson, imageReference: SavedImageReference) {
+  init(result: UploadJson, sessionIdentifier: SessionIdentifier) {
     self.result = result
-    self.imageReference = imageReference
+    self.sessionIdentifier = sessionIdentifier
     super.init(nibName: "BeerCaptureOverviewView", bundle: nil)
     title = "BEERS...?"
   }
@@ -52,24 +52,24 @@ class BeerCaptureOverviewController: UIViewController {
     let matches = result.matches
     if strings.isEmpty {
       navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches,
-                                                                                imageReference: imageReference),
+                                                                                identifier: sessionIdentifier),
                                                animated: true)
     } else {
       cancellationTokenSource = CancellationTokenSource()
-      App.databaseService.add(possibles: strings, imageReference: imageReference)
-        .flatMap { [result, imageReference] in
+      App.databaseService.add(possibles: strings, identifier: sessionIdentifier)
+        .flatMap { [result, sessionIdentifier] in
           App.imageService.magic(strings: strings,
                                  matches: result.matches,
-                                 imageReference: imageReference)
+                                 identifier: sessionIdentifier)
         }
-        .map { (newMatches, imageReference) in
-          (Array([matches, newMatches].joined()), imageReference)
+        .map { (newMatches, identifier) in
+          (Array([matches, newMatches].joined()), identifier)
         }
         .presentLoader(for: self,
                        cancellationTokenSource: cancellationTokenSource,
                        message: .scanning,
-                       handler: { (matches, imageReference)  in
-          BeerResultCoordinator.controller(for: matches, imageReference: imageReference)
+                       handler: { (matches, identifier)  in
+          BeerResultCoordinator.controller(for: matches, identifier: identifier)
         })
         .attachError(for: self,
                      handler: { [weak self] (controller) in

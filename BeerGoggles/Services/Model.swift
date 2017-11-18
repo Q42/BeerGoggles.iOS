@@ -8,37 +8,15 @@
 
 import Foundation
 
-struct ImageReference: RawRepresentable {
+struct SessionIdentifier: RawRepresentable {
   let rawValue: UUID
-  
+
   init(rawValue: UUID) {
     self.rawValue = rawValue
   }
-  
+
   init() {
     rawValue = UUID()
-  }
-  
-  func url() -> URL? {
-    return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-      .first
-      .flatMap { URL(string: $0) }?
-      .appendingPathComponent("\(rawValue.uuidString).jpg")
-  }
-}
-
-struct SavedImageReference: RawRepresentable {
-  let rawValue: ImageReference
-  init(rawValue: ImageReference) {
-    self.rawValue = rawValue
-  }
-  
-  func url() -> URL? {
-    return rawValue.url()
-  }
-  
-  func fileUrl() -> URL? {
-    return url().flatMap { URL(string: "file://\($0.absoluteString)") }
   }
 }
 
@@ -73,27 +51,24 @@ struct BeerJson: Decodable {
 
 struct Session {
   let captureDate: Date
-  let identifier: UUID
-  let imageReference: SavedImageReference
+  let identifier: SessionIdentifier
   let beers: [BeerJson]
   let done: Bool
-  let imageData: Data
+  let imageData: Data?
 
   init?(model: SessionModel) {
 
     guard let captureDate = model.captureDate,
       let identifier = model.identifier.flatMap(UUID.init),
-      let beers = model.beers as? Set<BeerModel>,
-      let imageData = model.image
+      let beers = model.beers as? Set<BeerModel>
       else {
         return nil
       }
 
     self.captureDate = captureDate
-    self.identifier = identifier
-    self.imageReference = SavedImageReference(rawValue: ImageReference(rawValue: identifier))
+    self.identifier = SessionIdentifier(rawValue: identifier)
     self.done = model.done
-    self.imageData = imageData
+    self.imageData = model.image
     self.beers = beers.flatMap { (beer: BeerModel) -> BeerJson? in
 
       guard let name = beer.name,

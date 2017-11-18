@@ -111,7 +111,7 @@ class CameraController: UIViewController {
   private func simulateImage() {
     cancellationTokenSource = CancellationTokenSource()
     
-    let promise = App.imageService.upload(originalUrl: R.file.beerMenuJpg()!, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) })
+    let promise = App.imageService.upload(originalUrl: R.file.beerMenuJpg()!, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) })
     
     handle(promise: promise, retry: { [weak self] in
       self?.simulateImage()
@@ -121,7 +121,7 @@ class CameraController: UIViewController {
   @available(iOS 11.0, *)
   private func upload(photo: AVCapturePhoto) {
     cancellationTokenSource = CancellationTokenSource()
-    handle(promise: App.imageService.upload(photo: photo, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
+    handle(promise: App.imageService.upload(photo: photo, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
       self?.upload(photo: photo)
     })
   }
@@ -130,15 +130,15 @@ class CameraController: UIViewController {
   private func upload(sampleBuffer: CMSampleBuffer) {
     cancellationTokenSource = CancellationTokenSource()
 
-    let promise = App.imageService.upload(buffer: sampleBuffer, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: nil)
+    let promise = App.imageService.upload(buffer: sampleBuffer, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: nil)
     handle(promise: promise) { [weak self] in
       self?.upload(sampleBuffer: sampleBuffer)
     }
   }
   
-  private func handle(promise: Promise<(UploadJson, SavedImageReference), Error>, retry: @escaping () -> Void) {
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, imageReference) in
-      BeerResultCoordinator.controller(for: result, imageReference: imageReference)
+  private func handle(promise: Promise<(UploadJson, SessionIdentifier), Error>, retry: @escaping () -> Void) {
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, identifier) in
+      BeerResultCoordinator.controller(for: result, identifier: identifier)
     }).attachError(for: self, handler: { [navigationController] (controller) in
       print("ERROR HANDLED")
       navigationController?.popViewController(animated: true)

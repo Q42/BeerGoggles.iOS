@@ -17,7 +17,7 @@
         <attribute name="captureDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="done" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="possibles" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
         <relationship name="beers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeerModel" syncable="YES"/>
     </entity>

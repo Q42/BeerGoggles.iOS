@@ -26,14 +26,14 @@ class ImageService {
     self.authenticationService = authenticationService
   }
 
-  var pendingGUID: SavedImageReference? {
+  var pendingGUID: SessionIdentifier? {
     set {
-      UserDefaults.standard.set(pendingGUID?.rawValue.rawValue.uuidString, forKey: pendingHandleKey)
+      UserDefaults.standard.set(pendingGUID?.rawValue.uuidString, forKey: pendingHandleKey)
     }
     get {
       return UserDefaults.standard.string(forKey: pendingHandleKey)
         .flatMap { UUID(uuidString: $0) }
-        .map { SavedImageReference(rawValue: ImageReference(rawValue: $0)) }
+        .map { SessionIdentifier(rawValue: $0) }
     }
   }
   
@@ -50,6 +50,19 @@ class ImageService {
     return imageData
   }
 
+  func save(data: Data, identifier: SessionIdentifier) -> Promise<URL, Error> {
+    return promisify({
+      let dir = NSTemporaryDirectory()
+      guard let url = URL(string: "file://\(dir)\(identifier.rawValue).jpg") else {
+        throw NSError(domain: "", code: 0, userInfo: nil)
+      }
+      
+      FileManager.default.createFile(atPath: url.absoluteString.replacingOccurrences(of: "file://", with: ""), contents: data, attributes: nil)
+      
+      return url
+    })
+  }
+  
   @available(iOS 11.0, *)
   private func conform(photo: AVCapturePhoto, fileSize: Int = 8 * 1024) -> Promise<Data, Error> {
     return promisify({
@@ -91,52 +104,36 @@ class ImageService {
       return finalImageData
     })
   }
-  
-  private func save(data: Data, imageReference: ImageReference) -> Promise<SavedImageReference, Error> {
-    return promisify({
-      guard let file = imageReference.url() else {
-        // TODO: better error
-        throw NSError(domain: "", code: 0, userInfo: nil)
-      }
-
-      FileManager.default.createFile(atPath: file.absoluteString, contents: data, attributes: nil)
-
-      return SavedImageReference(rawValue: imageReference)//URL(string: "file://\(file.absoluteString)")!
-    })
-  }
 
   @available(iOS 11.0, *)
-  func upload(photo: AVCapturePhoto, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
+  func upload(photo: AVCapturePhoto, identifier: SessionIdentifier, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SessionIdentifier), Error> {
     return conform(photo: photo)
-      .flatMap { self.upload(data: $0, imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
+      .flatMap { self.upload(imageData: $0, identifier: identifier, cancellationToken: cancellationToken, progressHandler: progressHandler) }
   }
 
   // Provide backwards compatibility for iOS 10
-  func upload(buffer: CMSampleBuffer, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
+  func upload(buffer: CMSampleBuffer, identifier: SessionIdentifier, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SessionIdentifier), Error> {
     return conform(buffer: buffer)
-      .flatMap { self.upload(data: $0, imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
+      .flatMap { self.upload(imageData: $0, identifier: identifier, cancellationToken: cancellationToken, progressHandler: progressHandler) }
   }
   
-  func upload(data: Data, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
-    return save(data: data, imageReference: imageReference)
-      .flatMap { savedImageReference in self.upload(imageReference: savedImageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
-  }
-  
-  func upload(originalUrl: URL, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
+  func upload(originalUrl: URL, identifier: SessionIdentifier, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SessionIdentifier), Error> {
     return promisify({ try Data(contentsOf: originalUrl) })
-      .flatMap { self.save(data: $0, imageReference: imageReference) }
-      .flatMap { self.upload(imageReference: $0, cancellationToken: cancellationToken, progressHandler: progressHandler) }
+      .flatMap { self.upload(imageData: $0, identifier: identifier, cancellationToken: cancellationToken, progressHandler: progressHandler) }
   }
 
-  private func upload(imageReference: SavedImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
-    pendingGUID = imageReference
-    return databaseService.initial(imageReference: imageReference)
+  private func upload(imageData: Data, identifier: SessionIdentifier, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SessionIdentifier), Error> {
+    pendingGUID = identifier
+    return databaseService.initial(identifier: identifier, imageData: imageData)
       .flatMap { [authenticationService, apiService] in
-        authenticationService.wrapAuthenticate(apiService.upload(imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler)).mapError()
+        return self.save(data: imageData, identifier: identifier)
+          .flatMap { [authenticationService, apiService] url in
+            authenticationService.wrapAuthenticate(apiService.upload(imageURL: url, cancellationToken: cancellationToken, progressHandler: progressHandler)).mapError()
+          }
       }
       .flatMap { [databaseService] (result: UploadJson) in
-        databaseService.save(beers: result.matches, imageReference: imageReference)
-          .map { _ in (result, imageReference) }
+        databaseService.save(beers: result.matches, identifier: identifier, imageData: imageData)
+          .map { _ in (result, identifier) }
       }
       .finally {
         self.pendingGUID = nil
@@ -144,21 +141,29 @@ class ImageService {
   }
 
   //TODO: find a better place for this
-  func magic(strings: [String], matches: [BeerJson], imageReference: SavedImageReference) -> Promise<([BeerJson], SavedImageReference), Error> {
+  func magic(strings: [String], matches: [BeerJson], identifier: SessionIdentifier) -> Promise<([BeerJson], SessionIdentifier), Error> {
     return authenticationService.wrapAuthenticate(apiService.magic(matches: strings, cancellationToken: nil))
       .mapError()
       .flatMap { [databaseService] result in
-        databaseService.add(beers: result, imageReference: imageReference)
-          .map { (result, imageReference) }
+        databaseService.add(beers: result, identifier: identifier)
+          .map { (result, identifier) }
       }
   }
   
-  func retry(session: Session, cancellationToken: CancellationToken?) -> Promise<(UploadJson, SavedImageReference), Error> {
-    return authenticationService.wrapAuthenticate(apiService.upload(imageReference: session.imageReference, cancellationToken: cancellationToken, progressHandler: nil))
-      .mapError()
+  func retry(session: Session, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SessionIdentifier), Error> {
+    
+    guard let imageData = session.imageData else {
+      return Promise(error: NSError(domain: "", code: 0, userInfo: nil))
+    }
+    
+    return save(data: imageData, identifier: session.identifier)
+      .flatMap { [authenticationService, apiService] url in
+        authenticationService.wrapAuthenticate(apiService.upload(imageURL: url, cancellationToken: cancellationToken, progressHandler: progressHandler))
+          .mapError()
+      }
       .flatMap { [databaseService] (result: UploadJson) in
-        databaseService.save(beers: result.matches, imageReference: session.imageReference)
-          .map { (result, session.imageReference) }
+        databaseService.save(beers: result.matches, identifier: session.identifier)
+          .map { (result, session.identifier) }
       }
   }
 }

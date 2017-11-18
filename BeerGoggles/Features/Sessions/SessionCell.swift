@@ -23,8 +23,12 @@ class SessionCell: UITableViewCell {
       title.text = session.captureDate.timeAgoString()
       amount.text = "\(session.beers.count) beers scanned"
       
+      guard let imageData = session.imageData else {
+        return
+      }
+      
       DispatchQueue.global().async { [thumbnail] in
-        let image = UIImage(data: session.imageData)
+        let image = UIImage(data: imageData)
         DispatchQueue.main.async { [thumbnail] in
           thumbnail?.image = image
         }

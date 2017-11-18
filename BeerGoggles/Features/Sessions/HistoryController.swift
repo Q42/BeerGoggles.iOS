@@ -134,9 +134,9 @@ class HistoryController: UITableViewController {
   private func retry(session: Session) {
     print("RETRY SESSION: \(session)")
     cancellationTokenSource = CancellationTokenSource()
-    let promise = App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token)
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, imageReference) in
-      BeerResultCoordinator.controller(for: result, imageReference: imageReference)
+    let promise = App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token, progressHandler: nil)
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, identifier) in
+      BeerResultCoordinator.controller(for: result, identifier: identifier)
     }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
       print("ERROR HANDLED")
       navigationController?.popViewController(animated: true)
