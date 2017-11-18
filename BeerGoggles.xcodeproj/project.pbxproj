@@ -1036,7 +1036,7 @@
 				DEVELOPMENT_TEAM = 8J6VSUTQNX;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = BeerGoggles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.q42.uncheckd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1054,7 +1054,7 @@
 				DEVELOPMENT_TEAM = 8J6VSUTQNX;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = BeerGoggles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.q42.uncheckd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1092,7 +1092,7 @@
 			children = (
 				FF2391C41FAC5F45001D432A /* BeerGoggles.xcdatamodel */,
 			);
-			currentVersion = FF2391C41FAC5F45001D432A /* BeerGoggles.xcdatamodel */;
+			currentVersion = C3A128D51FC073EB00B73FFB /* BeerGoggles.xcdatamodel */;
 			path = BeerGoggles.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

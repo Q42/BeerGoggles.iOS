@@ -37,9 +37,7 @@ class CameraController: UIViewController {
 
     navigationItem.titleView = UIView(frame: .zero)
 
-    #if (arch(i386) || arch(x86_64)) && os(iOS)
-      
-    #else
+    #if !((arch(i386) || arch(x86_64)) && os(iOS))
       do {
         session = AVCaptureSession()
         session?.sessionPreset = .photo
@@ -101,7 +99,7 @@ class CameraController: UIViewController {
       simulateImage()
     #else
       captureButton.isHidden = true
-      let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])
+      let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])
       settings.flashMode = .on
       settings.isAutoStillImageStabilizationEnabled = true
       settings.isHighResolutionPhotoEnabled = true
@@ -120,6 +118,7 @@ class CameraController: UIViewController {
     })
   }
 
+  @available(iOS 11.0, *)
   private func upload(photo: AVCapturePhoto) {
     cancellationTokenSource = CancellationTokenSource()
     handle(promise: App.imageService.upload(photo: photo, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
@@ -127,6 +126,16 @@ class CameraController: UIViewController {
     })
   }
 
+  // Enable backwards compatibility for iOS 10
+  private func upload(sampleBuffer: CMSampleBuffer) {
+    cancellationTokenSource = CancellationTokenSource()
+
+    let promise = App.imageService.upload(buffer: sampleBuffer, imageReference: ImageReference(), cancellationToken: cancellationTokenSource.token, progressHandler: nil)
+    handle(promise: promise) { [weak self] in
+      self?.upload(sampleBuffer: sampleBuffer)
+    }
+  }
+  
   private func handle(promise: Promise<(UploadJson, SavedImageReference), Error>, retry: @escaping () -> Void) {
     promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, imageReference) in
       BeerResultCoordinator.controller(for: result, imageReference: imageReference)
@@ -140,6 +149,16 @@ class CameraController: UIViewController {
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
+  
+  func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+    guard let buffer = photoSampleBuffer else {
+      return
+    }
+    
+    upload(sampleBuffer: buffer)
+  }
+  
+  @available(iOS 11.0, *)
   func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
     upload(photo: photo)
     captureButton.isHidden = false

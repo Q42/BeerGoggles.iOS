@@ -44,12 +44,12 @@ class DatabaseService {
   
   private func initialBlocking(on ctx: NSManagedObjectContext, imageReference: SavedImageReference) throws -> SessionModel {
     let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-    request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+    request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.identifier), imageReference.rawValue.rawValue.uuidString)
     
     let match = (try ctx.fetch(request).first) ?? SessionModel(context: ctx)
     match.beers = NSSet()
     match.captureDate = Date()
-    match.imageGuid = imageReference.rawValue.rawValue
+    match.identifier = imageReference.rawValue.rawValue.uuidString
     match.possibles = []
     match.done = false
     
@@ -92,18 +92,18 @@ class DatabaseService {
           model.ibu = Int64(beer.ibu)
           model.style = beer.style
           model.beerDescription = beer.description
-          model.label = beer.label
+          model.label = beer.label.absoluteString
           model.rating_score = beer.rating_score ?? 0
           return model
         }
         
         let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.identifier), imageReference.rawValue.rawValue.uuidString)
         
         let match = (try ctx.fetch(request).first) ?? SessionModel(context: ctx)
         match.beers = Set(beerModels) as NSSet
         match.captureDate = Date()
-        match.imageGuid = imageReference.rawValue.rawValue
+        match.identifier = imageReference.rawValue.rawValue.uuidString
         match.possibles = []
         match.done = true
       
@@ -124,7 +124,7 @@ class DatabaseService {
     persistentContainer.performBackgroundTask { ctx in
       do {
         let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.identifier), imageReference.rawValue.rawValue.uuidString)
         
         if let result = try ctx.fetch(request).first {
           result.possibles = possibles as NSArray
@@ -161,13 +161,13 @@ class DatabaseService {
           model.ibu = Int64(beer.ibu)
           model.style = beer.style
           model.beerDescription = beer.description
-          model.label = beer.label
+          model.label = beer.label.absoluteString
           model.rating_score = beer.rating_score ?? 0
           return model
         }
 
         let request: NSFetchRequest<SessionModel> = SessionModel.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.imageGuid), imageReference.rawValue.rawValue.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(SessionModel.identifier), imageReference.rawValue.rawValue.uuidString)
 
         if let result = try ctx.fetch(request).first {
           result.addToBeers(Set(beerModels) as NSSet)

@@ -50,6 +50,7 @@ class ImageService {
     return imageData
   }
 
+  @available(iOS 11.0, *)
   private func conform(photo: AVCapturePhoto, fileSize: Int = 8 * 1024) -> Promise<Data, Error> {
     return promisify({
       guard let photoData = photo.fileDataRepresentation(),
@@ -70,6 +71,27 @@ class ImageService {
     })
   }
 
+  // Provide backwards compatibility for iOS 10
+  private func conform(buffer: CMSampleBuffer, fileSize: Int = 8 * 1024) -> Promise<Data, Error> {
+    return promisify({
+      guard let photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer),
+        let image = UIImage(data: photoData)
+        else {
+          // TODO: fix error
+          throw NSError(domain: "", code: 0, userInfo: nil)
+        }
+      
+      let finalImageData: Data
+      if photoData.count > fileSize {
+        finalImageData = self.compress(image: image, maxFileSize: fileSize)
+      } else {
+        finalImageData = photoData
+      }
+      
+      return finalImageData
+    })
+  }
+  
   private func save(data: Data, imageReference: ImageReference) -> Promise<SavedImageReference, Error> {
     return promisify({
       guard let file = imageReference.url() else {
@@ -83,9 +105,20 @@ class ImageService {
     })
   }
 
+  @available(iOS 11.0, *)
   func upload(photo: AVCapturePhoto, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
     return conform(photo: photo)
-      .flatMap { self.save(data: $0, imageReference: imageReference) }
+      .flatMap { self.upload(data: $0, imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
+  }
+
+  // Provide backwards compatibility for iOS 10
+  func upload(buffer: CMSampleBuffer, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
+    return conform(buffer: buffer)
+      .flatMap { self.upload(data: $0, imageReference: imageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
+  }
+  
+  func upload(data: Data, imageReference: ImageReference, cancellationToken: CancellationToken?, progressHandler: ApiService.ProgressHandler?) -> Promise<(UploadJson, SavedImageReference), Error> {
+    return save(data: data, imageReference: imageReference)
       .flatMap { savedImageReference in self.upload(imageReference: savedImageReference, cancellationToken: cancellationToken, progressHandler: progressHandler) }
   }
   

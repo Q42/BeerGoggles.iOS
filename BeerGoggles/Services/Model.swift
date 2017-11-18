@@ -73,22 +73,27 @@ struct BeerJson: Decodable {
 
 struct Session {
   let captureDate: Date
+  let identifier: UUID
   let imageReference: SavedImageReference
   let beers: [BeerJson]
   let done: Bool
+  let imageData: Data
 
   init?(model: SessionModel) {
 
     guard let captureDate = model.captureDate,
-      let imageGuid = model.imageGuid,
-      let beers = model.beers as? Set<BeerModel>
+      let identifier = model.identifier.flatMap(UUID.init),
+      let beers = model.beers as? Set<BeerModel>,
+      let imageData = model.image
       else {
         return nil
       }
 
     self.captureDate = captureDate
-    self.imageReference = SavedImageReference(rawValue: ImageReference(rawValue: imageGuid))
+    self.identifier = identifier
+    self.imageReference = SavedImageReference(rawValue: ImageReference(rawValue: identifier))
     self.done = model.done
+    self.imageData = imageData
     self.beers = beers.flatMap { (beer: BeerModel) -> BeerJson? in
 
       guard let name = beer.name,
@@ -96,7 +101,7 @@ struct Session {
         let full_name = beer.full_name,
         let style = beer.style,
         let description = beer.beerDescription,
-        let label = beer.label
+        let label = beer.label.flatMap(URL.init)
         else {
           return nil
         }
