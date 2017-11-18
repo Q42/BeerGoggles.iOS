@@ -29,7 +29,7 @@
 		FF2391ED1FAC9633001D432A /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391EC1FAC9633001D432A /* SettingsView.xib */; };
 		FF2391F01FAC9970001D432A /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391EF1FAC9970001D432A /* AboutController.swift */; };
 		FF2391F21FAC9979001D432A /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391F11FAC9979001D432A /* AboutView.xib */; };
-		FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391F41FAC9FB8001D432A /* SessionsController.swift */; };
+		FF2391F51FAC9FB8001D432A /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391F41FAC9FB8001D432A /* HistoryController.swift */; };
 		FF2391FC1FACA371001D432A /* BeerCaptureOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391FB1FACA371001D432A /* BeerCaptureOverviewController.swift */; };
 		FF2391FE1FACA38B001D432A /* BeerCaptureOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */; };
 		FF2392011FACA4D5001D432A /* ScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392001FACA4D5001D432A /* ScanningController.swift */; };
@@ -40,8 +40,6 @@
 		FF23920D1FACB185001D432A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920C1FACB185001D432A /* R.generated.swift */; };
 		FF23920F1FACB821001D432A /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23920E1FACB821001D432A /* ActionButton.swift */; };
 		FF2392111FACC0AB001D432A /* talkinghead-test.json in Resources */ = {isa = PBXBuildFile; fileRef = FF2392101FACC0AB001D432A /* talkinghead-test.json */; };
-		FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392121FACC0F2001D432A /* AuthorizationController.swift */; };
-		FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392151FACC11A001D432A /* AuthorizationView.xib */; };
 		FF2392181FACD264001D432A /* BeerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2392171FACD264001D432A /* BeerSelectCell.swift */; };
 		FF23921A1FACD270001D432A /* BeerSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2392191FACD270001D432A /* BeerSelectCell.xib */; };
 		FF2392441FACE481001D432A /* Moving Talking Head_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = FF23921C1FACE480001D432A /* Moving Talking Head_00013.png */; };
@@ -174,7 +172,7 @@
 		FF2391EC1FAC9633001D432A /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FF2391EF1FAC9970001D432A /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		FF2391F11FAC9979001D432A /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
-		FF2391F41FAC9FB8001D432A /* SessionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
+		FF2391F41FAC9FB8001D432A /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		FF2391FB1FACA371001D432A /* BeerCaptureOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCaptureOverviewController.swift; sourceTree = "<group>"; };
 		FF2391FD1FACA38B001D432A /* BeerCaptureOverviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerCaptureOverviewView.xib; sourceTree = "<group>"; };
 		FF2392001FACA4D5001D432A /* ScanningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningController.swift; sourceTree = "<group>"; };
@@ -185,8 +183,6 @@
 		FF23920C1FACB185001D432A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FF23920E1FACB821001D432A /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		FF2392101FACC0AB001D432A /* talkinghead-test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "talkinghead-test.json"; sourceTree = "<group>"; };
-		FF2392121FACC0F2001D432A /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
-		FF2392151FACC11A001D432A /* AuthorizationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationView.xib; sourceTree = "<group>"; };
 		FF2392171FACD264001D432A /* BeerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSelectCell.swift; sourceTree = "<group>"; };
 		FF2392191FACD270001D432A /* BeerSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerSelectCell.xib; sourceTree = "<group>"; };
 		FF23921C1FACE480001D432A /* Moving Talking Head_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moving Talking Head_00013.png"; sourceTree = "<group>"; };
@@ -383,7 +379,6 @@
 			children = (
 				FF4B910B1FADDBFE00C8375C /* Error */,
 				FF2391D61FAC7026001D432A /* TabController.swift */,
-				FF2392141FACC106001D432A /* Authorization */,
 				FF2391F31FAC9FA8001D432A /* Sessions */,
 				FF2391EE1FAC9965001D432A /* About */,
 				FF2391E91FAC9608001D432A /* Settings */,
@@ -454,7 +449,7 @@
 		FF2391F31FAC9FA8001D432A /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
-				FF2391F41FAC9FB8001D432A /* SessionsController.swift */,
+				FF2391F41FAC9FB8001D432A /* HistoryController.swift */,
 				C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */,
 				C30BB76F1FB73A85008B2A5D /* SessionCell.swift */,
 			);
@@ -486,15 +481,6 @@
 				FF23926C1FACE4A9001D432A /* AnimationView.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		FF2392141FACC106001D432A /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				FF2392121FACC0F2001D432A /* AuthorizationController.swift */,
-				FF2392151FACC11A001D432A /* AuthorizationView.xib */,
-			);
-			path = Authorization;
 			sourceTree = "<group>";
 		};
 		FF23921B1FACE480001D432A /* Moving Talking Head */ = {
@@ -700,7 +686,6 @@
 				FF2392561FACE481001D432A /* Moving Talking Head_00003.png in Resources */,
 				FF2392451FACE481001D432A /* Moving Talking Head_00007.png in Resources */,
 				FF2392681FACE481001D432A /* Moving Talking Head_00037.png in Resources */,
-				FF2392161FACC11A001D432A /* AuthorizationView.xib in Resources */,
 				FFB7A2D71FAD0ECF003B2FBE /* Loading Skull_00007.png in Resources */,
 				FF2392611FACE481001D432A /* Moving Talking Head_00018.png in Resources */,
 				FF23924D1FACE481001D432A /* Moving Talking Head_00039.png in Resources */,
@@ -885,7 +870,6 @@
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
 				FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */,
-				FF2392131FACC0F2001D432A /* AuthorizationController.swift in Sources */,
 				C30BB7701FB73A85008B2A5D /* SessionCell.swift in Sources */,
 				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */,
@@ -894,7 +878,7 @@
 				FF33FEF51FB4F07D00C322F8 /* ImageService.swift in Sources */,
 				FF23920D1FACB185001D432A /* R.generated.swift in Sources */,
 				FF2391E11FAC774C001D432A /* CameraController.swift in Sources */,
-				FF2391F51FAC9FB8001D432A /* SessionsController.swift in Sources */,
+				FF2391F51FAC9FB8001D432A /* HistoryController.swift in Sources */,
 				FF2391FC1FACA371001D432A /* BeerCaptureOverviewController.swift in Sources */,
 				FF2391D71FAC7026001D432A /* TabController.swift in Sources */,
 				FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */,

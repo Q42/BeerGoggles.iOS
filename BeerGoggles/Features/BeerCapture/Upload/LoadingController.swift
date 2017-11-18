@@ -13,12 +13,29 @@ import CancellationToken
 
 final class LoadingController: UIViewController {
 
+  enum Message {
+    case scanning
+    case login
+    
+    var string: String {
+      switch self {
+      case .scanning:
+        return "Looking for beers in your scan…"
+      case .login:
+        return "Contacting Untappd…"
+      }
+    }
+  }
+
   private let cancellationTokenSource: CancellationTokenSource
+  private let message: Message
 
   @IBOutlet weak private var cancelButton: ActionButton!
+  @IBOutlet weak private var loadingTextView: UILabel!
 
-  init(cancellationTokenSource: CancellationTokenSource) {
+  init(cancellationTokenSource: CancellationTokenSource, message: Message) {
     self.cancellationTokenSource = cancellationTokenSource
+    self.message = message
     super.init(nibName: R.nib.loadingView.name, bundle: R.nib.loadingView.bundle)
   }
 
@@ -30,16 +47,20 @@ final class LoadingController: UIViewController {
     super.viewDidLoad()
     cancelButton.buttonStyle = .small
     navigationItem.hidesBackButton = true
-  }
+    loadingTextView.text = message.string
 
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    cancellationTokenSource.cancel()
+    cancellationTokenSource.register { [weak self, navigationController] in
+      if let navigationController = navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        self?.dismiss(animated: true, completion: nil)
+      }
+    }
   }
   
   @IBAction func cancelButtonPressed(_ sender: Any) {
     cancellationTokenSource.cancel()
-    navigationController?.popViewController(animated: true)
+    dismiss(animated: true, completion: nil)
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -48,9 +69,9 @@ final class LoadingController: UIViewController {
 }
 
 extension Promise {
-  func presentLoader(for controller: UIViewController, cancellationTokenSource: CancellationTokenSource, handler: @escaping (Value) -> UIViewController) -> Promise<Value, Error> {
+  func presentLoader(for controller: UIViewController, cancellationTokenSource: CancellationTokenSource, message: LoadingController.Message, handler: @escaping (Value) -> UIViewController) -> Promise<Value, Error> {
 
-    let loadingController = LoadingController(cancellationTokenSource: cancellationTokenSource)
+    let loadingController = LoadingController(cancellationTokenSource: cancellationTokenSource, message: message)
 
     if let navigationController = controller.navigationController {
       navigationController.pushViewController(loadingController, animated: true)
@@ -74,16 +95,6 @@ extension Promise {
         loadingController?.dismiss(animated: true) {
           controller.present(handler(result), animated: true, completion: nil)
         }
-      }
-    }.trap { [weak loadingController] _ in
-      if cancellationTokenSource.token.isCancellationRequested {
-        return
-      }
-      
-      if let navigationController = controller.navigationController {
-//        navigationController.popViewController(animated: true)
-      } else {
-        loadingController?.dismiss(animated: true, completion: nil)
       }
     }
   }

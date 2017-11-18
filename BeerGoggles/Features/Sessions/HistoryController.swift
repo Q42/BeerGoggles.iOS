@@ -9,7 +9,7 @@
 import UIKit
 import CancellationToken
 
-class SessionsController: UITableViewController {
+class HistoryController: UITableViewController {
 
   private var sessions: [Session] = []
   private var emptySessions: [Session] = []
@@ -59,6 +59,10 @@ class SessionsController: UITableViewController {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,7 +135,7 @@ class SessionsController: UITableViewController {
     print("RETRY SESSION: \(session)")
     cancellationTokenSource = CancellationTokenSource()
     let promise = App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token)
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, imageReference) in
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, imageReference) in
       BeerResultCoordinator.controller(for: result, imageReference: imageReference)
     }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
       print("ERROR HANDLED")

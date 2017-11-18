@@ -128,7 +128,7 @@ class CameraController: UIViewController {
   }
 
   private func handle(promise: Promise<(UploadJson, SavedImageReference), Error>, retry: @escaping () -> Void) {
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (result, imageReference) in
+    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, imageReference) in
       BeerResultCoordinator.controller(for: result, imageReference: imageReference)
     }).attachError(for: self, handler: { [navigationController] (controller) in
       print("ERROR HANDLED")

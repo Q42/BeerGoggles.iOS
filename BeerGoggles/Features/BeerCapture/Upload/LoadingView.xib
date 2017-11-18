@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingController" customModule="Uncheckd" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="p1j-2h-0jY" id="ea5-UT-YcA"/>
+                <outlet property="loadingTextView" destination="SxV-Z5-Ey3" id="YJy-f3-tGK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="755-LU-aED"/>
             </connections>
         </placeholder>
@@ -67,6 +68,6 @@ in your scan…</string>
         </view>
     </objects>
     <resources>
-        <image name="background" width="1058" height="679"/>
+        <image name="background" width="1054" height="678"/>
     </resources>
 </document>

@@ -40,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let controller: UIViewController
     if !App.authenticationService.isLoggedIn() {
       controller = LoginController()
-    } else if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
-      controller = AuthorizationController()
     } else {
       controller = TabController()
     }

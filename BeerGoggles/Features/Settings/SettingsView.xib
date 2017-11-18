@@ -24,14 +24,14 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqo-Dh-k70" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="607" width="315" height="30"/>
-                    <state key="normal" title="Log me out"/>
+                    <state key="normal" title="LOG ME OUT!"/>
                     <connections>
                         <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="Gbd-eh-ZfN"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0k-uh-sHV" customClass="ActionButton" customModule="Uncheckd" customModuleProvider="target">
                     <rect key="frame" x="30" y="567" width="315" height="30"/>
-                    <state key="normal" title="How to Beer Goggle?"/>
+                    <state key="normal" title="HOW TO BEER GOGGLE?"/>
                     <connections>
                         <action selector="howToPressed:" destination="-1" eventType="touchUpInside" id="9G3-hH-vd2"/>
                     </connections>

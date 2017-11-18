@@ -51,16 +51,28 @@ class BeerCaptureOverviewController: UIViewController {
     }
     let matches = result.matches
     if strings.isEmpty {
-      navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches, imageReference: imageReference), animated: true)
+      navigationController?.pushViewController(BeerResultCoordinator.controller(for: matches,
+                                                                                imageReference: imageReference),
+                                               animated: true)
     } else {
       cancellationTokenSource = CancellationTokenSource()
       App.databaseService.add(possibles: strings, imageReference: imageReference)
-        .flatMap { [result, imageReference] in App.imageService.magic(strings: strings, matches: result.matches, imageReference: imageReference) }
-        .map { (newMatches, imageReference) in (Array([matches, newMatches].joined()), imageReference) }
-        .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (matches, imageReference)  in
+        .flatMap { [result, imageReference] in
+          App.imageService.magic(strings: strings,
+                                 matches: result.matches,
+                                 imageReference: imageReference)
+        }
+        .map { (newMatches, imageReference) in
+          (Array([matches, newMatches].joined()), imageReference)
+        }
+        .presentLoader(for: self,
+                       cancellationTokenSource: cancellationTokenSource,
+                       message: .scanning,
+                       handler: { (matches, imageReference)  in
           BeerResultCoordinator.controller(for: matches, imageReference: imageReference)
         })
-        .attachError(for: self, handler: { [weak self] (controller) in
+        .attachError(for: self,
+                     handler: { [weak self] (controller) in
           controller.navigationController?.popViewController(animated: true)
           self?.nextPressed(sender)
         })
@@ -73,14 +85,18 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
     return 1
   }
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     return result.possibles.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.beerSelectCell, for: indexPath) else {
-      return UITableViewCell()
-    }
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.beerSelectCell,
+                                                   for: indexPath)
+      else {
+        return UITableViewCell()
+      }
 
     cell.possibility = result.possibles[indexPath.row]
 
@@ -89,12 +105,14 @@ extension BeerCaptureOverviewController: UITableViewDataSource {
 }
 
 extension BeerCaptureOverviewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
     cell?.isSelected = true
   }
 
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 didDeselectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
     cell?.isSelected = false
   }
