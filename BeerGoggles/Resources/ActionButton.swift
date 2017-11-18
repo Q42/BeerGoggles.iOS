@@ -28,7 +28,7 @@ class ActionButton: UIButton {
     var titleColor: UIColor {
       switch self {
       case .default:
-        return .textColor
+        return .white
       case .small:
         return .tintColor
       }

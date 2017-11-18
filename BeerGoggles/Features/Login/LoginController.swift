@@ -39,7 +39,10 @@ class LoginController: UIViewController {
     cancellationTokenSource = CancellationTokenSource()
 
     App.authenticationService.auth()
-      .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, handler: { (auth) -> UIViewController in
+      .presentLoader(for: self,
+                     cancellationTokenSource: cancellationTokenSource,
+                     message: .login,
+                     handler: { (auth) -> UIViewController in
         SFSafariViewController(url: auth.url)
       })
       .mapError()
