@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutController: UIViewController {
+class AboutController: ViewController {
   init() {
     super.init(nibName: "AboutView", bundle: nil)
 

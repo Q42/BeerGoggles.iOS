@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import CancellationToken
 
-class LoginController: UIViewController {
+class LoginController: ViewController {
 
   private var cancellationTokenSource: CancellationTokenSource!
 

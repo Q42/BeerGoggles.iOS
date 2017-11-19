@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HowToController: UIViewController {
+class HowToController: ViewController {
   
   var completionHandler: ((HowToController) -> Void)?
   

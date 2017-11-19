@@ -11,7 +11,7 @@ import Promissum
 import AVKit
 import CancellationToken
 
-final class LoadingController: UIViewController {
+final class LoadingController: ViewController {
 
   enum Message {
     case scanning

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerDetailController: UIViewController {
+class BeerDetailController: ViewController {
 
   private let beer: BeerJson
   @IBOutlet weak private var beerNameLabel: UILabel!

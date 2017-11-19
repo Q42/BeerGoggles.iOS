@@ -9,7 +9,7 @@
 import UIKit
 import CancellationToken
 
-class HistoryController: UITableViewController {
+class HistoryController: TableViewController {
 
   private var sessions: [Session] = []
   private var emptySessions: [Session] = []
@@ -28,17 +28,24 @@ class HistoryController: UITableViewController {
     super.viewDidLoad()
     tableView.backgroundColor = .backgroundColor
     tableView.rowHeight = 70
-    tableView.register(R.nib.sessionCell)
+    tableView.register(R.nib.historyCell)
     tableView.separatorStyle = .singleLine
     tableView.separatorInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 0)
 
     navigationItem.titleView = UIView(frame: .zero)
+    
+    let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+    tableView.addGestureRecognizer(recognizer)
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    DatabaseService.shared.sessions().then { [weak self, tableView] sessions in
+    reload()
+  }
+  
+  private func reload() {
+    App.databaseService.sessions().then { [weak self, tableView] sessions in
       self?.sessions = sessions.filter {
         !$0.beers.isEmpty && $0.done
       }
@@ -52,8 +59,8 @@ class HistoryController: UITableViewController {
       }
       
       tableView?.reloadData()
-    }.trap {
-      print($0)
+      }.trap {
+        print($0)
     }
   }
 
@@ -91,7 +98,7 @@ class HistoryController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.sessionCell, for: indexPath) else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.historyCell, for: indexPath) else {
       return UITableViewCell()
     }
     
@@ -134,13 +141,32 @@ class HistoryController: UITableViewController {
   private func retry(session: Session) {
     print("RETRY SESSION: \(session)")
     cancellationTokenSource = CancellationTokenSource()
-    let promise = App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token, progressHandler: nil)
-    promise.presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, identifier) in
-      BeerResultCoordinator.controller(for: result, identifier: identifier)
-    }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
-      print("ERROR HANDLED")
-      navigationController?.popViewController(animated: true)
-      self?.retry(session: session)
-    })
+    
+    App.imageService.retry(session: session, cancellationToken: cancellationTokenSource.token, progressHandler: nil)
+      .presentLoader(for: self, cancellationTokenSource: cancellationTokenSource, message: .scanning, handler: { (result, identifier) in
+        BeerResultCoordinator.controller(for: result, identifier: identifier)
+      }).attachError(for: self, handler: { [weak self, navigationController] (controller) in
+        print("ERROR HANDLED")
+        navigationController?.popViewController(animated: true)
+        self?.retry(session: session)
+      })
+  }
+  
+  @objc private func longPress(recognizer: UIGestureRecognizer) {
+    if recognizer.state == .recognized {
+      retryAll()
+    }
+  }
+  
+  private func retryAll() {
+    cancellationTokenSource = CancellationTokenSource()
+    App.imageService.retryAll(cancellationToken: cancellationTokenSource.token)
+      .trap { [cancellationTokenSource] error in
+        print(error)
+        cancellationTokenSource?.cancel()
+      }
+      .finally { [weak self] in
+        self?.reload()
+      }
   }
 }

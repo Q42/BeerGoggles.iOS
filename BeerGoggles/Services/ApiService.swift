@@ -22,7 +22,7 @@ class ApiService: NSObject {
 
   typealias ProgressHandler = (Float) -> Void
   
-  private var pendingUpload: PendingUpload?
+  private var pendingUpload = [Int: PendingUpload]()
 
   private let session = URLSession(configuration: .default)
   private lazy var backgroundSession: URLSession = {
@@ -62,9 +62,9 @@ class ApiService: NSObject {
         uploadTask.cancel()
       }
 
-      self.pendingUpload = PendingUpload(task: uploadTask,
-                                         promiseSource: promiseSource,
-                                         progressHandler: progressHandler)
+      self.pendingUpload[uploadTask.taskIdentifier] = PendingUpload(task: uploadTask,
+                                                                    promiseSource: promiseSource,
+                                                                    progressHandler: progressHandler)
 
       return promiseSource.promise
     }
@@ -109,7 +109,7 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
                   didSendBodyData bytesSent: Int64,
                   totalBytesSent: Int64,
                   totalBytesExpectedToSend: Int64) {
-    pendingUpload?.progressHandler?(Float(totalBytesSent) / Float(totalBytesExpectedToSend))
+    pendingUpload[task.taskIdentifier]?.progressHandler?(Float(totalBytesSent) / Float(totalBytesExpectedToSend))
   }
   
   func urlSession(_ session: URLSession,
@@ -122,7 +122,7 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
     if let httpError = error as? URLError,
       httpError.code == URLError.cancelled {
       
-      pendingUpload?.promiseSource.reject(.cancelled)
+      pendingUpload[task.taskIdentifier]?.promiseSource.reject(.cancelled)
       return
     }
 
@@ -131,12 +131,12 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
                                          response: task.response,
                                          error: error) {
     case .value(let value):
-      pendingUpload?.promiseSource.resolve(value)
+      pendingUpload[task.taskIdentifier]?.promiseSource.resolve(value)
     case .error(let error):
-      pendingUpload?.promiseSource.reject(error)
+      pendingUpload[task.taskIdentifier]?.promiseSource.reject(error)
     }
     
-    pendingUpload = nil
+    pendingUpload[task.taskIdentifier] = nil
   }
   
   func urlSession(_ session: URLSession,
@@ -147,12 +147,12 @@ extension ApiService: URLSessionDelegate, URLSessionDataDelegate {
                                          response: dataTask.response,
                                          error: nil) {
     case .value(let value):
-      pendingUpload?.promiseSource.resolve(value)
+      pendingUpload[dataTask.taskIdentifier]?.promiseSource.resolve(value)
     case .error(let error):
-      pendingUpload?.promiseSource.reject(error)
+      pendingUpload[dataTask.taskIdentifier]?.promiseSource.reject(error)
     }
     
-    pendingUpload = nil
+    pendingUpload[dataTask.taskIdentifier] = nil
   }
 
   func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
@@ -194,10 +194,7 @@ extension URLRequest {
     }
 
     // Add request body
-    if
-      let data = httpBody,
-      let body = String(data: data, encoding: .utf8)
-    {
+    if let data = httpBody, let body = String(data: data, encoding: .utf8) {
       if body.characters.count > 0 {
         let escapedBody = body.escapingQuotes()
         components.append("-d \"\(escapedBody)\"")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerResultOverviewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BeerResultOverviewController: ViewController, UITableViewDelegate, UITableViewDataSource {
 
   enum Result {
     case beers(beers: [BeerJson])

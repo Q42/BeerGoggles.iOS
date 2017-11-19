@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		948E3D5DAAEB0FA78E861E93 /* Pods_Uncheckd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A624C2E081F0F3DB4BB16DD9 /* Pods_Uncheckd.framework */; };
 		C30BB76C1FB72674008B2A5D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */; };
-		C30BB76E1FB73A7D008B2A5D /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */; };
-		C30BB7701FB73A85008B2A5D /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76F1FB73A85008B2A5D /* SessionCell.swift */; };
+		C30BB76E1FB73A7D008B2A5D /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30BB76D1FB73A7D008B2A5D /* HistoryCell.xib */; };
+		C30BB7701FB73A85008B2A5D /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB76F1FB73A85008B2A5D /* HistoryCell.swift */; };
 		C30BB7721FB73E4D008B2A5D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BB7711FB73E4D008B2A5D /* Date.swift */; };
+		C38BFB901FC1B6ED0005EBEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BFB8F1FC1B6ED0005EBEA /* ViewController.swift */; };
 		FF2391BD1FAC5F45001D432A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BC1FAC5F45001D432A /* AppDelegate.swift */; };
 		FF2391BF1FAC5F45001D432A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2391BE1FAC5F45001D432A /* LoginController.swift */; };
 		FF2391C51FAC5F45001D432A /* BeerGoggles.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF2391C31FAC5F45001D432A /* BeerGoggles.xcdatamodeld */; };
@@ -150,9 +151,10 @@
 		A624C2E081F0F3DB4BB16DD9 /* Pods_Uncheckd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uncheckd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB03DBA658D5AC91AE70EFFB /* Pods-Uncheckd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uncheckd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uncheckd/Pods-Uncheckd.release.xcconfig"; sourceTree = "<group>"; };
 		C30BB76B1FB72674008B2A5D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
-		C30BB76F1FB73A85008B2A5D /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
+		C30BB76D1FB73A7D008B2A5D /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		C30BB76F1FB73A85008B2A5D /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		C30BB7711FB73E4D008B2A5D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		C38BFB8F1FC1B6ED0005EBEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF2391B91FAC5F45001D432A /* Uncheckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uncheckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2391BC1FAC5F45001D432A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF2391BE1FAC5F45001D432A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C38BFB8E1FC1B6E20005EBEA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C38BFB8F1FC1B6ED0005EBEA /* ViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		FF2391B01FAC5F45001D432A = {
 			isa = PBXGroup;
 			children = (
@@ -333,7 +343,9 @@
 				80F4426781FC3D46DD4B2A46 /* Pods */,
 				48B386F1CF89EB7F092FC727 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		FF2391BA1FAC5F45001D432A /* Products */ = {
 			isa = PBXGroup;
@@ -346,6 +358,7 @@
 		FF2391BB1FAC5F45001D432A /* BeerGoggles */ = {
 			isa = PBXGroup;
 			children = (
+				C38BFB8E1FC1B6E20005EBEA /* Base */,
 				C30BB7731FB73E52008B2A5D /* Extensions */,
 				FF2392041FACACB4001D432A /* Resources */,
 				FF2391D81FAC7059001D432A /* Features */,
@@ -379,7 +392,7 @@
 			children = (
 				FF4B910B1FADDBFE00C8375C /* Error */,
 				FF2391D61FAC7026001D432A /* TabController.swift */,
-				FF2391F31FAC9FA8001D432A /* Sessions */,
+				FF2391F31FAC9FA8001D432A /* History */,
 				FF2391EE1FAC9965001D432A /* About */,
 				FF2391E91FAC9608001D432A /* Settings */,
 				FF2391E61FAC8D66001D432A /* BeerCapture */,
@@ -446,14 +459,14 @@
 			path = About;
 			sourceTree = "<group>";
 		};
-		FF2391F31FAC9FA8001D432A /* Sessions */ = {
+		FF2391F31FAC9FA8001D432A /* History */ = {
 			isa = PBXGroup;
 			children = (
 				FF2391F41FAC9FB8001D432A /* HistoryController.swift */,
-				C30BB76D1FB73A7D008B2A5D /* SessionCell.xib */,
-				C30BB76F1FB73A85008B2A5D /* SessionCell.swift */,
+				C30BB76D1FB73A7D008B2A5D /* HistoryCell.xib */,
+				C30BB76F1FB73A85008B2A5D /* HistoryCell.swift */,
 			);
-			path = Sessions;
+			path = History;
 			sourceTree = "<group>";
 		};
 		FF2391FF1FACA3A2001D432A /* Upload */ = {
@@ -731,7 +744,7 @@
 				FFD216421FBCCFDA009DAB0D /* BeerResultOverview.xib in Resources */,
 				FFB7A2D91FAD0ECF003B2FBE /* Loading Skull_00005.png in Resources */,
 				FFB7A2C11FAD0ECF003B2FBE /* Loading Skull_00033.png in Resources */,
-				C30BB76E1FB73A7D008B2A5D /* SessionCell.xib in Resources */,
+				C30BB76E1FB73A7D008B2A5D /* HistoryCell.xib in Resources */,
 				FF2392081FACAF8F001D432A /* Futura.ttc in Resources */,
 				FFB7A2D31FAD0ECF003B2FBE /* Loading Skull_00002.png in Resources */,
 				FF2392661FACE481001D432A /* Moving Talking Head_00035.png in Resources */,
@@ -870,7 +883,8 @@
 				FF23920F1FACB821001D432A /* ActionButton.swift in Sources */,
 				FF2391D51FAC6278001D432A /* Model.swift in Sources */,
 				FFB7A2E71FADD203003B2FBE /* BeerEmptyController.swift in Sources */,
-				C30BB7701FB73A85008B2A5D /* SessionCell.swift in Sources */,
+				C38BFB901FC1B6ED0005EBEA /* ViewController.swift in Sources */,
+				C30BB7701FB73A85008B2A5D /* HistoryCell.swift in Sources */,
 				FFB7A28C1FAD0041003B2FBE /* BeerDetailController.swift in Sources */,
 				FF2391E51FAC8134001D432A /* LoadingController.swift in Sources */,
 				C30BB7721FB73E4D008B2A5D /* Date.swift in Sources */,
@@ -1076,7 +1090,7 @@
 			children = (
 				FF2391C41FAC5F45001D432A /* BeerGoggles.xcdatamodel */,
 			);
-			currentVersion = C3A128D51FC073EB00B73FFB /* BeerGoggles.xcdatamodel */;
+			currentVersion = FF2391C41FAC5F45001D432A /* BeerGoggles.xcdatamodel */;
 			path = BeerGoggles.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

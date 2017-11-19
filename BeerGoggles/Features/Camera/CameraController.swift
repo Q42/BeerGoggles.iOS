@@ -11,7 +11,7 @@ import AVKit
 import Promissum
 import CancellationToken
 
-class CameraController: UIViewController {
+class CameraController: ViewController {
 
   private var session: AVCaptureSession?
   private var stillImageOutput: AVCapturePhotoOutput?
@@ -108,31 +108,31 @@ class CameraController: UIViewController {
     #endif
   }
 
-  private func simulateImage() {
+  private func simulateImage(sessionIdentifier: SessionIdentifier = SessionIdentifier()) {
     cancellationTokenSource = CancellationTokenSource()
     
-    let promise = App.imageService.upload(originalUrl: R.file.beerMenuJpg()!, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) })
+    let promise = App.imageService.upload(originalUrl: R.file.beerMenuJpg()!, identifier: sessionIdentifier, cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) })
     
     handle(promise: promise, retry: { [weak self] in
-      self?.simulateImage()
+      self?.simulateImage(sessionIdentifier: sessionIdentifier)
     })
   }
 
   @available(iOS 11.0, *)
-  private func upload(photo: AVCapturePhoto) {
+  private func upload(photo: AVCapturePhoto, sessionIdentifier: SessionIdentifier = SessionIdentifier()) {
     cancellationTokenSource = CancellationTokenSource()
-    handle(promise: App.imageService.upload(photo: photo, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
-      self?.upload(photo: photo)
+    handle(promise: App.imageService.upload(photo: photo, identifier: sessionIdentifier, cancellationToken: cancellationTokenSource.token, progressHandler: { print($0) }), retry: { [weak self] in
+      self?.upload(photo: photo, sessionIdentifier: sessionIdentifier)
     })
   }
 
   // Enable backwards compatibility for iOS 10
-  private func upload(sampleBuffer: CMSampleBuffer) {
+  private func upload(sampleBuffer: CMSampleBuffer, sessionIdentifier: SessionIdentifier = SessionIdentifier()) {
     cancellationTokenSource = CancellationTokenSource()
 
-    let promise = App.imageService.upload(buffer: sampleBuffer, identifier: SessionIdentifier(), cancellationToken: cancellationTokenSource.token, progressHandler: nil)
+    let promise = App.imageService.upload(buffer: sampleBuffer, identifier: sessionIdentifier, cancellationToken: cancellationTokenSource.token, progressHandler: nil)
     handle(promise: promise) { [weak self] in
-      self?.upload(sampleBuffer: sampleBuffer)
+      self?.upload(sampleBuffer: sampleBuffer, sessionIdentifier: sessionIdentifier)
     }
   }
   

@@ -9,7 +9,7 @@
 import UIKit
 import Promissum
 
-class ErrorController: UIViewController {
+class ErrorController: ViewController {
   typealias ErrorClosure = (ErrorController) -> Void
 
   private let error: Error

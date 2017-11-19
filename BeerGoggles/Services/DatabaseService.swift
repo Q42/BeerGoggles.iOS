@@ -12,18 +12,57 @@ import Promissum
 
 class DatabaseService {
 
-  static let shared = DatabaseService()
-
   private lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "BeerGoggles")
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
+    container.loadPersistentStores(completionHandler: { [weak self] (storeDescription, error) in
+      if let error = error {
+        if let url = storeDescription.url {
+          try? FileManager.default.removeItem(at: url)
+          container.loadPersistentStores(completionHandler: { _,_ in })
+        } else {
+          fatalError("Derp \(error)")
+        }
       }
     })
+    
     return container
   }()
 
+  init() {
+    try? migratePhotos()
+  }
+  
+  func migrate(storeDescription: NSPersistentStoreDescription, error: CocoaError) {
+    print(storeDescription)
+    
+    do {
+      
+      try migratePhotos()
+      
+      if let url = storeDescription.url {
+        try FileManager.default.removeItem(at: url)
+      }
+      
+    } catch {
+      fatalError("Error: \(error)")
+    }
+  }
+  
+  private func migratePhotos() throws {
+    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let files = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+    
+    print(files)
+    print(files)
+    
+    try files.forEach {
+      let data = try Data(contentsOf: $0)
+      try intitialOnMain(identifier: SessionIdentifier(), imageData: data)
+      try FileManager.default.removeItem(at: $0)
+    }
+    try persistentContainer.viewContext.save()
+  }
+  
   func sessions() -> Promise<[Session], Error> {
     let promiseSource = PromiseSource<[Session], Error>()
 

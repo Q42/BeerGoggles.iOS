@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScanningController: UIViewController {
+class ScanningController: ViewController {
   init() {
     super.init(nibName: "ScanningControler", bundle: nil)
   }

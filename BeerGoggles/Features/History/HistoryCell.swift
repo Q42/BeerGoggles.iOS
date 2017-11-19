@@ -14,6 +14,11 @@ class SessionCell: UITableViewCell {
   @IBOutlet weak private var amount: UILabel!
   @IBOutlet weak private var thumbnail: UIImageView!
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    thumbnail.image = nil
+  }
+  
   var session: Session? {
     didSet {
       guard let session = session else{

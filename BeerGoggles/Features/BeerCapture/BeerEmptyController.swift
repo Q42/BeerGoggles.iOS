@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerEmptyController: UIViewController {
+class BeerEmptyController: ViewController {
   init() {
     super.init(nibName: "BeerEmptyState", bundle: nil)
     title = "NO BEERS :("

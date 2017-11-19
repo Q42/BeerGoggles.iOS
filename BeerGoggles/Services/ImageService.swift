@@ -166,6 +166,16 @@ class ImageService {
           .map { (result, session.identifier) }
       }
   }
+  
+  func retryAll(cancellationToken: CancellationToken?) -> Promise<Void, Error> {
+    return databaseService.sessions()
+      .flatMap { sessions in
+        whenAllFinalized(sessions.map { session in
+          self.retry(session: session, cancellationToken: cancellationToken, progressHandler: nil)
+        }).mapError()
+      }
+      .mapVoid()
+  }
 }
 
 func promisify<ValueType>(_ hander: @escaping () throws -> ValueType, queue: DispatchQueue = DispatchQueue.global()) -> Promise<ValueType, Swift.Error> {

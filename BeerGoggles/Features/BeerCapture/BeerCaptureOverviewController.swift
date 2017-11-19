@@ -9,7 +9,7 @@
 import UIKit
 import CancellationToken
 
-class BeerCaptureOverviewController: UIViewController {
+class BeerCaptureOverviewController: ViewController {
 
   private let result: UploadJson
   private let sessionIdentifier: SessionIdentifier
