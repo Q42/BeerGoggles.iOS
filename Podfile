@@ -1,5 +1,5 @@
 
-platform :ios, '11.0'
+platform :ios, '10.0'
 
 target 'Uncheckd' do
   use_frameworks!

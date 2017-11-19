@@ -14,6 +14,8 @@ class AnimationView: UIView {
   private static let cache = NSCache<NSString, NSArray>()
 
   func initialize(name: String, max: Int) {
+    assertionFailure("Should not use these")
+    
     backgroundColor = .clear
     addSubview(imageView)
     imageView.translatesAutoresizingMaskIntoConstraints = false

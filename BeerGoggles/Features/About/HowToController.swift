@@ -20,6 +20,10 @@ class HowToController: ViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   @IBAction func dismissPressed(_ sender: Any) {
     dismiss(animated: true) { [weak self] in
       guard let controller = self else {

@@ -29,9 +29,13 @@ class ErrorController: ViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .backgroundColor
-    errorLabel.text = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+    errorLabel.text = (error as? ApiError)?.localizedDescription ?? (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
     
     print("Present error: \(error)")
+  }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
   
   @IBAction func tryAgainPressed(_ sender: Any) {

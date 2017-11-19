@@ -222,7 +222,8 @@ extension URLSession {
     }
 
     guard httpResponse.statusCode == 200 else {
-      return .error(.response(httpResponse))
+      let string = data.flatMap { String(data: $0, encoding: .utf8) }
+      return .error(.response(httpResponse, string))
     }
 
     guard let data = data else {
@@ -296,23 +297,23 @@ enum ValueOrError<ValueType, ErrorType: Error> {
   case error(ErrorType)
 }
 
-enum ApiError: Error, LocalizedError {
+enum ApiError: Error {
   case notLoggedIn
   case noResponse
-  case response(HTTPURLResponse)
+  case response(HTTPURLResponse, String?)
   case decoding(DecodingError)
   case encoding(EncodingError)
   case unknown(Error)
   case cancelled
   
-  var errorDescription: String {
+  var localizedDescription: String {
     switch self {
     case .notLoggedIn:
       return "Not Logged In"
     case .noResponse:
       return "We didn't *burp* understand the menu you scanned."
-    case .response(let response):
-      return "We didn't *burp* understand the menu you scanned. (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))"
+    case .response(let response, let error):
+      return "We didn't *burp* understand the menu you scanned. (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)) \(error)"
     case .decoding(let error):
       return "We didn't *burp* understand the menu you scanned. (\(error.localizedDescription))"
     case .encoding(let error):
